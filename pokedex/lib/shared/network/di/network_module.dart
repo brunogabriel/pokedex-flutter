@@ -8,9 +8,12 @@ abstract class NetworkModule {
   String get baseUrl => "https://pokeapi.co/api/v2";
 
   @lazySingleton
-  Dio provideDio(@Named('BaseUrl') String baseUrl) {
+  Chuck providesChuck() => Chuck(showNotification: true);
+
+  @lazySingleton
+  Dio provideDio(@Named('BaseUrl') String baseUrl, Chuck chuck) {
     final Dio dio = Dio(BaseOptions(baseUrl: baseUrl));
-    dio.interceptors.add(Chuck().getDioInterceptor());
+    dio.interceptors.add(chuck.getDioInterceptor());
     return dio;
   }
 }

@@ -1,3 +1,4 @@
+import 'package:chuck_interceptor/chuck.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pokedex/pokemon/domain/interactor/pokemon_interactor.dart';
@@ -14,16 +15,19 @@ class PokemonPage extends StatefulWidget {
 
 class _PokemonPageState extends State<PokemonPage> {
   late IPokemonInteractor _interactor;
+  late Chuck _chuck;
 
   @override
   void initState() {
     _interactor = GetIt.I.get();
+    _chuck = GetIt.I.get();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: _chuck.getNavigatorKey(),
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.red,
