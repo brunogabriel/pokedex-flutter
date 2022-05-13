@@ -28,11 +28,16 @@ class _PokemonPageState extends State<PokemonPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: _chuck.getNavigatorKey(),
-      title: 'Flutter Demo',
+      title: 'Pokemon Page',
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: _buildPokemonGrid(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Pokémons'),
+        ),
+        body: _buildPokemonGrid(),
+      ),
     );
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/injection.dart';
+import 'package:pokedex/onboarding/presentation/page/onboarding_page.dart';
 import 'package:pokedex/pokemon/presentation/page/pokemon_page.dart';
 
 void main() {
@@ -12,6 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PokemonPage();
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const OnboardingPage(),
+        '/pokemons': (context) => const PokemonPage()
+      },
+    );
+
+    // // return const PokemonPage();
+
+    // return const OnboardingPage();
   }
 }
