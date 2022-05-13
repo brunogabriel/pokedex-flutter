@@ -1,4 +1,4 @@
-import 'package:chuck_interceptor/chuck.dart';
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,12 +8,15 @@ abstract class NetworkModule {
   String get baseUrl => "https://pokeapi.co/api/v2";
 
   @lazySingleton
-  Chuck providesChuck() => Chuck(showNotification: true);
+  ChuckerDioInterceptor providesChucker() => ChuckerDioInterceptor();
 
   @lazySingleton
-  Dio provideDio(@Named('BaseUrl') String baseUrl, Chuck chuck) {
+  Dio provideDio(
+    @Named('BaseUrl') String baseUrl,
+    ChuckerDioInterceptor chucker,
+  ) {
     final Dio dio = Dio(BaseOptions(baseUrl: baseUrl));
-    dio.interceptors.add(chuck.getDioInterceptor());
+    dio.interceptors.add(chucker);
     return dio;
   }
 }

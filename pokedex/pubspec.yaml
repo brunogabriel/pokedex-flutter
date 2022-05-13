@@ -16,8 +16,8 @@ dependencies:
   get_it: ^7.2.0
   injectable: ^1.5.3
   dio: ^4.0.6
-  chuck_interceptor: ^1.0.0
   json_serializable: ^6.2.0
+  chucker_flutter: ^1.1.4
 
 dev_dependencies:
   flutter_test:

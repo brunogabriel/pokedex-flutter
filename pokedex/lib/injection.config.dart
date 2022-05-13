@@ -4,7 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-import 'package:chuck_interceptor/chuck.dart' as _i3;
+import 'package:chucker_flutter/chucker_flutter.dart' as _i3;
 import 'package:dio/dio.dart' as _i5;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
@@ -24,11 +24,12 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   final networkModule = _$NetworkModule();
-  gh.lazySingleton<_i3.Chuck>(() => networkModule.providesChuck());
+  gh.lazySingleton<_i3.ChuckerDioInterceptor>(
+      () => networkModule.providesChucker());
   gh.factory<_i4.IOnboardingService>(() => _i4.OnboardingService());
   gh.factory<String>(() => networkModule.baseUrl, instanceName: 'BaseUrl');
   gh.lazySingleton<_i5.Dio>(() => networkModule.provideDio(
-      get<String>(instanceName: 'BaseUrl'), get<_i3.Chuck>()));
+      get<String>(instanceName: 'BaseUrl'), get<_i3.ChuckerDioInterceptor>()));
   gh.factory<_i6.IOnboardingRepository>(
       () => _i6.OnboardingRepository(get<_i4.IOnboardingService>()));
   gh.factory<_i7.IPokemonService>(() => _i7.PokemonService(get<_i5.Dio>()));
