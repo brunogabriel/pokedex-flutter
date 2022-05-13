@@ -5,13 +5,15 @@ import '../service/pokemon_service.dart';
 
 @Injectable(as: IPokemonRepository)
 class PokemonRepository implements IPokemonRepository {
-  final IPokemonService service;
+  final IPokemonService _service;
 
-  PokemonRepository({required this.service});
+  const PokemonRepository(
+    this._service,
+  );
 
   @override
   Future<List<PokemonResponse>> fetchPokemons() async =>
-      await service.getPokemons();
+      await _service.getPokemons();
 }
 
 abstract class IPokemonRepository {

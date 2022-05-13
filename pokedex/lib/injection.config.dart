@@ -35,9 +35,9 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i8.IOnboardingInteractor>(
       () => _i8.OnboardingInteractor(get<_i6.IOnboardingRepository>()));
   gh.factory<_i9.IPokemonRepository>(
-      () => _i9.PokemonRepository(service: get<_i7.IPokemonService>()));
+      () => _i9.PokemonRepository(get<_i7.IPokemonService>()));
   gh.factory<_i10.IPokemonInteractor>(
-      () => _i10.PokemonInteractor(repository: get<_i9.IPokemonRepository>()));
+      () => _i10.PokemonInteractor(get<_i9.IPokemonRepository>()));
   return get;
 }
 

@@ -20,9 +20,5 @@ class MyApp extends StatelessWidget {
         '/pokemons': (context) => const PokemonPage()
       },
     );
-
-    // // return const PokemonPage();
-
-    // return const OnboardingPage();
   }
 }

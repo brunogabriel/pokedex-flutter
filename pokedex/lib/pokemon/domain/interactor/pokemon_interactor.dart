@@ -5,15 +5,15 @@ import '../model/pokemon.dart';
 
 @Injectable(as: IPokemonInteractor)
 class PokemonInteractor implements IPokemonInteractor {
-  final IPokemonRepository repository;
+  final IPokemonRepository _repository;
 
-  PokemonInteractor({
-    required this.repository,
-  });
+  const PokemonInteractor(
+    this._repository,
+  );
 
   @override
   Future<List<Pokemon>> takePokemons() async =>
-      await repository.fetchPokemons().then((value) =>
+      await _repository.fetchPokemons().then((value) =>
           value.map((response) => Pokemon.fromResponse(response)).toList());
 }
 
