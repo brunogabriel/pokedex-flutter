@@ -12,10 +12,10 @@ class PokemonRepository implements IPokemonRepository {
   );
 
   @override
-  Future<List<PokemonResponse>> fetchPokemons() async =>
-      await _service.getPokemons();
+  Future<List<PokemonResponse>> fetchPokemons(int offset) async =>
+      await _service.getPokemons(offset);
 }
 
 abstract class IPokemonRepository {
-  Future<List<PokemonResponse>> fetchPokemons();
+  Future<List<PokemonResponse>> fetchPokemons(int offset);
 }

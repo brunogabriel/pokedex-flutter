@@ -12,11 +12,11 @@ class PokemonInteractor implements IPokemonInteractor {
   );
 
   @override
-  Future<List<Pokemon>> takePokemons() async =>
-      await _repository.fetchPokemons().then((value) =>
+  Future<List<Pokemon>> takePokemons(int offSet) async =>
+      await _repository.fetchPokemons(offSet).then((value) =>
           value.map((response) => Pokemon.fromResponse(response)).toList());
 }
 
 abstract class IPokemonInteractor {
-  Future<List<Pokemon>> takePokemons();
+  Future<List<Pokemon>> takePokemons(int offSet);
 }

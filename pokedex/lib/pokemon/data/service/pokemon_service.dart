@@ -10,13 +10,15 @@ class PokemonService implements IPokemonService {
   const PokemonService(this._client);
 
   @override
-  Future<List<PokemonResponse>> getPokemons() async => await _client
-      .get('/pokemon?limit=250')
+  Future<List<PokemonResponse>> getPokemons(int offset) async => await _client
+      .get('/pokemon?limit=${IPokemonService.pageSize}&offset=$offset')
       .then((response) => response.statusCode == 200
           ? PokemonResultResponse.fromJson(response.data).results
           : throw UnimplementedError());
 }
 
 abstract class IPokemonService {
-  Future<List<PokemonResponse>> getPokemons();
+  static const int pageSize = 30;
+
+  Future<List<PokemonResponse>> getPokemons(int offset);
 }
