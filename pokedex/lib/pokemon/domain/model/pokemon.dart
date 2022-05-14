@@ -10,6 +10,14 @@ class Pokemon {
     required this.number,
   });
 
+  @override
+  bool operator ==(other) {
+    return (other is Pokemon) &&
+        other.name == name &&
+        other.thumbnail == thumbnail &&
+        other.number == number;
+  }
+
   factory Pokemon.fromResponse(PokemonResponse response) {
     final regex = RegExp(r'^https://pokeapi.co/api/v2/pokemon/([0-9]+)/$');
     final match = regex.firstMatch(response.url);

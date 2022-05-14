@@ -11,6 +11,11 @@ class PokemonResponse {
     required this.url,
   });
 
+  @override
+  bool operator ==(other) {
+    return (other is PokemonResponse) && other.name == name && other.url == url;
+  }
+
   factory PokemonResponse.fromJson(Map<String, dynamic> json) =>
       _$PokemonResponseFromJson(json);
 

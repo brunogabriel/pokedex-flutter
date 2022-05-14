@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokemon/data/response/pokemon_response.dart';
 import 'package:pokedex/pokemon/data/response/pokemon_result_response.dart';
+import 'package:pokedex/shared/network/exception/network_exception.dart';
 
 @Injectable(as: IPokemonService)
 class PokemonService implements IPokemonService {
@@ -14,7 +15,7 @@ class PokemonService implements IPokemonService {
       .get('/pokemon?limit=${IPokemonService.pageSize}&offset=$offset')
       .then((response) => response.statusCode == 200
           ? PokemonResultResponse.fromJson(response.data).results
-          : throw UnimplementedError());
+          : throw NetworkException(response.statusCode));
 }
 
 abstract class IPokemonService {
