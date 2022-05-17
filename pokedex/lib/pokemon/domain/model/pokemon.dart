@@ -1,4 +1,5 @@
 import 'package:pokedex/pokemon/data/response/pokemon_response.dart';
+import 'package:pokedex/shared/extensions/string_extensions.dart';
 
 class Pokemon {
   final String name, thumbnail;
@@ -18,13 +19,19 @@ class Pokemon {
         other.number == number;
   }
 
+  @override
+  int get hashCode {
+    int result = 17;
+    result = 37 * result + name.hashCode;
+    result = 37 * result + thumbnail.hashCode;
+    result = 37 * result + number.hashCode;
+    return result;
+  }
+
   factory Pokemon.fromResponse(PokemonResponse response) {
-    final regex = RegExp(r'^https://pokeapi.co/api/v2/pokemon/([0-9]+)/$');
-    final match = regex.firstMatch(response.url);
-    final number = int.parse(match?.group(1) ?? "0");
+    final number = response.url.takeNumberFromPokemonUrl();
     final thumbnail =
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$number.png";
-
     return Pokemon(name: response.name, thumbnail: thumbnail, number: number);
   }
 }
