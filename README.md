@@ -24,5 +24,9 @@ Basically the project structure is using [The Clean Architecture](https://blog.c
 ## Show case
 
 <p>
+    <img src="screenshots/hello.png" width=200>
+</p>
+
+<p>
     <img src="screenshots/1.png" width=200>
 </p>
