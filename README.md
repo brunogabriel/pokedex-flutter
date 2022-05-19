@@ -1,6 +1,11 @@
 # pokedex-flutter
 
-A Poc project to validate Flutter concepts using [Pokedex API](https://pokeapi.co/). This project works on Android and iOS Platform by pagging Pokedex API and show us all Pokémons.
+A Poc project to validate Flutter concepts using [Pokedex API](https://pokeapi.co/). This project works on Android and iOS platforms by pagging Pokedex API and show us all Pokémons.
+
+## IMPORTANT
+
+First of all, it's a not official Pokémon project. The Pokémon trademark has their copyrights. Thanks Nintendo/Creatures Inc./GAME FREAK inc. TM, for this amazing series. Thank too for the arts used in Onboarding, Pokedex API etc. This is just for **studying** and help developers to practice Flutter skills.
+
 
 ## Architecture
 
@@ -27,6 +32,7 @@ Basically the project structure is using [The Clean Architecture](https://blog.c
     <img src="screenshots/hello.png" width=200>
     <img src="screenshots/1.png" width=200>
 </p>
+
 
 ## LICENSE
 
