@@ -25,8 +25,9 @@ Basically the project structure is using [The Clean Architecture](https://blog.c
 
 <p>
     <img src="screenshots/hello.png" width=200>
-</p>
-
-<p>
     <img src="screenshots/1.png" width=200>
 </p>
+
+## LICENSE
+
+MIT © [MIT](LICENSE)
