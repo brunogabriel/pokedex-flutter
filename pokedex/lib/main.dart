@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/injection.dart';
-import 'package:pokedex/onboarding/presentation/page/onboarding_page.dart';
-import 'package:pokedex/pokemon/presentation/page/pokemon_page.dart';
+import 'package:pokedex/pokemon/presentation/view/pokemon_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,11 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const OnboardingPage(),
-        '/pokemons': (context) => const PokemonPage()
-      },
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Pokedex - 250 Pokémons')),
+        body: const PokemonPage(),
+      ),
     );
   }
 }
