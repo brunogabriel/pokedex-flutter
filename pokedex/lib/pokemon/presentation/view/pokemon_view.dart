@@ -16,6 +16,14 @@ class PokemonView extends StatelessWidget {
             context.read<PokemonBloc>().add(PokemonRequest());
           }
 
+          if (state is PokemonEmpty) {
+            // TODO
+          }
+
+          if (state is PokemonError) {
+            // TODO
+          }
+
           if (state is PokemonResult) {
             return ListView.builder(
               itemCount: state.pokemons.length,
@@ -23,8 +31,7 @@ class PokemonView extends StatelessWidget {
                 final pokemon = state.pokemons[index];
                 return PokemonCard(
                     name: pokemon.name,
-                    number: pokemon.number
-                        .toString(), // TODO: converter para o modelo de UI com 001
+                    number: pokemon.number.toString(),
                     thumbnail: pokemon.thumbnail);
               },
             );

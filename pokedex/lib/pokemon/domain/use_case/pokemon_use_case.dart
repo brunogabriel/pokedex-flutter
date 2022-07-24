@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:pokedex/pokemon/data/pokemon_data_barrel.dart';
+import 'package:pokedex/pokemon/data/repository/pokemon_repository.dart';
 import 'package:pokedex/pokemon/domain/models/pokemon.dart';
 
 @Injectable(as: IPokemonUseCase)

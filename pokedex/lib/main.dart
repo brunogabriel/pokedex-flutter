@@ -1,3 +1,4 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/injection.dart';
 import 'package:pokedex/pokemon/presentation/view/pokemon_page.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorObservers: [ChuckerFlutter.navigatorObserver],
       home: Scaffold(
         appBar: AppBar(title: const Text('Pokedex - 250 Pokémons')),
         body: const PokemonPage(),

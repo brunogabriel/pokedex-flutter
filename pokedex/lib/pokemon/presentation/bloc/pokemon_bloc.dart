@@ -1,7 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-import 'package:pokedex/pokemon/domain/pokemon_domain_barrel.dart';
 import 'package:bloc/bloc.dart';
+import 'package:pokedex/pokemon/domain/models/pokemon.dart';
+import 'package:pokedex/pokemon/domain/use_case/pokemon_use_case.dart';
 
 part 'pokemon_event.dart';
 part 'pokemon_state.dart';
