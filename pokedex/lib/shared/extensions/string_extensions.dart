@@ -2,7 +2,7 @@ extension StringExtension on String {
   String firstLetterCapitalized() =>
       length > 0 ? '${this[0].toUpperCase()}${substring(1)}' : '';
 
-  int takeNumberFromPokemonUrl() {
+  int getNumberFromPokemonUrl() {
     try {
       final regex = RegExp(r'^https://pokeapi.co/api/v2/pokemon/([0-9]+)/$');
       final match = regex.firstMatch(this);

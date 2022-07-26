@@ -1,10 +1,14 @@
+import 'dart:io';
+
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/injection.dart';
-import 'package:pokedex/onboarding/presentation/page/onboarding_page.dart';
-import 'package:pokedex/pokemon/presentation/page/pokemon_page.dart';
+import 'package:pokedex/pokemon/presentation/view/pokemon_page.dart';
+import 'package:pokedex/shared/network/utils/pokemon_http_overrides.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  HttpOverrides.global = PokemonHttpOverrides();
   await configureDependencies();
   runApp(const MyApp());
 }
@@ -15,11 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const OnboardingPage(),
-        '/pokemons': (context) => const PokemonPage()
-      },
+      navigatorObservers: [ChuckerFlutter.navigatorObserver],
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Pokedex - 250 Pokémons')),
+        body: const PokemonPage(),
+      ),
     );
   }
 }

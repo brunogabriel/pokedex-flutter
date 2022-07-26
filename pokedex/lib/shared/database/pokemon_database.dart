@@ -10,13 +10,13 @@ part 'pokemon_database.g.dart';
 
 @DriftDatabase(include: {'tables.drift'})
 class PokemonDatabase extends _$PokemonDatabase {
-  PokemonDatabase() : super(_openConnection());
+  PokemonDatabase() : super(_openNativeDatabase());
 
   @override
   int get schemaVersion => 1;
 }
 
-LazyDatabase _openConnection() {
+LazyDatabase _openNativeDatabase() {
   return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
     final file = File(path.join(dbFolder.path, 'pokemon.sqlite'));

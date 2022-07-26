@@ -5,18 +5,13 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class NetworkModule {
   @Named('BaseUrl')
-  String get baseUrl => "https://pokeapi.co/api/v2";
+  String get baseUrl => 'https://pokeapi.co/api/v2';
+
+  @Named('ChuckerInterceptor')
+  Interceptor get chuckerInterceptor => ChuckerDioInterceptor();
 
   @lazySingleton
-  ChuckerDioInterceptor providesChucker() => ChuckerDioInterceptor();
-
-  @lazySingleton
-  Dio provideDio(
-    @Named('BaseUrl') String baseUrl,
-    ChuckerDioInterceptor chucker,
-  ) {
-    final Dio dio = Dio(BaseOptions(baseUrl: baseUrl));
-    dio.interceptors.add(chucker);
-    return dio;
-  }
+  Dio provideClient(@Named('BaseUrl') String url,
+          @Named('ChuckerInterceptor') Interceptor chuckerInterceptor) =>
+      Dio(BaseOptions(baseUrl: url))..interceptors.add(chuckerInterceptor);
 }

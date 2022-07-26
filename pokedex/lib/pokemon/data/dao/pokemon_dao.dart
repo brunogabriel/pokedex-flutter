@@ -3,17 +3,15 @@ import 'package:injectable/injectable.dart';
 import 'package:pokedex/shared/database/pokemon_database.dart';
 
 @Injectable(as: IPokemonDao)
-class PokemonDao extends IPokemonDao {
+class PokemonDao implements IPokemonDao {
   final PokemonDatabase _database;
 
   PokemonDao(this._database);
 
   @override
-  Future<List<PokemonEntityData>> findByLimitAndOffset(
-          int limit, int offset) async =>
-      (_database.select(_database.pokemonEntity)
-            ..orderBy([(field) => OrderingTerm(expression: field.number)])
-            ..limit(limit, offset: offset))
+  Future<List<PokemonEntityData>> findAll() =>
+      ((_database.select(_database.pokemonEntity))
+            ..orderBy([(field) => OrderingTerm(expression: field.number)]))
           .get()
           .onError((_, stackTrace) => []);
 
@@ -33,5 +31,5 @@ class PokemonDao extends IPokemonDao {
 
 abstract class IPokemonDao {
   Future<void> insertOrReplace(List<PokemonEntityData> entities);
-  Future<List<PokemonEntityData>> findByLimitAndOffset(int limit, int offset);
+  Future<List<PokemonEntityData>> findAll();
 }
