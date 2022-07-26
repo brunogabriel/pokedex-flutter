@@ -6,8 +6,6 @@ class PokemonCard extends StatelessWidget {
   final String thumbnail;
   final VoidCallback? onTap;
 
-  // TODO: create a constant for circular border
-
   const PokemonCard({
     Key? key,
     required this.name,

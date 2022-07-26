@@ -9,7 +9,7 @@ class PokemonPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (_) => PokemonBloc(GetIt.I.get()),
+        create: (_) => PokemonBloc(GetIt.I.get())..add(PokemonRequest()),
         child: const PokemonView(),
       );
 }

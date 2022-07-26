@@ -25,9 +25,10 @@ class PokemonRepository implements IPokemonRepository {
     } else {
       var entities = await _service.getPokemons().then((value) => value.results
           .map((response) => PokemonEntityData(
-              name: response.name,
-              number: response.url.getNumberFromPokemonUrl(),
-              url: response.url))
+                name: response.name,
+                number: response.url.getNumberFromPokemonUrl(),
+                url: response.url,
+              ))
           .toList());
 
       return _dao.insertOrReplace(entities).then((_) =>

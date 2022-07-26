@@ -9,7 +9,10 @@ class PokemonData extends Equatable {
   final String name;
   final int number;
 
-  const PokemonData(this.name, this.number);
+  const PokemonData(
+    this.name,
+    this.number,
+  );
 
   @override
   List<Object> get props => [name, number];
@@ -18,6 +21,8 @@ class PokemonData extends Equatable {
       response.name.firstLetterCapitalized(),
       response.url.getNumberFromPokemonUrl());
 
-  factory PokemonData.fromEntity(PokemonEntityData entity) =>
-      PokemonData(entity.name.firstLetterCapitalized(), entity.number);
+  factory PokemonData.fromEntity(PokemonEntityData entity) => PokemonData(
+        entity.name.firstLetterCapitalized(),
+        entity.number,
+      );
 }

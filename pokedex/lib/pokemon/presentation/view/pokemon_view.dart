@@ -12,18 +12,39 @@ class PokemonView extends StatelessWidget {
         buildWhen: (previous, current) =>
             previous.runtimeType != current.runtimeType,
         builder: (context, state) {
-          if (state is PokemonInitial) {
-            context.read<PokemonBloc>().add(PokemonRequest());
-          }
-
-          if (state is PokemonEmpty) {
-            // TODO
-          }
-
           if (state is PokemonError) {
-            // TODO
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Ops, there's something wrong",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  OutlinedButton(
+                      onPressed: () =>
+                          context.read<PokemonBloc>().add(PokemonRequest()),
+                      child: const Text('Try again'))
+                ],
+              ),
+            );
           }
-
+          if (state is PokemonEmpty) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Ops, there's no data to show here",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ],
+              ),
+            );
+          }
           if (state is PokemonResult) {
             return ListView.builder(
               itemCount: state.pokemons.length,
@@ -36,9 +57,7 @@ class PokemonView extends StatelessWidget {
               },
             );
           }
-          return _buildLoading();
+          return const Center(child: CircularProgressIndicator());
         });
   }
-
-  Widget _buildLoading() => const Center(child: CircularProgressIndicator());
 }

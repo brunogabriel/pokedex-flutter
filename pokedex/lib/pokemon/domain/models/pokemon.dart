@@ -6,11 +6,18 @@ class Pokemon extends Equatable {
   final int number;
   final String thumbnail;
 
-  const Pokemon(this.name, this.number, this.thumbnail);
+  const Pokemon(
+    this.name,
+    this.number,
+    this.thumbnail,
+  );
 
   @override
   List<Object> get props => [name, number, thumbnail];
 
-  factory Pokemon.fromData(PokemonData data) => Pokemon(data.name, data.number,
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.number}.png");
+  factory Pokemon.fromData(PokemonData data) => Pokemon(
+        data.name,
+        data.number,
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.number}.png",
+      );
 }
