@@ -23,13 +23,15 @@ class PokemonRepository implements IPokemonRepository {
     if (databaseResponse.isNotEmpty) {
       return databaseResponse;
     } else {
-      return _service.getPokemons().then((value) => value.results
-          .map((respose) => PokemonEntityData(
-              name: respose.name,
-              number: respose.url.getNumberFromPokemonUrl(),
-              url: respose.url))
-          .map((e) => PokemonData.fromEntity(e))
+      var entities = await _service.getPokemons().then((value) => value.results
+          .map((response) => PokemonEntityData(
+              name: response.name,
+              number: response.url.getNumberFromPokemonUrl(),
+              url: response.url))
           .toList());
+
+      return _dao.insertOrReplace(entities).then((_) =>
+          entities.map((entity) => PokemonData.fromEntity(entity)).toList());
     }
   }
 }
