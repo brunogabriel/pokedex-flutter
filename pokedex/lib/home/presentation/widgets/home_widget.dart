@@ -51,6 +51,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   if (index < state.pokemons.length) {
                     return PokemonCardWidget(
                       name: state.pokemons[index].name,
+                      sprite: state.pokemons[index].spriteUrl,
                       //response: state.characters[index],
                       // onTap: () {
                       //   context.goNamed(

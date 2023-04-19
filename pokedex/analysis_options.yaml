@@ -13,6 +13,5 @@ linter:
     - constant_identifier_names
     - directives_ordering
     - prefer_single_quotes
-    - lines_longer_than_80_chars
     - curly_braces_in_flow_control_structures
     - slash_for_doc_comments

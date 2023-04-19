@@ -3,9 +3,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/home/data/home_repository.dart';
+import 'package:pokedex/pokemon/data/models/pokemon_details_response.dart';
 
 import '../../../shared/event_transformations.dart';
-import '../../data/models/pokemon_response.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -38,8 +38,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       emit(
         state.copyWith(
-          offset: state.offset + response.results.length,
-          pokemons: List.of(state.pokemons)..addAll(response.results),
+          offset: state.offset + response.details.length,
+          pokemons: List.of(state.pokemons)..addAll(response.details),
           hasReachedMax: state.offset >= (response.count),
         ),
       );

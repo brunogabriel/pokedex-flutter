@@ -13,9 +13,9 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:pokedex/home/data/home_repository.dart' as _i5;
-import 'package:pokedex/home/data/service/home_service.dart' as _i4;
 import 'package:pokedex/home/presentation/bloc/home_bloc.dart' as _i6;
 import 'package:pokedex/network/network_module.dart' as _i7;
+import 'package:pokedex/pokemon/data/pokemon_service.dart' as _i4;
 
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
@@ -43,9 +43,9 @@ _i1.GetIt init(
     gh<String>(instanceName: 'BaseUrl'),
     gh<_i3.Interceptor>(instanceName: 'PrettyLogger'),
   ));
-  gh.factory<_i4.HomeService>(() => _i4.HomeServiceImpl(gh<_i3.Dio>()));
+  gh.factory<_i4.PokemonService>(() => _i4.PokemonServiceImpl(gh<_i3.Dio>()));
   gh.factory<_i5.HomeRepository>(
-      () => _i5.HomeRepositoryImpl(gh<_i4.HomeService>()));
+      () => _i5.HomeRepositoryImpl(gh<_i4.PokemonService>()));
   gh.factory<_i6.HomeBloc>(() => _i6.HomeBloc(gh<_i5.HomeRepository>()));
   return getIt;
 }

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:pokedex/home/data/models/pokemon_response.dart';
+import 'package:flutter/foundation.dart';
+import 'package:pokedex/pokemon/data/models/pokemon_response.dart';
 import 'package:pokedex/shared/api_result.dart';
 
 @immutable
