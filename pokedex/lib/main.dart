@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/constant/pokedex_colors.dart';
+import 'package:pokedex/design/theme/pokedex_theme_data.dart';
 import 'package:pokedex/di/injection.dart';
+import 'package:pokedex/home/presentation/pages/home.page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,10 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(),
-      home: Scaffold(
-        appBar: AppBar(),
-      ),
+      theme: PokedexThemeData.themeData,
+      home: HomePage(),
     );
   }
 }
