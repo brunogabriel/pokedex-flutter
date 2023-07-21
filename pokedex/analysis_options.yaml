@@ -15,3 +15,8 @@ linter:
     - prefer_single_quotes
     - curly_braces_in_flow_control_structures
     - slash_for_doc_comments
+
+analyzer:
+  exclude:
+    - lib/**/*.g.dart
+    - lib/**/*.config.dart
