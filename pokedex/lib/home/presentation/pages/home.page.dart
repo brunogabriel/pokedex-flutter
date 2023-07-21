@@ -5,6 +5,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
         actions: const [
@@ -19,6 +20,7 @@ class HomePage extends StatelessWidget {
           children: [
             Text(
               'Pokedex',
+              style: textTheme.headlineMedium,
             ),
           ],
         ),
