@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/di/injection.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
   runApp(const MyApp());
 }
 
