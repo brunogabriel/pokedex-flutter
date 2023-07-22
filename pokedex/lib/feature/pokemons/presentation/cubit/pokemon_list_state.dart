@@ -17,6 +17,8 @@ class PokemonListState extends Equatable {
   final Status status;
   final List<Pokemon> result;
 
+  bool get firstPage => result.isEmpty;
+
   @override
   List<Object> get props => [status, result];
 }

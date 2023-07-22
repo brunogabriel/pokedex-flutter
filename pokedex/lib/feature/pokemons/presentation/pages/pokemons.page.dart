@@ -9,13 +9,49 @@ class PokemonsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetIt.I.get<PokemonListCubit>()..requestPokemons(0),
+      create: (context) => GetIt.I.get<PokemonListCubit>()..requestPokemons(),
       child: Scaffold(
         appBar: AppBar(),
         body: BlocBuilder<PokemonListCubit, PokemonListState>(
           builder: (context, state) {
-            print('State: ${state.runtimeType}');
-            return Container();
+            final status = state.status;
+            if (status == Status.loading && state.firstPage) {
+              //  TODO real loading
+              return const Center(
+                child: SizedBox(
+                  width: 65,
+                  height: 64,
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            } else if (status == Status.failure && state.firstPage) {
+              // TOdo real error
+              return const Text('Theres something wrong');
+            }
+
+            return CustomScrollView(
+              slivers: [
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) => Text('Pokédex'),
+                    childCount: 1,
+                  ),
+                ),
+                SliverGrid(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 5.0,
+                    crossAxisSpacing: 10.0,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return Text('Pokémon: ${state.result[index].name}');
+                    },
+                    childCount: state.result.length,
+                  ),
+                ),
+              ],
+            );
           },
         ),
       ),

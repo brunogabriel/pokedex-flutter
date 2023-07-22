@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class PokedexThemeData {
   static ThemeData get themeData => ThemeData(
-        useMaterial3: true,
+        useMaterial3: false,
         brightness: Brightness.light,
         fontFamily: 'Poppins',
         textTheme: const TextTheme(

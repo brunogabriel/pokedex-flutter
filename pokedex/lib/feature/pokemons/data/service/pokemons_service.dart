@@ -19,21 +19,12 @@ class PokemonServiceImpl implements PokemonService {
     final response = await _dio
         .get('pokemon', queryParameters: {'limit': limit, 'offset': offset});
 
-    if (response.statusCode == 200) {
-      return PokemonsPaginationResponse.fromJson(response.data);
-    }
-
-    // TODO error
-    throw Exception('TODO Error');
+    return PokemonsPaginationResponse.fromJson(response.data);
   }
 
   @override
   Future<TypesResponse> getTypes(String url) async {
     final response = await _dio.get(url);
-    if (response.statusCode == 200) {
-      return TypesResponse.fromJson(response.data);
-    }
-    // TODO error
-    throw Exception('TODO Error');
+    return TypesResponse.fromJson(response.data);
   }
 }
