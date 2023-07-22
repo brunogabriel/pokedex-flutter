@@ -1,6 +1,6 @@
 part of 'pokemon_list_cubit.dart';
 
-enum Status { initial, loading, empty, success, failure }
+enum Status { initial, loading, success, failure, finished }
 
 class PokemonListState extends Equatable {
   const PokemonListState({

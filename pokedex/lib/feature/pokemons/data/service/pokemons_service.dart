@@ -5,7 +5,7 @@ import 'package:pokedex/feature/pokemons/data/service/response/types_response.da
 
 abstract class PokemonService {
   Future<PokemonsPaginationResponse> getPokemons(int limit, int offset);
-  Future<TypesResponse> getTypes(int number);
+  Future<TypesResponse> getTypes(String url);
 }
 
 @Injectable(as: PokemonService)
@@ -28,7 +28,12 @@ class PokemonServiceImpl implements PokemonService {
   }
 
   @override
-  Future<TypesResponse> getTypes(int number) {
-    throw UnimplementedError();
+  Future<TypesResponse> getTypes(String url) async {
+    final response = await _dio.get(url);
+    if (response.statusCode == 200) {
+      return TypesResponse.fromJson(response.data);
+    }
+    // TODO error
+    throw Exception('TODO Error');
   }
 }

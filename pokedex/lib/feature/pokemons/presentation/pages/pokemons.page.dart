@@ -9,11 +9,12 @@ class PokemonsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetIt.I.get<PokemonListCubit>(),
+      create: (context) => GetIt.I.get<PokemonListCubit>()..requestPokemons(0),
       child: Scaffold(
         appBar: AppBar(),
         body: BlocBuilder<PokemonListCubit, PokemonListState>(
           builder: (context, state) {
+            print('State: ${state.runtimeType}');
             return Container();
           },
         ),
