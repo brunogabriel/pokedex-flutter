@@ -1,18 +1,30 @@
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:pokedex/feature/pokemons/data/service/response/pokemon_response.dart';
+import 'package:pokedex/feature/pokemons/data/service/response/pokemons_pagination_response.dart';
 import 'package:pokedex/feature/pokemons/data/service/response/types_response.dart';
-import 'package:pokedex/shared/models/pagination_result.dart';
 
 abstract class PokemonService {
-  Future<PaginationResult<PokemonResponse>> getPokemons(int limit, int offset);
+  Future<PokemonsPaginationResponse> getPokemons(int limit, int offset);
   Future<TypesResponse> getTypes(int number);
 }
 
 @Injectable(as: PokemonService)
 class PokemonServiceImpl implements PokemonService {
+  PokemonServiceImpl(this._dio);
+
+  final Dio _dio;
+
   @override
-  Future<PaginationResult<PokemonResponse>> getPokemons(int limit, int offset) {
-    throw UnimplementedError();
+  Future<PokemonsPaginationResponse> getPokemons(int limit, int offset) async {
+    final response = await _dio
+        .get('pokemon', queryParameters: {'limit': limit, 'offset': offset});
+
+    if (response.statusCode == 200) {
+      return PokemonsPaginationResponse.fromJson(response.data);
+    }
+
+    // TODO error
+    throw Exception('TODO Error');
   }
 
   @override

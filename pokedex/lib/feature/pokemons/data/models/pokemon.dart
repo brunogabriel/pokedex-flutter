@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:pokedex/feature/pokemons/data/models/type.dart';
 
 class Pokemon extends Equatable {
   const Pokemon({
@@ -9,7 +10,7 @@ class Pokemon extends Equatable {
   });
 
   final String name;
-  final String number;
+  final int number;
   final String url;
   final List<Type> types;
 
