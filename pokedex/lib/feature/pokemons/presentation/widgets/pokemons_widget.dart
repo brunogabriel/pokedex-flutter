@@ -32,6 +32,7 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(),
       body: BlocBuilder<PokemonsListBloc, PokemonsListState>(
@@ -54,7 +55,15 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
             slivers: [
               SliverList(
                 delegate: SliverChildBuilderDelegate(
-                  (context, index) => const Text('Pokédex'),
+                  (context, index) => Padding(
+                    padding: const EdgeInsets.only(
+                        left: PokedexSpacing.kM, bottom: PokedexSpacing.kL),
+                    child: Text(
+                      'Pokédex',
+                      style: textTheme.titleLarge
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                  ),
                   childCount: 1,
                 ),
               ),
@@ -64,8 +73,8 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
                 sliver: SliverGrid(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: 5.0,
-                    crossAxisSpacing: 10.0,
+                    mainAxisSpacing: PokedexSpacing.kM,
+                    crossAxisSpacing: PokedexSpacing.kM,
                   ),
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {

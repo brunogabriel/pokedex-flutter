@@ -15,8 +15,11 @@ class Pokemon extends Equatable {
   final List<Type> types;
 
   String get thumbnailUrl {
-    // TODO check number range
-    return 'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/thumbnails/${number.toString().padLeft(3, '0')}.png';
+    if (number < 905) {
+      return 'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/thumbnails/${number.toString().padLeft(3, '0')}.png';
+    }
+
+    return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number.toString()}.png';
   }
 
   @override
