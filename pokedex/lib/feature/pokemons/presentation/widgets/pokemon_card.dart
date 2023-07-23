@@ -83,6 +83,10 @@ class PokemonCard extends StatelessWidget {
                                 height: 10,
                                 child: SvgPicture.asset(
                                   'icons/$type.svg'.asset(),
+                                  colorFilter: ColorFilter.mode(
+                                    colorTheme.onSecondary,
+                                    BlendMode.modulate,
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: PokedexSpacing.kS),

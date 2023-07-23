@@ -6,6 +6,7 @@ import 'package:pokedex/feature/pokemons/presentation/widgets/pokemon_card.dart'
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_error_widget.dart';
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_loading_widget.dart';
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_strings.dart';
+import 'package:pokedex/shared/extensions/string_extensions.dart';
 
 class PokemonsWidget extends StatefulWidget {
   const PokemonsWidget({super.key});
@@ -110,15 +111,34 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
                         padding: const EdgeInsets.all(PokedexSpacing.kM),
                         child: Column(
                           children: [
-                            Text(
-                              PokemonsStrings.errorPagination,
-                              style: textTheme.titleMedium
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'images/sleep_snorlax.png'.asset(),
+                                  height: 150,
+                                  width: 150,
+                                ),
+                                const SizedBox(
+                                  width: PokedexSpacing.kS,
+                                ),
+                                Flexible(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        PokemonsStrings.errorPagination,
+                                        style: textTheme.titleMedium?.copyWith(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      const SizedBox(height: PokedexSpacing.kS),
+                                      Text(
+                                          PokemonsStrings
+                                              .errorPaginationMessage,
+                                          style: textTheme.bodyMedium),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: PokedexSpacing.kS),
-                            Text(PokemonsStrings.errorPaginationMessage,
-                                style: textTheme.bodyMedium),
-                            const SizedBox(height: PokedexSpacing.kM),
                             FilledButton(
                                 onPressed: () => context
                                     .read<PokemonsListBloc>()
