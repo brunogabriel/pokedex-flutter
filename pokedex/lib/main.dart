@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/theme/pokedex_theme_data.dart';
+import 'package:pokedex/design/pokedex_theme_data.dart';
 import 'package:pokedex/di/injection.dart';
-import 'package:pokedex/feature/pokemons/presentation/pages/pokemons.page.dart';
+import 'package:pokedex/feature/pokemons/presentation/pages/pokemons_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: PokedexThemeData.themeData,
+      theme: PokedexThemeData.lightThemeData,
+      darkTheme: PokedexThemeData.darkThemeData,
       home: const PokemonsPage(),
     );
   }
