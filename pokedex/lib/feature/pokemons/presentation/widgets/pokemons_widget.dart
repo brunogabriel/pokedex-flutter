@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/design/pokedex_spacing.dart';
-import 'package:pokedex/feature/pokemons/presentation/cubit/pokemon_list_cubit.dart';
+import 'package:pokedex/feature/pokemons/presentation/bloc/pokemons_list_bloc.dart';
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemon_card.dart';
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_error_widget.dart';
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_loading_widget.dart';
@@ -34,7 +34,7 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: BlocBuilder<PokemonListCubit, PokemonListState>(
+      body: BlocBuilder<PokemonsListBloc, PokemonsListState>(
         buildWhen: (previous, current) => previous != current,
         builder: (context, state) {
           final status = state.status;
@@ -111,7 +111,7 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
   }
 
   void _onScrollListener() {
-    final state = context.read<PokemonListCubit>().state;
+    final state = context.read<PokemonsListBloc>().state;
     if (_isBottomReached && state.status != Status.failure) {
       _requestPokemons();
     }
@@ -127,6 +127,6 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
   }
 
   void _requestPokemons() {
-    context.read<PokemonListCubit>().requestPokemons();
+    context.read<PokemonsListBloc>().add(PokemonsListRequestEvent());
   }
 }

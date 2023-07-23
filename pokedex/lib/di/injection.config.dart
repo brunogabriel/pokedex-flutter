@@ -15,7 +15,7 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:pokedex/feature/pokemons/data/pokemons_repository.dart' as _i5;
 import 'package:pokedex/feature/pokemons/data/service/pokemons_service.dart'
     as _i4;
-import 'package:pokedex/feature/pokemons/presentation/cubit/pokemon_list_cubit.dart'
+import 'package:pokedex/feature/pokemons/presentation/bloc/pokemons_list_bloc.dart'
     as _i6;
 import 'package:pokedex/network/network_module.dart' as _i7;
 
@@ -42,8 +42,8 @@ _i1.GetIt init(
   gh.factory<_i4.PokemonService>(() => _i4.PokemonServiceImpl(gh<_i3.Dio>()));
   gh.factory<_i5.PokemonRepository>(
       () => _i5.PokemonRepositoryImpl(gh<_i4.PokemonService>()));
-  gh.factory<_i6.PokemonListCubit>(
-      () => _i6.PokemonListCubit(gh<_i5.PokemonRepository>()));
+  gh.factory<_i6.PokemonsListBloc>(
+      () => _i6.PokemonsListBloc(gh<_i5.PokemonRepository>()));
   return getIt;
 }
 

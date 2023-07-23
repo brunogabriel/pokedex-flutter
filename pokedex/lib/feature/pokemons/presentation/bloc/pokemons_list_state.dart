@@ -1,15 +1,18 @@
-part of 'pokemon_list_cubit.dart';
+part of 'pokemons_list_bloc.dart';
 
 enum Status { initial, loading, success, failure, finished }
 
-class PokemonListState extends Equatable {
-  const PokemonListState({
+class PokemonsListState extends Equatable {
+  const PokemonsListState({
     this.status = Status.initial,
     this.result = const <Pokemon>[],
   });
 
-  PokemonListState copyWith({Status? status, List<Pokemon>? result}) =>
-      PokemonListState(
+  PokemonsListState copyWith({
+    Status? status,
+    List<Pokemon>? result,
+  }) =>
+      PokemonsListState(
         status: status ?? this.status,
         result: this.result + (result ?? []),
       );

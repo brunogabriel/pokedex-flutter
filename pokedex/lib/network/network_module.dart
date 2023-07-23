@@ -12,5 +12,7 @@ abstract class NetworkModule {
         BaseOptions(
           baseUrl: baseUrl,
         ),
-      )..interceptors.add(PrettyDioLogger());
+      )..interceptors.add(PrettyDioLogger(
+          responseBody: false,
+        ));
 }
