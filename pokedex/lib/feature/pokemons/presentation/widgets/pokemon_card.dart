@@ -21,7 +21,6 @@ class PokemonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final colorTheme = Theme.of(context).colorScheme;
 
     return Container(
       padding: const EdgeInsets.all(PokedexSpacing.kS),
@@ -40,14 +39,14 @@ class PokemonCard extends StatelessWidget {
                   name,
                   style: textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: colorTheme.onSecondary,
+                    color: Colors.white,
                   ),
                 ),
               ),
               Text(
                 number,
                 style: textTheme.bodyMedium?.copyWith(
-                  color: colorTheme.onSecondary,
+                  color: Colors.white,
                 ),
               ),
             ],
@@ -69,7 +68,7 @@ class PokemonCard extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 4.0),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: colorTheme.onPrimary.withOpacity(0.2),
+                          color: Colors.white.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(
                             PokedexSpacing.kM,
                           ),
@@ -83,19 +82,14 @@ class PokemonCard extends StatelessWidget {
                                 height: 10,
                                 child: SvgPicture.asset(
                                   'icons/$type.svg'.asset(),
-                                  colorFilter: ColorFilter.mode(
-                                    colorTheme.onSecondary,
-                                    BlendMode.modulate,
-                                  ),
                                 ),
                               ),
                               const SizedBox(width: PokedexSpacing.kS),
                               Text(
                                 type.capitalize(),
                                 textAlign: TextAlign.center,
-                                style: textTheme.bodySmall?.copyWith(
-                                  color: colorTheme.onSecondary,
-                                ),
+                                style: textTheme.bodySmall
+                                    ?.copyWith(color: Colors.white),
                               ),
                             ],
                           ),
