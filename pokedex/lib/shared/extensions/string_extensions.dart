@@ -14,4 +14,7 @@ extension StringExtensions on String {
       .firstWhere((element) => toLowerCase() == element.name,
           orElse: () => PokedexTypeColor.unknown)
       .color;
+
+  String capitalize() =>
+      isEmpty ? '' : '${this[0].toUpperCase()}${substring(1)}';
 }

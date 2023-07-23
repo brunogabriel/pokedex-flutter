@@ -73,6 +73,7 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
                       return PokemonCard(
                         name: pokemon.name,
                         number: '#${pokemon.number.toString().padLeft(4, '0')}',
+                        thumbnailUrl: pokemon.thumbnailUrl,
                         types: pokemon.types.map((e) => e.name).toList(),
                       );
                     },
