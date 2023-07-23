@@ -5,6 +5,7 @@ import 'package:pokedex/feature/pokemons/presentation/bloc/pokemons_list_bloc.da
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemon_card.dart';
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_error_widget.dart';
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_loading_widget.dart';
+import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_strings.dart';
 
 class PokemonsWidget extends StatefulWidget {
   const PokemonsWidget({super.key});
@@ -95,12 +96,38 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
                   (_, __) {
                     final Widget tailWidget;
                     if (!state.firstPage && status == Status.loading) {
-                      tailWidget = const SizedBox(
-                          width: 64,
-                          height: 64,
-                          child: CircularProgressIndicator());
+                      tailWidget = const Padding(
+                        padding: EdgeInsets.all(PokedexSpacing.kM),
+                        child: Center(
+                          child: SizedBox(
+                              width: 48,
+                              height: 48,
+                              child: CircularProgressIndicator()),
+                        ),
+                      );
                     } else if (!state.firstPage && status == Status.failure) {
-                      tailWidget = const Text('Error try again');
+                      tailWidget = Padding(
+                        padding: const EdgeInsets.all(PokedexSpacing.kM),
+                        child: Column(
+                          children: [
+                            Text(
+                              PokemonsStrings.errorPagination,
+                              style: textTheme.titleMedium
+                                  ?.copyWith(fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: PokedexSpacing.kS),
+                            Text(PokemonsStrings.errorPaginationMessage,
+                                style: textTheme.bodyMedium),
+                            const SizedBox(height: PokedexSpacing.kM),
+                            FilledButton(
+                                onPressed: () => context
+                                    .read<PokemonsListBloc>()
+                                    .add(PokemonsListRequestEvent()),
+                                child: const Text(
+                                    PokemonsStrings.errorPaginationTryAgain)),
+                          ],
+                        ),
+                      );
                     } else {
                       tailWidget = const SizedBox.shrink();
                     }

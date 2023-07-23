@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/design/pokedex_spacing.dart';
+import 'package:pokedex/feature/pokemons/presentation/bloc/pokemons_list_bloc.dart';
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_strings.dart';
 import 'package:pokedex/shared/extensions/string_extensions.dart';
 
@@ -35,7 +37,11 @@ class PokemonsErrorWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ).animate().fade().scale(),
           const SizedBox(height: PokedexSpacing.kM),
-          FilledButton(onPressed: () {}, child: const Text('Give another shot'))
+          FilledButton(
+              onPressed: () => context
+                  .read<PokemonsListBloc>()
+                  .add(PokemonsListRequestEvent()),
+              child: const Text(PokemonsStrings.errorTryAgain))
         ],
       ),
     );
