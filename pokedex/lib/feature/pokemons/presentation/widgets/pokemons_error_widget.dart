@@ -35,7 +35,7 @@ class PokemonsErrorWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ).animate().fade().scale(),
           const SizedBox(height: PokedexSpacing.kM),
-          FilledButton(onPressed: () {}, child: Text('Give another shot'))
+          FilledButton(onPressed: () {}, child: const Text('Give another shot'))
         ],
       ),
     );

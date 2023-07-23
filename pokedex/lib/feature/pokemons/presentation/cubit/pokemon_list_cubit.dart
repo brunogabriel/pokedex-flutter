@@ -12,7 +12,7 @@ class PokemonListCubit extends Cubit<PokemonListState> {
 
   final PokemonRepository _repository;
 
-  void requestPokemons() async {
+  Future<void> requestPokemons() async {
     emit(state.copyWith(status: Status.loading));
     try {
       final pokemons = await _repository.getPokemons(10, state.result.length);
