@@ -22,85 +22,93 @@ class PokemonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Container(
-      padding: const EdgeInsets.all(PokedexSpacing.kS),
-      decoration: BoxDecoration(
+    return Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(PokedexSpacing.kS)),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: Material(
         color: (types.isEmpty ? '' : types[0]).pokemonColor(),
-        borderRadius: BorderRadius.circular(PokedexSpacing.kS),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Expanded(
-                child: Text(
-                  name,
-                  style: textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              Text(
-                number,
-                style: textTheme.bodyMedium?.copyWith(
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-            child: Center(
-              child: CachedNetworkImage(
-                imageUrl: thumbnailUrl,
-                width: 120,
-                height: 120,
-              ),
-            ),
-          ),
-          Row(
-            children: [
-              ...types
-                  .map(
-                    (type) => Padding(
-                      padding: const EdgeInsets.only(right: 4.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(
-                            PokedexSpacing.kM,
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(PokedexSpacing.kS),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 10,
-                                height: 10,
-                                child: SvgPicture.asset(
-                                  'icons/$type.svg'.asset(),
-                                ),
-                              ),
-                              const SizedBox(width: PokedexSpacing.kS),
-                              Text(
-                                type.capitalize(),
-                                textAlign: TextAlign.center,
-                                style: textTheme.bodySmall
-                                    ?.copyWith(color: Colors.white),
-                              ),
-                            ],
-                          ),
+        child: InkWell(
+          onTap: () {},
+          child: Padding(
+            padding: const EdgeInsets.all(PokedexSpacing.kS),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        name,
+                        style: textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                  )
-                  .toList(),
-            ],
+                    Text(
+                      number,
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: Center(
+                    child: CachedNetworkImage(
+                      imageUrl: thumbnailUrl,
+                      width: 120,
+                      height: 120,
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    ...types
+                        .map(
+                          (type) => Padding(
+                            padding: const EdgeInsets.only(right: 4.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(
+                                  PokedexSpacing.kM,
+                                ),
+                              ),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.all(PokedexSpacing.kS),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 10,
+                                      height: 10,
+                                      child: SvgPicture.asset(
+                                        'icons/$type.svg'.asset(),
+                                      ),
+                                    ),
+                                    const SizedBox(width: PokedexSpacing.kS),
+                                    Text(
+                                      type.capitalize(),
+                                      textAlign: TextAlign.center,
+                                      style: textTheme.bodySmall
+                                          ?.copyWith(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_error_wid
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_loading_widget.dart';
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_strings.dart';
 import 'package:pokedex/shared/extensions/string_extensions.dart';
+import 'package:pokedex/theme/cubit/theme_cubit.dart';
 
 class PokemonsWidget extends StatefulWidget {
   const PokemonsWidget({super.key});
@@ -36,7 +37,20 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(PokedexSpacing.kS),
+            child: BlocBuilder<ThemeCubit, bool>(
+              builder: (context, state) {
+                return IconButton(
+                    onPressed: () => context.read<ThemeCubit>().changeTheme(),
+                    icon: Icon(state ? Icons.light_mode : Icons.dark_mode));
+              },
+            ),
+          )
+        ],
+      ),
       body: BlocBuilder<PokemonsListBloc, PokemonsListState>(
         buildWhen: (previous, current) => previous != current,
         builder: (context, state) {
