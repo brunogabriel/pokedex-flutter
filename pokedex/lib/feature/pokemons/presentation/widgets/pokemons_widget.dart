@@ -44,8 +44,11 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
             child: BlocBuilder<ThemeCubit, bool>(
               builder: (context, state) {
                 return IconButton(
-                    onPressed: () => context.read<ThemeCubit>().changeTheme(),
-                    icon: Icon(state ? Icons.light_mode : Icons.dark_mode));
+                  onPressed: () => context.read<ThemeCubit>().changeTheme(),
+                  icon: Icon(
+                    state ? Icons.light_mode : Icons.dark_mode,
+                  ),
+                );
               },
             ),
           )
@@ -69,41 +72,37 @@ class _PokemonsWidgetState extends State<PokemonsWidget> {
           return CustomScrollView(
             controller: _scrollController,
             slivers: [
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => Padding(
-                    padding: const EdgeInsets.only(
-                        left: PokedexSpacing.kM, bottom: PokedexSpacing.kL),
-                    child: Text(
-                      'Pokédex',
-                      style: textTheme.titleLarge
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  childCount: 1,
-                ),
-              ),
+              // SliverList(
+              //   delegate: SliverChildBuilderDelegate(
+              //     (context, index) => Padding(
+              //       padding: const EdgeInsets.only(
+              //           left: PokedexSpacing.kM, bottom: PokedexSpacing.kL),
+              //       child: Text(
+              //         'Pokédex',
+              //         style: textTheme.titleLarge
+              //             ?.copyWith(fontWeight: FontWeight.bold),
+              //       ),
+              //     ),
+              //     childCount: 1,
+              //   ),
+              // ),
               SliverPadding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: PokedexSpacing.kM),
-                sliver: SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: PokedexSpacing.kM,
-                    crossAxisSpacing: PokedexSpacing.kM,
+                sliver: SliverList.separated(
+                  separatorBuilder: (context, index) => const SizedBox(
+                    height: PokedexSpacing.kM,
                   ),
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      final pokemon = state.result[index];
-                      return PokemonCard(
-                        name: pokemon.name,
-                        number: '#${pokemon.number.toString().padLeft(4, '0')}',
-                        thumbnailUrl: pokemon.thumbnailUrl,
-                        types: pokemon.types.map((e) => e.name).toList(),
-                      );
-                    },
-                    childCount: state.result.length,
-                  ),
+                  itemBuilder: (context, index) {
+                    final pokemon = state.result[index];
+                    return PokemonCard(
+                      name: pokemon.name,
+                      number: pokemon.number.toString().padLeft(4, '0'),
+                      thumbnailUrl: pokemon.thumbnailUrl,
+                      types: pokemon.types.map((e) => e.name).toList(),
+                    );
+                  },
+                  itemCount: state.result.length,
                 ),
               ),
               SliverList(
