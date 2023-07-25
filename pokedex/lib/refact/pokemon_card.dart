@@ -3,14 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/design/components/badge_type.dart';
 import 'package:pokedex/design/components/circular_matrix.dart';
 import 'package:pokedex/design/constants/pokedex_spacing.dart';
+import 'package:pokedex/design/extensions/design_string_extensions.dart';
+import 'package:pokedex/refact/pokemon_vo.dart';
 import 'package:pokedex/shared/extensions/string_extensions.dart';
 
 class PokemonCard extends StatelessWidget {
-  const PokemonCard({Key? key}) : super(key: key);
+  const PokemonCard({
+    Key? key,
+    required this.vo,
+  }) : super(key: key);
+
+  final PokemonVO vo;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+
     return SizedBox(
       height: 160,
       child: Stack(
@@ -21,7 +29,7 @@ class PokemonCard extends StatelessWidget {
               height: 140,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(PokedexSpacing.kM),
-                color: const Color(0xFF8BD674), // TODO: Background color
+                color: vo.types.first.pokemonColor.secundary,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +45,7 @@ class PokemonCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '#0001',
+                              '#${vo.number.toString().padLeft(4, '0')}',
                               style: textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black.withOpacity(
@@ -47,17 +55,18 @@ class PokemonCard extends StatelessWidget {
                             ),
                             const SizedBox(height: PokedexSpacing.kXS),
                             Text(
-                              'Bulbasaur',
+                              vo.name,
                               style: textTheme.titleLarge?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                             ),
                           ],
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ...['grass', 'poison']
+                            ...vo.types
                                 .map(
                                   (e) => Padding(
                                     padding: const EdgeInsets.only(
@@ -100,8 +109,7 @@ class PokemonCard extends StatelessWidget {
                 width: 140,
                 height: 140,
                 child: CachedNetworkImage(
-                  imageUrl:
-                      'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/thumbnails/001.png',
+                  imageUrl: vo.thumbnailImage,
                 ),
               ),
             ),
