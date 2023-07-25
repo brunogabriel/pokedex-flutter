@@ -4,16 +4,21 @@ import 'package:pokedex/design/components/badge_type.dart';
 import 'package:pokedex/design/components/circular_matrix.dart';
 import 'package:pokedex/design/constants/pokedex_spacing.dart';
 import 'package:pokedex/design/extensions/design_string_extensions.dart';
-import 'package:pokedex/refact/pokemon_vo.dart';
 import 'package:pokedex/shared/extensions/string_extensions.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard({
     Key? key,
-    required this.vo,
+    required this.name,
+    required this.number,
+    required this.types,
+    required this.thumbnailUrl,
   }) : super(key: key);
 
-  final PokemonVO vo;
+  final String name;
+  final int number;
+  final List<String> types;
+  final String thumbnailUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +34,7 @@ class PokemonCard extends StatelessWidget {
               height: 140,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(PokedexSpacing.kM),
-                color: vo.types.first.pokemonColor.secundary,
+                color: types.first.pokemonColor.secundary,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +50,7 @@ class PokemonCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '#${vo.number.toString().padLeft(4, '0')}',
+                              '#${number.toString().padLeft(4, '0')}',
                               style: textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black.withOpacity(
@@ -55,7 +60,7 @@ class PokemonCard extends StatelessWidget {
                             ),
                             const SizedBox(height: PokedexSpacing.kXS),
                             Text(
-                              vo.name,
+                              name,
                               style: textTheme.titleLarge?.copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
@@ -66,7 +71,7 @@ class PokemonCard extends StatelessWidget {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ...vo.types
+                            ...types
                                 .map(
                                   (e) => Padding(
                                     padding: const EdgeInsets.only(
@@ -109,7 +114,7 @@ class PokemonCard extends StatelessWidget {
                 width: 140,
                 height: 140,
                 child: CachedNetworkImage(
-                  imageUrl: vo.thumbnailImage,
+                  imageUrl: thumbnailUrl,
                 ),
               ),
             ),
