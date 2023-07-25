@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pokedex/design/pokedex_spacing.dart';
+import 'package:pokedex/design/constants/pokedex_spacing.dart';
 import 'package:pokedex/shared/extensions/string_extensions.dart';
 
 class BadgeType extends StatelessWidget {
@@ -21,7 +21,9 @@ class BadgeType extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
-            vertical: PokedexSpacing.kXS, horizontal: PokedexSpacing.kS),
+          vertical: PokedexSpacing.kXS,
+          horizontal: PokedexSpacing.kS,
+        ),
         child: Row(
           children: [
             SizedBox(
