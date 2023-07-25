@@ -23,7 +23,7 @@ class PokemonApplication extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: PokedexThemeData.lightThemeData,
-      darkTheme: PokedexThemeData.darkThemeData,
+      //darkTheme: PokedexThemeData.darkThemeData,
       debugShowCheckedModeBanner: false,
       routerConfig: AppRoutes.router,
     );
