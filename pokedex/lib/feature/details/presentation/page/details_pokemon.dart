@@ -17,7 +17,11 @@ class DetailsPokemon extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+      padding: const EdgeInsets.only(
+        left: 24.0,
+        right: 24.0,
+        top: 24.0,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,8 +30,9 @@ class DetailsPokemon extends StatelessWidget {
               SizedBox(
                 width: 140,
                 height: 140,
-                child:
-                    CachedNetworkImage(imageUrl: pokemon.number.thumbnailUrl),
+                child: CachedNetworkImage(
+                  imageUrl: pokemon.number.thumbnailUrl,
+                ),
               ),
               PokemonInformation(
                 pokemon: pokemon,
