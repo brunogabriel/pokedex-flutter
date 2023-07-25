@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/feature/details/presentation/page/details.dart';
+import 'package:pokedex/feature/evolution_chart/presentation/page/evolution_chart_page.dart';
 import 'package:pokedex/feature/pokemons/presentation/page/pokemons_page.dart';
 
 abstract class AppRoutes {
@@ -8,7 +9,7 @@ abstract class AppRoutes {
       GoRoute(
           path: '/',
           name: 'home',
-          builder: (context, state) => const Details(),
+          builder: (context, state) => const EvolutionChartPage(),
           routes: [
             GoRoute(
               path: 'detais',
