@@ -8,7 +8,7 @@ abstract class AppRoutes {
       GoRoute(
           path: '/',
           name: 'home',
-          builder: (context, state) => const PokemonsPage(),
+          builder: (context, state) => const Details(),
           routes: [
             GoRoute(
               path: 'detais',

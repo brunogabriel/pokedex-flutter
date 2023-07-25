@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/design/components/pokemon_information.dart';
+import 'package:pokedex/shared/extensions/string_extensions.dart';
 
 class DetailsPokemon extends StatelessWidget {
   final number = 4;
@@ -8,6 +9,7 @@ class DetailsPokemon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
       child: Column(
@@ -32,23 +34,38 @@ class DetailsPokemon extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 32,
           ),
           DefaultTabController(
-            initialIndex: 0,
             length: 3,
-            child: TabBar(tabs: [
-              Tab(
-                child: Text('About'),
+            child: TabBar(
+              labelColor: Colors.white,
+              unselectedLabelColor: Colors.white.withOpacity(0.5),
+              dividerColor: Colors.transparent,
+              labelStyle:
+                  textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold),
+              unselectedLabelStyle: textTheme.labelLarge,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicator: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    'images/mask_pokeball.png'.asset(),
+                  ),
+                ),
               ),
-              Tab(
-                child: Text('Stats'),
-              ),
-              Tab(
-                child: Text('Evolution'),
-              ),
-            ]),
+              tabs: const [
+                Tab(
+                  child: Text('About'),
+                ),
+                Tab(
+                  child: Text('Stats'),
+                ),
+                Tab(
+                  child: Text('Evolution'),
+                ),
+              ],
+            ),
           ),
         ],
       ),
