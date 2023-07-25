@@ -29,3 +29,13 @@ class PokemonApplication extends StatelessWidget {
     );
   }
 }
+
+/**
+ * String get thumbnailUrl {
+    if (number < 905) {
+      return 'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/thumbnails/${number.toString().padLeft(3, '0')}.png';
+    }
+
+    return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number.toString()}.png';
+  }
+ */

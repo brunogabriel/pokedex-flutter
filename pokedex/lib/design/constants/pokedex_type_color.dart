@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 enum PokedexTypeColor {
   fire(Color(0XFFF8A54F)),
   water(Color(0xFF559EDF)),
-  grass(Color(0xFF5DBE62)),
+  grass(Color(0xFF62B957)), // Color pair: #62B957, bacground color #8BD674
   electric(Color(0xFFEDD53F)),
   psychic(Color(0xFFF87C7A)),
   fighting(Color(0xFFD94256)),
@@ -24,5 +24,5 @@ enum PokedexTypeColor {
 
   const PokedexTypeColor(this.color);
 
-  final Color color;
+  final Color color; // TODO: rename primary secundary
 }

@@ -28,13 +28,13 @@ class BadgeType extends StatelessWidget {
     return _buildWidget(context);
   }
 
-  Widget _buildWidget(BuildContext context) {
+  Container _buildWidget(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
     return Container(
       decoration: BoxDecoration(
         color: type.pokemonColor(),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(PokedexSpacing.kM),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
