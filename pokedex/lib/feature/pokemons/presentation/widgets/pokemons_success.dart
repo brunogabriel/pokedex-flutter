@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/design/constants/pokedex_spacing.dart';
 import 'package:pokedex/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
+import 'package:pokedex/feature/pokemons/presentation/constants/pokemons_strings.dart';
 import 'package:pokedex/feature/pokemons/presentation/widgets/pokemon_card.dart';
 
 class PokemonsSuccess extends StatefulWidget {
@@ -35,6 +36,35 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
     final status = state.status;
     final textTheme = Theme.of(context).textTheme;
     return CustomScrollView(controller: _scrollController, slivers: [
+      SliverAppBar(
+        pinned: true,
+        scrolledUnderElevation: 0,
+        floating: true,
+        expandedHeight: 120.0,
+        flexibleSpace: FlexibleSpaceBar(
+          centerTitle: false,
+          titlePadding:
+              const EdgeInsets.symmetric(horizontal: PokedexSpacing.kL),
+          title: Text(
+            PokemonStrings.title,
+            style: textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      SliverToBoxAdapter(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: PokedexSpacing.kL,
+            vertical: PokedexSpacing.kS,
+          ),
+          child: Text(
+            PokemonStrings.subtitle,
+            style: textTheme.bodyMedium,
+          ),
+        ),
+      ),
       SliverPadding(
         padding: const EdgeInsets.symmetric(horizontal: PokedexSpacing.kM),
         sliver: SliverList.separated(
@@ -114,8 +144,12 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
   }
 
   void _onScrollListener() {
-    final state = context.read<PokemonsBloc>().state;
-    if (_isBottomReached && state.status != Status.failure) {
+    // final state = context.read<PokemonsBloc>().state;
+    // if (_isBottomReached && state.status != Status.failure) {
+    //   _requestPokemons();
+    // }
+
+    if (_isBottomReached) {
       _requestPokemons();
     }
   }

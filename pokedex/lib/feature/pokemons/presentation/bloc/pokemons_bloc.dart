@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/feature/pokemons/data/models/pokemon.dart';
-import 'package:pokedex/feature/pokemons/data/repository/pokemons_repository.dart';
+import 'package:pokedex/feature/pokemons/data/pokemons_repository.dart';
 import 'package:pokedex/shared/events/event_transformations.dart';
 
 part 'pokemons_event.dart';
@@ -22,13 +22,11 @@ class PokemonsBloc extends Bloc<PokemonsEvent, PokemonsState> {
     PokemonsEvent event,
     Emitter<PokemonsState> emit,
   ) async {
-    // TODO: Check
-    // TODO: case success only
-    if (state.status == Status.finished) {
+    if (state.status == Status.finished &&
+        state.status != Status.failure &&
+        state.status != Status.loading) {
       return;
     }
-
-    // state.status != Status.failure
 
     emit(state.copyWith(status: Status.loading));
     try {

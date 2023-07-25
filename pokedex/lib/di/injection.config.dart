@@ -13,13 +13,11 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:pokedex/feature/pokemons/data/pokemons_repository.dart' as _i5;
-import 'package:pokedex/feature/pokemons/data/repository/pokemons_repository.dart'
-    as _i6;
 import 'package:pokedex/feature/pokemons/data/service/pokemons_service.dart'
     as _i4;
 import 'package:pokedex/feature/pokemons/presentation/bloc/pokemons_bloc.dart'
-    as _i7;
-import 'package:pokedex/network/network_module.dart' as _i8;
+    as _i6;
+import 'package:pokedex/network/network_module.dart' as _i7;
 
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
@@ -44,11 +42,9 @@ _i1.GetIt init(
   gh.factory<_i4.PokemonService>(() => _i4.PokemonServiceImpl(gh<_i3.Dio>()));
   gh.factory<_i5.PokemonRepository>(
       () => _i5.PokemonRepositoryImpl(gh<_i4.PokemonService>()));
-  gh.factory<_i6.PokemonRepository>(
-      () => _i6.PokemonRepositoryImpl(gh<_i4.PokemonService>()));
-  gh.factory<_i7.PokemonsBloc>(
-      () => _i7.PokemonsBloc(gh<_i6.PokemonRepository>()));
+  gh.factory<_i6.PokemonsBloc>(
+      () => _i6.PokemonsBloc(gh<_i5.PokemonRepository>()));
   return getIt;
 }
 
-class _$NetworkModule extends _i8.NetworkModule {}
+class _$NetworkModule extends _i7.NetworkModule {}
