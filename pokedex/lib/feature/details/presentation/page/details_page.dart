@@ -14,13 +14,11 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       backgroundColor: pokemon.types.first.color.secundary,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        // TODO change leading
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
       ),
       body: SafeArea(
