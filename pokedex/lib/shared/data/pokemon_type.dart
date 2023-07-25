@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class Type extends Equatable {
-  const Type({
+class PokemonType extends Equatable {
+  const PokemonType({
     required this.name,
     required this.url,
   });

@@ -1,11 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/design/components/pokemon_information.dart';
+import 'package:pokedex/shared/data/pokemon.dart';
+import 'package:pokedex/shared/extensions/int_extensions.dart';
 import 'package:pokedex/shared/extensions/string_extensions.dart';
 
 class DetailsPokemon extends StatelessWidget {
-  final number = 4;
-  const DetailsPokemon({Key? key}) : super(key: key);
+  const DetailsPokemon({
+    Key? key,
+    required this.pokemon,
+  }) : super(key: key);
+
+  final Pokemon pokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -14,23 +20,17 @@ class DetailsPokemon extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
         children: [
           Row(
             children: [
               SizedBox(
                 width: 140,
                 height: 140,
-                child: CachedNetworkImage(
-                  imageUrl:
-                      'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/thumbnails/${number.toString().padLeft(3, '0')}.png',
-                ),
+                child:
+                    CachedNetworkImage(imageUrl: pokemon.number.thumbnailUrl),
               ),
-              const PokemonInformation(
-                name: 'Charmander',
-                number: 4,
-                types: ['fire'],
+              PokemonInformation(
+                pokemon: pokemon,
               ),
             ],
           ),

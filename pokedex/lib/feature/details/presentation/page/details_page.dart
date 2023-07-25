@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/constants/pokedex_type_color.dart';
+import 'package:pokedex/design/extensions/design_string_extensions.dart';
 import 'package:pokedex/feature/details/presentation/page/details_pokemon.dart';
+import 'package:pokedex/shared/data/pokemon.dart';
+import 'package:pokedex/shared/extensions/pokemon_type_extensions.dart';
 
-class Details extends StatelessWidget {
-  const Details({Key? key}) : super(key: key);
+class DetailsPage extends StatelessWidget {
+  const DetailsPage({
+    Key? key,
+    required this.pokemon,
+  }) : super(key: key);
+
+  final Pokemon pokemon;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      backgroundColor: PokedexTypeColor.fire.secundary,
+      backgroundColor: pokemon.types.first.color.secundary,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         // TODO change leading
@@ -19,7 +26,9 @@ class Details extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // DetailsPokemon(),
+            DetailsPokemon(
+              pokemon: pokemon,
+            ),
           ],
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:pokedex/feature/details/presentation/page/details.dart';
-import 'package:pokedex/feature/evolution_chart/presentation/page/evolution_chart_page.dart';
+import 'package:pokedex/feature/details/presentation/page/details_page.dart';
 import 'package:pokedex/feature/pokemons/presentation/page/pokemons_page.dart';
+import 'package:pokedex/shared/data/pokemon.dart';
 
 abstract class AppRoutes {
   static GoRouter router = GoRouter(
@@ -9,12 +9,14 @@ abstract class AppRoutes {
       GoRoute(
           path: '/',
           name: 'home',
-          builder: (context, state) => const EvolutionChartPage(),
+          builder: (_, __) => const PokemonsPage(),
           routes: [
             GoRoute(
               path: 'detais',
               name: 'details',
-              builder: (context, state) => const Details(),
+              builder: (_, state) {
+                return DetailsPage(pokemon: state.extra as Pokemon);
+              },
             )
           ])
     ],

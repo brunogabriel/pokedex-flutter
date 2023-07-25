@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/design/components/badge_type.dart';
 import 'package:pokedex/design/constants/pokedex_spacing.dart';
+import 'package:pokedex/shared/data/pokemon.dart';
+import 'package:pokedex/shared/extensions/int_extensions.dart';
 
 class PokemonInformation extends StatelessWidget {
   const PokemonInformation({
     Key? key,
-    required this.name,
-    required this.number,
-    required this.types,
+    required this.pokemon,
   }) : super(key: key);
 
-  final String name;
-  final int number;
-  final List<String> types;
+  final Pokemon pokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class PokemonInformation extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '#${number.toString().padLeft(4, '0')}',
+                pokemon.number.pokenumber,
                 style: textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black.withOpacity(
@@ -38,7 +36,7 @@ class PokemonInformation extends StatelessWidget {
               ),
               const SizedBox(height: PokedexSpacing.kXS),
               Text(
-                name,
+                pokemon.name,
                 style: textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -49,13 +47,13 @@ class PokemonInformation extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ...types
+              ...pokemon.types
                   .map(
                     (e) => Padding(
                       padding: const EdgeInsets.only(
                         right: PokedexSpacing.kXS,
                       ),
-                      child: BadgeType(type: e),
+                      child: BadgeType(type: e.name),
                     ),
                   )
                   .toList()

@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
-import 'package:pokedex/feature/pokemons/data/models/pokemon.dart';
-import 'package:pokedex/feature/pokemons/data/models/type.dart';
+import 'package:pokedex/shared/data/pokemon_type.dart';
 import 'package:pokedex/feature/pokemons/data/service/pokemons_service.dart';
 import 'package:pokedex/feature/pokemons/data/service/response/extensions/pokemon_response_extension.dart';
+import 'package:pokedex/shared/data/pokemon.dart';
 import 'package:pokedex/shared/extensions/list_extensions.dart';
 import 'package:pokedex/shared/extensions/string_extensions.dart';
 
@@ -29,9 +29,8 @@ class PokemonRepositoryImpl implements PokemonRepository {
           (pair) => Pokemon(
             name: pair.first.name.capitalize(),
             number: pair.first.getNumberFromPokemonUrl(),
-            url: pair.first.url,
             types: pair.second.types
-                .map((e) => Type(name: e.type.name, url: e.type.url))
+                .map((e) => PokemonType(name: e.type.name, url: e.type.url))
                 .toList(),
           ),
         )

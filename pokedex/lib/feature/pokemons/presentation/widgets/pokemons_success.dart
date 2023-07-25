@@ -73,12 +73,7 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
           ),
           itemBuilder: (context, index) {
             final pokemon = state.result[index];
-            return PokemonCard(
-              name: pokemon.name,
-              number: pokemon.number,
-              thumbnailUrl: pokemon.thumbnailUrl,
-              types: pokemon.types.map((e) => e.name).toList(),
-            );
+            return PokemonCard(pokemon: pokemon);
           },
           itemCount: state.result.length,
         ),
