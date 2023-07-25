@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/design/constants/pokedex_spacing.dart';
 import 'package:pokedex/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
@@ -81,7 +80,6 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
       SliverList(
         delegate: SliverChildBuilderDelegate(
           (_, __) {
-            // TODO: improvements
             final Widget tailWidget;
             if (!state.firstPage && status == Status.loading) {
               tailWidget = const Padding(
@@ -109,8 +107,10 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
                                     ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: PokedexSpacing.kS),
-                              Text('pagination error message',
-                                  style: textTheme.bodyMedium),
+                              Text(
+                                'pagination error message',
+                                style: textTheme.bodyMedium,
+                              ),
                             ],
                           ),
                         ),
@@ -139,11 +139,6 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
   }
 
   void _onScrollListener() {
-    // final state = context.read<PokemonsBloc>().state;
-    // if (_isBottomReached && state.status != Status.failure) {
-    //   _requestPokemons();
-    // }
-
     if (_isBottomReached) {
       _requestPokemons();
     }

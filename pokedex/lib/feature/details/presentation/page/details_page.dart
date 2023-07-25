@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/extensions/design_string_extensions.dart';
 import 'package:pokedex/feature/details/presentation/page/details_pokemon.dart';
 import 'package:pokedex/shared/data/pokemon.dart';
 import 'package:pokedex/shared/extensions/pokemon_type_extensions.dart';

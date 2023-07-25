@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/constants/pokedex_type_color.dart';
 import 'package:pokedex/feature/evolution_chart/presentation/widgets/evolution_line_chart.dart';
-import 'package:pokedex/feature/evolution_chart/presentation/widgets/pokemon_chart.dart';
 
 class EvolutionChartPage extends StatelessWidget {
   const EvolutionChartPage({Key? key}) : super(key: key);
