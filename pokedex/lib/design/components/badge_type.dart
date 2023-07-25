@@ -33,7 +33,7 @@ class BadgeType extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: type.pokemonColor(),
+        color: type.pokemonColor.primary,
         borderRadius: BorderRadius.circular(PokedexSpacing.kM),
       ),
       child: Padding(
@@ -69,7 +69,7 @@ class BadgeType extends StatelessWidget {
       height: 48,
       width: 48,
       decoration: BoxDecoration(
-        color: type.pokemonColor(),
+        color: type.pokemonColor.primary,
         borderRadius: BorderRadius.circular(48),
       ),
       child: Padding(
