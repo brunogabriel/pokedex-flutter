@@ -3,10 +3,16 @@ import 'package:pokedex/design/constants/pokedex_spacing.dart';
 import 'package:pokedex/feature/evolution/presentation/widgets/evolution_line_chart.dart';
 import 'package:pokedex/shared/data/pokemon.dart';
 
-class EvolutionPage extends StatelessWidget {
+class EvolutionPage extends StatefulWidget {
   const EvolutionPage({Key? key, required this.pokemon}) : super(key: key);
   final Pokemon pokemon;
 
+  @override
+  State<EvolutionPage> createState() => _EvolutionPageState();
+}
+
+class _EvolutionPageState extends State<EvolutionPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
@@ -62,4 +68,7 @@ class EvolutionPage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
