@@ -28,9 +28,11 @@ class CircularMatrix extends StatelessWidget {
         ],
       ).createShader(bounds),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           ...List.generate(rows, (columns) => columns)
               .map((e) => Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       ...List.generate(columns, (index) => index)
                           .map(
