@@ -6,35 +6,32 @@ import 'package:pokedex/shared/extensions/string_extensions.dart';
 
 class BadgeType extends StatelessWidget {
   const BadgeType({
-    Key? key,
+    super.key,
     required this.type,
-    this.circular = false,
     this.diameter = 0.0,
-    this.circularPadding = 0.0,
-  }) : super(key: key);
+    this.diameterPadding = 0.0,
+  });
 
   const BadgeType.circular({
     super.key,
     required this.type,
-    this.circular = true,
-    this.diameter = 48.0,
-    this.circularPadding = 8.0,
+    required this.diameter,
+    required this.diameterPadding,
   });
 
   final String type;
-  final bool circular;
   final double diameter;
-  final double circularPadding;
+  final double diameterPadding;
 
   @override
   Widget build(BuildContext context) {
-    if (circular) {
-      return _buildCircular();
+    if (diameter == 0.0) {
+      return _buildTextBadge(context);
     }
-    return _buildWidget(context);
+    return _buildCircular();
   }
 
-  Container _buildWidget(BuildContext context) {
+  Container _buildTextBadge(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
     return Container(
@@ -52,8 +49,8 @@ class BadgeType extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 16,
-              width: 16,
+              height: PokedexSpacing.kM,
+              width: PokedexSpacing.kM,
               child: SvgPicture.asset('icons/$type.svg'.asset()),
             ),
             const SizedBox(
@@ -79,7 +76,7 @@ class BadgeType extends StatelessWidget {
         borderRadius: BorderRadius.circular(diameter),
       ),
       child: Padding(
-        padding: EdgeInsets.all(circularPadding),
+        padding: EdgeInsets.all(diameterPadding),
         child: SizedBox(
           child: SvgPicture.asset('icons/$type.svg'.asset()),
         ),

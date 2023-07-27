@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
-import 'package:pokedex/shared/data/pokemon_type.dart';
 import 'package:pokedex/feature/pokemons/data/service/pokemons_service.dart';
 import 'package:pokedex/feature/pokemons/data/service/response/extensions/pokemon_response_extension.dart';
 import 'package:pokedex/shared/data/pokemon.dart';
+import 'package:pokedex/shared/data/pokemon_type.dart';
 import 'package:pokedex/shared/extensions/list_extensions.dart';
 import 'package:pokedex/shared/extensions/string_extensions.dart';
 
