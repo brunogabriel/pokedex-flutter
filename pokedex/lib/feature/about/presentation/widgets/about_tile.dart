@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/design/components/badge_type.dart';
 import 'package:pokedex/design/constants/pokedex_spacing.dart';
 
+// TODO: This component need to be refactored
 class AboutTile extends StatelessWidget {
   const AboutTile({
     super.key,
@@ -10,6 +11,7 @@ class AboutTile extends StatelessWidget {
     required this.content,
     this.items,
     this.weaknesses,
+    this.custom,
   });
 
   const AboutTile.list({
@@ -18,6 +20,7 @@ class AboutTile extends StatelessWidget {
     required this.items,
     this.content,
     this.weaknesses,
+    this.custom,
   });
 
   const AboutTile.weaknesses({
@@ -26,18 +29,28 @@ class AboutTile extends StatelessWidget {
     required this.weaknesses,
     this.content,
     this.items,
+    this.custom,
+  });
+
+  const AboutTile.custom({
+    super.key,
+    required this.title,
+    required this.custom,
+    this.content,
+    this.weaknesses,
+    this.items,
   });
 
   final String title;
   final String? content;
   final List<AboutTileItem>? items;
   final List<String>? weaknesses;
+  final Widget? custom;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Text(
@@ -103,6 +116,11 @@ class AboutTile extends StatelessWidget {
                 );
               },
             ),
+          )
+        } else if (custom != null) ...{
+          Expanded(
+            flex: 2,
+            child: custom ?? const SizedBox.shrink(),
           )
         }
       ],

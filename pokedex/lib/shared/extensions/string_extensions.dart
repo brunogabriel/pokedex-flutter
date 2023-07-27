@@ -10,4 +10,10 @@ extension StringExtensions on String {
 
   String capitalize() =>
       isEmpty ? '' : '${this[0].toUpperCase()}${substring(1)}';
+
+  String capitalizeKebabCase() =>
+      split('-').map((e) => e.capitalize()).join(' ');
+
+  String replaceScapeChars([String newChar = ' ']) =>
+      replaceAll(RegExp(r'[\n\t\f]'), newChar).trim();
 }
