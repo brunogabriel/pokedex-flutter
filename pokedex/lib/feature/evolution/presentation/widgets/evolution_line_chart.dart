@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/feature/evolution/presentation/widgets/pokemon_chart.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/widgets/pokemon_chart.dart';
 
 class EvolutionLineChart extends StatelessWidget {
   const EvolutionLineChart({

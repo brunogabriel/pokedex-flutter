@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/constants/pokedex_spacing.dart';
-import 'package:pokedex/feature/evolution/presentation/widgets/evolution_line_chart.dart';
-import 'package:pokedex/shared/data/pokemon.dart';
+import 'package:pokedex/pokedex.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/widgets/evolution_line_chart.dart';
 
 class EvolutionPage extends StatefulWidget {
   const EvolutionPage({Key? key, required this.pokemon}) : super(key: key);

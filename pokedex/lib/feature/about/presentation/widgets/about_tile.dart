@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/components/badge_type.dart';
-import 'package:pokedex/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/design/components/badge_type.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 
 // TODO: This component need to be refactored
 class AboutTile extends StatelessWidget {

@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/components/circular_matrix.dart';
-import 'package:pokedex/design/components/pokemon_information.dart';
-import 'package:pokedex/design/constants/pokedex_spacing.dart';
-import 'package:pokedex/shared/data/pokemon.dart';
-import 'package:pokedex/shared/extensions/int_extensions.dart';
-import 'package:pokedex/shared/extensions/string_extensions.dart';
+import 'package:pokedex/pokedex.dart';
+import 'package:pokedex_flutter/design/components/circular_matrix.dart';
+import 'package:pokedex_flutter/design/components/pokemon_information.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
+import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
 class DetailsHeader extends StatelessWidget {
   const DetailsHeader({Key? key, required this.pokemon}) : super(key: key);
@@ -57,7 +57,7 @@ class DetailsHeader extends StatelessWidget {
                   width: 140,
                   height: 140,
                   child: CachedNetworkImage(
-                    imageUrl: pokemon.number.thumbnailUrl,
+                    imageUrl: pokemon.id.thumbnailUrl,
                   ),
                 ),
               ),

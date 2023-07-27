@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/components/badge_type.dart';
-import 'package:pokedex/design/constants/pokedex_spacing.dart';
-import 'package:pokedex/shared/data/pokemon.dart';
-import 'package:pokedex/shared/extensions/int_extensions.dart';
+import 'package:pokedex/pokedex.dart';
+import 'package:pokedex_flutter/design/components/badge_type.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
+import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
 class PokemonInformation extends StatelessWidget {
   const PokemonInformation({
@@ -26,7 +27,7 @@ class PokemonInformation extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                pokemon.number.pokenumber,
+                pokemon.id.pokenumber,
                 style: textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black.withOpacity(
@@ -36,7 +37,7 @@ class PokemonInformation extends StatelessWidget {
               ),
               const SizedBox(height: PokedexSpacing.kXS),
               Text(
-                pokemon.name,
+                pokemon.name.capitalize(),
                 style: textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -53,7 +54,7 @@ class PokemonInformation extends StatelessWidget {
                       padding: const EdgeInsets.only(
                         right: PokedexSpacing.kXS,
                       ),
-                      child: BadgeType(type: e.name),
+                      child: BadgeType(type: e.type.name),
                     ),
                   )
                   .toList()

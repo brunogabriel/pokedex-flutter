@@ -1,6 +1,6 @@
-import 'package:pokedex/feature/about/data/models/ability.dart';
-import 'package:pokedex/feature/about/data/models/breeding.dart';
-import 'package:pokedex/feature/about/data/models/trainning.dart';
+import 'package:pokedex_flutter/feature/about/data/models/ability.dart';
+import 'package:pokedex_flutter/feature/about/data/models/breeding.dart';
+import 'package:pokedex_flutter/feature/about/data/models/trainning.dart';
 
 class PokedexData {
   PokedexData({

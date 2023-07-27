@@ -1,4 +1,4 @@
-import 'package:pokedex/feature/about/data/models/pokedex_data.dart';
+import 'package:pokedex_flutter/feature/about/data/models/pokedex_data.dart';
 
 class About {
   About({

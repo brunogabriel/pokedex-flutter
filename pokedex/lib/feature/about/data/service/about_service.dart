@@ -1,11 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:pokedex/feature/about/data/models/ability.dart';
-import 'package:pokedex/feature/about/data/models/about.dart';
-import 'package:pokedex/feature/about/data/models/breeding.dart';
-import 'package:pokedex/feature/about/data/models/pokedex_data.dart';
-import 'package:pokedex/feature/about/data/models/trainning.dart';
-import 'package:pokedex/shared/extensions/string_extensions.dart';
+import 'package:pokedex_flutter/feature/about/data/models/ability.dart';
+import 'package:pokedex_flutter/feature/about/data/models/about.dart';
+import 'package:pokedex_flutter/feature/about/data/models/breeding.dart';
+import 'package:pokedex_flutter/feature/about/data/models/pokedex_data.dart';
+import 'package:pokedex_flutter/feature/about/data/models/trainning.dart';
 
 abstract class AboutService {
   Future<About> getAbout(int number);
@@ -13,26 +11,24 @@ abstract class AboutService {
 
 @Injectable(as: AboutService)
 class AboutServiceImpl extends AboutService {
-  AboutServiceImpl(this._dio);
-
-  final Dio _dio;
+  AboutServiceImpl();
 
   @override
   Future<About> getAbout(int number) async {
-    final result = await Future.wait([
-      _dio.get('pokemon/$number'),
-      _dio.get('pokemon-species/$number'),
-    ]);
+    // final result = await Future.wait([
+    //   _dio.get('pokemon/$number'),
+    //   _dio.get('pokemon-species/$number'),
+    // ]);
 
     // TODO: Converte to flutter module
 
-    // [1] -> flavor_text_entries -> first -> flavor_text
-    final description = (result[1].data['flavor_text_entries'] as List<dynamic>)
-            .first['flavor_text'] as String? ??
-        '';
+    // // [1] -> flavor_text_entries -> first -> flavor_text
+    // final description = (result[1].data['flavor_text_entries'] as List<dynamic>)
+    //         .first['flavor_text'] as String? ??
+    //     '';
 
     return About(
-      description: description.replaceScapeChars(),
+      description: 'Lorem ipsum',
       pokedexData: PokedexData(
         species: 'Seed Pokémon',
         height: 0.7,

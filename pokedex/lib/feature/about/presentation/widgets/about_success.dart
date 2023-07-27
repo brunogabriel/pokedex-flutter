@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/design/components/badge_type.dart';
-import 'package:pokedex/design/constants/pokedex_spacing.dart';
-import 'package:pokedex/feature/about/data/models/about.dart';
-import 'package:pokedex/feature/about/data/models/breeding.dart';
-import 'package:pokedex/feature/about/presentation/cubit/about_cubit.dart';
-import 'package:pokedex/feature/about/presentation/widgets/about_strings.dart';
-import 'package:pokedex/feature/about/presentation/widgets/about_tile.dart';
-import 'package:pokedex/shared/data/pokemon.dart';
-import 'package:pokedex/shared/extensions/pokemon_type_extensions.dart';
-import 'package:pokedex/shared/extensions/string_extensions.dart';
+import 'package:pokedex/pokedex.dart';
+import 'package:pokedex_flutter/design/components/badge_type.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/feature/about/data/models/about.dart';
+import 'package:pokedex_flutter/feature/about/data/models/breeding.dart';
+import 'package:pokedex_flutter/feature/about/presentation/cubit/about_cubit.dart';
+import 'package:pokedex_flutter/feature/about/presentation/widgets/about_strings.dart';
+import 'package:pokedex_flutter/feature/about/presentation/widgets/about_tile.dart';
+import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
+import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
 class AboutSuccess extends StatelessWidget {
   const AboutSuccess({
@@ -37,7 +37,7 @@ class AboutSuccess extends StatelessWidget {
     final items = <Widget>[
       //  Title
       Text(about.description, style: textTheme.bodyLarge),
-      // Pokedex Data
+      // pokedex_flutter Data
       Text(AboutStrings.pokedexData, style: sectionTheme),
       AboutTile(title: AboutStrings.species, content: pokedexData.species),
       AboutTile(

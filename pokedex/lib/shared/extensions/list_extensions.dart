@@ -1,4 +1,4 @@
-import 'package:pokedex/shared/data/pair.dart';
+import 'package:pokedex_flutter/shared/data/pair.dart';
 
 extension ListExtensions<A> on List<A> {
   List<Pair<A, B>> zip<B>(List<B> next) {

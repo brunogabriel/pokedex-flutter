@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/design/constants/pokedex_spacing.dart';
-import 'package:pokedex/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
-import 'package:pokedex/feature/pokemons/presentation/constants/pokemons_strings.dart';
-import 'package:pokedex/feature/pokemons/presentation/widgets/pokemon_card.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
+import 'package:pokedex_flutter/feature/pokemons/presentation/constants/pokemons_strings.dart';
+import 'package:pokedex_flutter/feature/pokemons/presentation/widgets/pokemon_card.dart';
 
 class PokemonsSuccess extends StatefulWidget {
   const PokemonsSuccess({Key? key}) : super(key: key);

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/constants/pokedex_spacing.dart';
-import 'package:pokedex/feature/about/presentation/page/about_page.dart';
-import 'package:pokedex/feature/details/presentation/page/details_header.dart';
-import 'package:pokedex/feature/evolution/presentation/page/evolution_page.dart';
-import 'package:pokedex/shared/data/pokemon.dart';
-import 'package:pokedex/shared/extensions/pokemon_type_extensions.dart';
+import 'package:pokedex/pokedex.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/feature/about/presentation/page/about_page.dart';
+import 'package:pokedex_flutter/feature/details/presentation/page/details_header.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/page/evolution_page.dart';
+import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage({

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pokedex/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
-import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_failure.dart';
-import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_loading.dart';
-import 'package:pokedex/feature/pokemons/presentation/widgets/pokemons_success.dart';
+import 'package:pokedex_flutter/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
+import 'package:pokedex_flutter/feature/pokemons/presentation/widgets/pokemons_failure.dart';
+import 'package:pokedex_flutter/feature/pokemons/presentation/widgets/pokemons_loading.dart';
+import 'package:pokedex_flutter/feature/pokemons/presentation/widgets/pokemons_success.dart';
 
 class PokemonsPage extends StatelessWidget {
   const PokemonsPage({super.key});

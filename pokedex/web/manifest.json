@@ -1,6 +1,6 @@
 {
-    "name": "pokedex",
-    "short_name": "pokedex",
+    "name": "pokedex_flutter",
+    "short_name": "pokedex_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

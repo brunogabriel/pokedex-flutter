@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:pokedex/feature/details/presentation/page/details_page.dart';
-import 'package:pokedex/feature/pokemons/presentation/page/pokemons_page.dart';
-import 'package:pokedex/shared/data/pokemon.dart';
+import 'package:pokedex/pokedex.dart';
+import 'package:pokedex_flutter/feature/details/presentation/page/details_page.dart';
+import 'package:pokedex_flutter/feature/pokemons/presentation/page/pokemons_page.dart';
 
 abstract class AppRoutes {
   static GoRouter router = GoRouter(
