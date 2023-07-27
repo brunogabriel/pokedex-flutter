@@ -9,16 +9,22 @@ class BadgeType extends StatelessWidget {
     Key? key,
     required this.type,
     this.circular = false,
+    this.diameter = 0.0,
+    this.circularPadding = 0.0,
   }) : super(key: key);
 
   const BadgeType.circular({
     super.key,
     required this.type,
     this.circular = true,
+    this.diameter = 48.0,
+    this.circularPadding = 8.0,
   });
 
   final String type;
   final bool circular;
+  final double diameter;
+  final double circularPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -66,14 +72,14 @@ class BadgeType extends StatelessWidget {
 
   Widget _buildCircular() {
     return Container(
-      height: 48,
-      width: 48,
+      height: diameter,
+      width: diameter,
       decoration: BoxDecoration(
         color: type.pokemonColor.primary,
-        borderRadius: BorderRadius.circular(48),
+        borderRadius: BorderRadius.circular(diameter),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.all(circularPadding),
         child: SizedBox(
           child: SvgPicture.asset('icons/$type.svg'.asset()),
         ),

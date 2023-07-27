@@ -72,7 +72,7 @@ class _DetailsPageState extends State<DetailsPage>
                   color: Colors.white,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.only(top: PokedexSpacing.kXL),
                   child: TabBarView(controller: _tabController, children: [
                     AboutPage(pokemon: widget.pokemon),
                     EvolutionPage(pokemon: widget.pokemon),
