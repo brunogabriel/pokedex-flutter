@@ -7,14 +7,18 @@ abstract class PokemonRepository {
 
 @Injectable(as: PokemonRepository)
 class PokemonRepositoryImpl implements PokemonRepository {
+  PokemonRepositoryImpl(this._client);
+
+  final Pokedex _client;
+
   @override
   Future<List<Pokemon>> getPokemons(int limit, int offset) async {
     final resource =
-        await Pokedex().pokemon.getPage(limit: limit, offset: offset);
+        await _client.pokemon.getPage(limit: limit, offset: offset);
 
     final pokemons = await Future.wait(resource.results
-        .map((e) => e.url)
-        .map((e) => Pokedex().pokemon.getByUrl(e)));
+        .map((resource) => resource.url)
+        .map((url) => _client.pokemon.getByUrl(url)));
 
     return pokemons;
   }

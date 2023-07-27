@@ -27,7 +27,7 @@ class PokemonCard extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           'details',
-          extra: pokemon,
+          pathParameters: {'id': pokemon.id.toString()},
         );
       },
       child: SizedBox(

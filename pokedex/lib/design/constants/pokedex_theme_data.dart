@@ -12,6 +12,9 @@ abstract class PokedexThemeData {
         fontFamily: 'Poppins',
         colorScheme: _darkColorScheme,
       );
+
+  // Another colors
+  static Color greyLevel1 = const Color(0xFF333333);
 }
 
 const _lightColorScheme = ColorScheme(
