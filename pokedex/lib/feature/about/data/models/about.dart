@@ -1,11 +1,11 @@
-import 'package:pokedex_flutter/feature/about/data/models/pokedex_data.dart';
+import 'package:pokedex/pokedex.dart';
 
 class About {
   About({
-    required this.description,
-    required this.pokedexData,
+    required this.pokemon,
+    required this.pokemonSpecies,
   });
 
-  final String description;
-  final PokedexData pokedexData;
+  final Pokemon pokemon;
+  final PokemonSpecies pokemonSpecies;
 }

@@ -18,11 +18,11 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetIt.I.get<AboutCubit>()..requestData(pokemon.id),
+      create: (context) => GetIt.I.get<AboutCubit>()..requestData(pokemon),
       child: BlocBuilder<AboutCubit, AboutState>(
         builder: (context, state) {
           if (state.runtimeType == AboutSuccessState) {
-            return AboutSuccess(pokemon: pokemon);
+            return const AboutSuccess();
           } else if (state.runtimeType == AboutFailureState) {
             return const AboutFailure();
           }

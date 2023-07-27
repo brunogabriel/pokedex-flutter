@@ -8,4 +8,7 @@ extension IntExtensions on int {
   }
 
   String get pokenumber => '#${toString().padLeft(4, '0')}';
+
+  double get femaleRate => (this / 8.0) * 100.0;
+  double get maleRate => 100.0 - femaleRate;
 }
