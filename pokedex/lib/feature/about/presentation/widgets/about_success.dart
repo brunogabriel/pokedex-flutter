@@ -34,7 +34,12 @@ class AboutSuccess extends StatelessWidget {
     final items = <Widget>[
       //  Title
       Text(
-        species.flavorTextEntries.first.flavorText.replaceScapeChars(),
+        // species.flavorTextEntries.first.flavorText.replaceScapeChars(),
+        species.flavorTextEntries
+                .firstWhereOrNull((element) => element.language.name == 'en')
+                ?.flavorText
+                .replaceScapeChars() ??
+            '',
         style: textTheme.bodyLarge,
       ), // species
 
@@ -59,7 +64,8 @@ class AboutSuccess extends StatelessWidget {
             .map(
               (ability) => AboutTileItem(
                 content:
-                    '${ability.ability.name}${ability.isHidden ? ' (hidden ability)' : ''}',
+                    '${ability.ability.name}${ability.isHidden ? ' (hidden ability)' : ''}'
+                        .capitalizeKebabCase(),
                 small: !ability.isHidden,
               ),
             )
