@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
@@ -49,7 +50,7 @@ class ErrorPage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ).animate().fade().scale();
   }
 }
 
