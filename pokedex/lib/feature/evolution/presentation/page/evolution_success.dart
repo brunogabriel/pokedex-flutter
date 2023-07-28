@@ -18,8 +18,6 @@ class EvolutionSuccess extends StatelessWidget {
             .evolutions
             .zipWithNext();
 
-    // TODO: check meltan 849 (electric)
-
     return ListView.separated(
       padding: const EdgeInsets.only(
         left: PokedexSpacing.kXL,
@@ -54,7 +52,6 @@ class EvolutionSuccess extends StatelessWidget {
       } else {
         trigger = '';
       }
-      // trigger
       if (trigger == 'level-up') {
         cause = '(Level ${evolvesTo.evolutionDetails.first.minLevel})';
       } else if (trigger == 'use-item') {
