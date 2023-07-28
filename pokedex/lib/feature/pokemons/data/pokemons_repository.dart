@@ -13,8 +13,7 @@ class PokemonRepositoryImpl implements PokemonRepository {
 
   @override
   Future<List<Pokemon>> getPokemons(int limit, int offset) async {
-    final resource =
-        await _client.pokemon.getPage(limit: limit, offset: offset);
+    final resource = await _client.pokemon.getPage(limit: 100, offset: offset);
 
     final pokemons = await Future.wait(resource.results
         .map((resource) => resource.url)

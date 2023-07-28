@@ -19,12 +19,18 @@ import 'package:pokedex_flutter/feature/about/presentation/cubit/about_cubit.dar
 import 'package:pokedex_flutter/feature/details/data/details_repository.dart'
     as _i8;
 import 'package:pokedex_flutter/feature/details/presentation/cubit/details_cubit.dart'
+    as _i11;
+import 'package:pokedex_flutter/feature/evolution/data/evolution_repository.dart'
     as _i9;
+import 'package:pokedex_flutter/feature/evolution/domain/evolution_use_case.dart'
+    as _i10;
+import 'package:pokedex_flutter/feature/evolution/presentation/cubit/evolution_cubit.dart'
+    as _i12;
 import 'package:pokedex_flutter/feature/pokemons/data/pokemons_repository.dart'
     as _i5;
 import 'package:pokedex_flutter/feature/pokemons/presentation/bloc/pokemons_bloc.dart'
     as _i6;
-import 'package:pokedex_flutter/network/network_module.dart' as _i10;
+import 'package:pokedex_flutter/network/network_module.dart' as _i13;
 
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
@@ -49,9 +55,15 @@ _i1.GetIt init(
   gh.factory<_i7.AboutCubit>(() => _i7.AboutCubit(gh<_i3.AboutRepository>()));
   gh.factory<_i8.DetailsRepository>(
       () => _i8.DetailsRepositoryImpl(gh<_i4.Pokedex>()));
-  gh.factory<_i9.DetailsCubit>(
-      () => _i9.DetailsCubit(gh<_i8.DetailsRepository>()));
+  gh.factory<_i9.EvolutionRepository>(
+      () => _i9.EvolutionRepositoryImpl(gh<_i4.Pokedex>()));
+  gh.factory<_i10.EvolutionUseCase>(
+      () => _i10.EvolutionUseCaseImpl(gh<_i9.EvolutionRepository>()));
+  gh.factory<_i11.DetailsCubit>(
+      () => _i11.DetailsCubit(gh<_i8.DetailsRepository>()));
+  gh.factory<_i12.EvolutionCubit>(
+      () => _i12.EvolutionCubit(gh<_i10.EvolutionUseCase>()));
   return getIt;
 }
 
-class _$NetworkModule extends _i10.NetworkModule {}
+class _$NetworkModule extends _i13.NetworkModule {}

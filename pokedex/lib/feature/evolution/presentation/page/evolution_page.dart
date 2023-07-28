@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/feature/evolution/presentation/widgets/evolution_line_chart.dart';
+import 'package:pokedex_flutter/design/components/error_page.dart';
+import 'package:pokedex_flutter/design/components/loading_page.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/cubit/evolution_cubit.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/page/evolution_success.dart';
+import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
 
 class EvolutionPage extends StatefulWidget {
   const EvolutionPage({Key? key, required this.pokemon}) : super(key: key);
@@ -15,56 +20,22 @@ class _EvolutionPageState extends State<EvolutionPage>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.only(
-          left: PokedexSpacing.kXL,
-          right: PokedexSpacing.kXL,
-        ),
-        child: Column(
-          children: [
-            EvolutionLineChart(
-              firstName: 'Bulbasaur',
-              firstNumber: 1,
-              secondName: 'Ivysaur',
-              secondNumber: 2,
-              evolutionDescription: '(Level 16)',
-            ),
-            SizedBox(
-              height: 32,
-            ),
-            EvolutionLineChart(
-              firstName: 'Ivysaur',
-              firstNumber: 2,
-              secondName: 'Venusaur',
-              secondNumber: 3,
-              evolutionDescription: '(Level 32)',
-            ),
-            SizedBox(
-              height: 32,
-            ),
-            EvolutionLineChart(
-              firstName: 'Bulbasaur',
-              firstNumber: 1,
-              secondName: 'Ivysaur',
-              secondNumber: 2,
-              evolutionDescription: '(Level 16)',
-            ),
-            SizedBox(
-              height: 32,
-            ),
-            EvolutionLineChart(
-              firstName: 'Ivysaur',
-              firstNumber: 2,
-              secondName: 'Venusaur',
-              secondNumber: 3,
-              evolutionDescription: '(Level 32)',
-            ),
-            SizedBox(
-              height: 32,
-            ),
-          ],
-        ),
+    return BlocProvider(
+      create: (context) => GetIt.I.get<EvolutionCubit>()
+        ..requestEvolutionChain(widget.pokemon.id),
+      child: BlocBuilder<EvolutionCubit, EvolutionState>(
+        builder: (context, state) {
+          if (state.runtimeType == EvolutionSuccessState) {
+            return const EvolutionSuccess();
+          } else if (state.runtimeType == EvolutionFailureState) {
+            return ErrorPage(
+              onTap: () => context.read<EvolutionCubit>()
+                ..requestEvolutionChain(widget.pokemon.id),
+              textColor: widget.pokemon.types.first.color.primary,
+            );
+          }
+          return LoadingPage(color: widget.pokemon.types.first.color.primary);
+        },
       ),
     );
   }

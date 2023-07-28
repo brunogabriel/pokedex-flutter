@@ -19,7 +19,9 @@ extension StringExtensions on String {
 
   int getNumberFromPokemonUrl() {
     try {
-      final regex = RegExp(r'^https://pokeapi.co/api/v2/pokemon/([0-9]+)/$');
+      // final regex = RegExp(r'^https://pokeapi.co/api/v2/pokemon/([0-9]+)/$');
+      final regex = RegExp(r'^https://pokeapi.co/api/v2/.*?/([0-9]+)/$');
+
       final match = regex.firstMatch(this);
       final number = int.parse(match?.group(1) ?? '0');
       return number;
