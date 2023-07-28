@@ -1,8 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/design/components/badge_type.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/feature/about/presentation/cubit/about_cubit.dart';
 import 'package:pokedex_flutter/feature/about/presentation/widgets/about_strings.dart';

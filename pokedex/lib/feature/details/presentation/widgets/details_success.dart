@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/feature/about/presentation/page/about_page.dart';
@@ -17,6 +18,8 @@ class DetailsSuccess extends StatefulWidget {
 class _DetailsSuccessState extends State<DetailsSuccess>
     with TickerProviderStateMixin {
   late TabController _tabController;
+
+  var _opacity = 0.0;
 
   @override
   void initState() {
@@ -49,26 +52,47 @@ class _DetailsSuccessState extends State<DetailsSuccess>
           height: PokedexSpacing.kM,
         ),
         Expanded(
-          child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(PokedexSpacing.kL),
-                topRight: Radius.circular(PokedexSpacing.kL),
-              ),
-              color: Colors.white,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(top: PokedexSpacing.kXL),
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  AboutPage(pokemon: widget.pokemon),
-                  EvolutionPage(pokemon: widget.pokemon),
-                  EvolutionPage(pokemon: widget.pokemon),
-                ],
-              ),
-            ),
-          ),
+          child: LayoutBuilder(builder: (context, constraints) {
+            return Opacity(
+              opacity: _opacity,
+              child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(PokedexSpacing.kL),
+                    topRight: Radius.circular(PokedexSpacing.kL),
+                  ),
+                  color: Colors.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: PokedexSpacing.kXL),
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      AboutPage(pokemon: widget.pokemon),
+                      EvolutionPage(pokemon: widget.pokemon),
+                      EvolutionPage(pokemon: widget.pokemon),
+                    ],
+                  ),
+                ),
+              )
+                  .animate(
+                      onComplete: (controller) => setState(() {
+                            _opacity = 1.0;
+                          }))
+                  .moveY(
+                    begin: 0,
+                    end: constraints.maxHeight,
+                    duration: Duration.zero,
+                  )
+                  .animate()
+                  .moveY(
+                    delay: const Duration(milliseconds: 200),
+                    begin: 0,
+                    end: -constraints.maxHeight,
+                    duration: const Duration(milliseconds: 500),
+                  ),
+            );
+          }),
         )
       ],
     );
