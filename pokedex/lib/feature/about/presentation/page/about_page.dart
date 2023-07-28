@@ -24,6 +24,7 @@ class _AboutPageState extends State<AboutPage>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocProvider(
       create: (context) =>
           GetIt.I.get<AboutCubit>()..requestData(widget.pokemon),

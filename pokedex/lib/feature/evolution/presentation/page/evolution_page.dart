@@ -20,6 +20,7 @@ class _EvolutionPageState extends State<EvolutionPage>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocProvider(
       create: (context) => GetIt.I.get<EvolutionCubit>()
         ..requestEvolutionChain(widget.pokemon.id),
