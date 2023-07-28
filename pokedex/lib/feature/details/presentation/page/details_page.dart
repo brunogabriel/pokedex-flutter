@@ -36,7 +36,7 @@ class _DetailsPageState extends State<DetailsPage> {
           return TweenAnimationBuilder(
             duration: const Duration(milliseconds: 300),
             tween: ColorTween(
-                begin: PokedexThemeData.greyLevel1,
+                begin: PokedexThemeData.backgroundDetails,
                 end: state.runtimeType == DetailsSuccessState
                     ? (state as DetailsSuccessState)
                         .pokemon
@@ -44,7 +44,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         .first
                         .color
                         .secundary
-                    : PokedexThemeData.greyLevel1),
+                    : PokedexThemeData.backgroundDetails),
             builder: (_, Color? newBackgroundColor, __) {
               return Scaffold(
                 backgroundColor: newBackgroundColor,

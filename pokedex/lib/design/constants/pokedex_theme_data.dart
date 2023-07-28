@@ -14,7 +14,7 @@ abstract class PokedexThemeData {
       );
 
   // Another colors
-  static Color greyLevel1 = const Color(0xFF333333);
+  static Color backgroundDetails = const Color(0xFF333333);
 }
 
 const _lightColorScheme = ColorScheme(
