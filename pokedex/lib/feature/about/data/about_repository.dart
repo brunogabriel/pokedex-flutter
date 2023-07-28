@@ -12,7 +12,7 @@ class AboutRepositoryImpl implements AboutRepository {
 
   @override
   Future<About> getAbout(Pokemon pokemon) async {
-    final species = await Pokedex().pokemonSpecies.get(name: pokemon.name);
+    final species = await Pokedex().pokemonSpecies.get(id: pokemon.id);
     return About(pokemon: pokemon, pokemonSpecies: species);
   }
 }

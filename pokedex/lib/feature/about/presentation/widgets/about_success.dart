@@ -29,8 +29,6 @@ class AboutSuccess extends StatelessWidget {
       fontWeight: FontWeight.bold,
     );
 
-    // TODO: 849 error
-
     final items = <Widget>[
       //  Title
       Text(
