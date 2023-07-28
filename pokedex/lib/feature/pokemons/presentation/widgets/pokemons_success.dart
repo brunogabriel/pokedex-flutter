@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/constants/pokemons_strings.dart';
+import 'package:pokedex_flutter/feature/pokemons/presentation/strings/pokemons_strings.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/widgets/pokemon_card.dart';
 
 class PokemonsSuccess extends StatefulWidget {
@@ -93,34 +94,27 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
               );
             } else if (!state.firstPage && status == Status.failure) {
               tailWidget = Padding(
-                padding: const EdgeInsets.all(PokedexSpacing.kM),
+                padding: const EdgeInsets.symmetric(
+                    vertical: PokedexSpacing.kM, horizontal: PokedexSpacing.kL),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Flexible(
-                          child: Column(
-                            children: [
-                              Text(
-                                'Error pagination',
-                                style: textTheme.titleMedium
-                                    ?.copyWith(fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: PokedexSpacing.kS),
-                              Text(
-                                'pagination error message',
-                                style: textTheme.bodyMedium,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                    Text(
+                      PokemonsStrings.paginationErrorTitle,
+                      style: textTheme.titleMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
+                    const SizedBox(height: PokedexSpacing.kM),
+                    Text(
+                      PokemonsStrings.paginationError,
+                      style: textTheme.bodyMedium?.copyWith(),
+                    ),
+                    const SizedBox(height: PokedexSpacing.kL),
                     FilledButton(
-                        onPressed: () => context
-                            .read<PokemonsBloc>()
-                            .add(PokemonsRequestEvent()),
-                        child: const Text('Try again,')),
+                      onPressed: () => context
+                          .read<PokemonsBloc>()
+                          .add(PokemonsRequestEvent()),
+                      child: const Text(PokemonsStrings.tryAgain),
+                    ),
                   ],
                 ),
               );
