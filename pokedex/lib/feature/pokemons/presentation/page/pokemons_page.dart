@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pokedex_flutter/design/components/error_page.dart';
+import 'package:pokedex_flutter/design/components/loading_page.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
-import 'package:pokedex_flutter/feature/pokemons/presentation/widgets/pokemons_failure.dart';
-import 'package:pokedex_flutter/feature/pokemons/presentation/widgets/pokemons_loading.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/widgets/pokemons_success.dart';
 
 class PokemonsPage extends StatelessWidget {
@@ -22,7 +21,7 @@ class PokemonsPage extends StatelessWidget {
                 final status = state.status;
                 if (state.firstPage) {
                   if (status == Status.loading) {
-                    return const Center(child: PokemonsLoading());
+                    return const LoadingPage();
                   } else if (status == Status.failure) {
                     return ErrorPage(
                         onTap: () => context.read<PokemonsBloc>()

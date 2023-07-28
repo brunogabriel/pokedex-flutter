@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex_flutter/design/components/loading_page.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/constants/pokemons_strings.dart';
@@ -85,12 +86,7 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
             if (!state.firstPage && status == Status.loading) {
               tailWidget = const Padding(
                 padding: EdgeInsets.all(PokedexSpacing.kM),
-                child: Center(
-                  child: SizedBox(
-                      width: 48,
-                      height: 48,
-                      child: CircularProgressIndicator()),
-                ),
+                child: LoadingPage(),
               );
             } else if (!state.firstPage && status == Status.failure) {
               tailWidget = Padding(
