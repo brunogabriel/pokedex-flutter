@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/design/components/circular_matrix.dart';
 import 'package:pokedex_flutter/design/components/pokemon_information.dart';
@@ -79,6 +80,6 @@ class DetailsHeader extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ).animate().fade().scale();
   }
 }
