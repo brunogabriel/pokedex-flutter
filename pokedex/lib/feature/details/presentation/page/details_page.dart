@@ -1,12 +1,17 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pokedex_flutter/design/components/error_page.dart';
+import 'package:pokedex_flutter/design/components/loading_page.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 import 'package:pokedex_flutter/feature/details/presentation/cubit/details_cubit.dart';
-import 'package:pokedex_flutter/feature/details/presentation/widgets/details_failure.dart';
-import 'package:pokedex_flutter/feature/details/presentation/widgets/details_loading.dart';
 import 'package:pokedex_flutter/feature/details/presentation/widgets/details_success.dart';
 import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
+import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage({
@@ -46,6 +51,27 @@ class _DetailsPageState extends State<DetailsPage> {
                 appBar: AppBar(
                   iconTheme: const IconThemeData(color: Colors.white),
                   backgroundColor: Colors.transparent,
+                  actions: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: PokedexSpacing.kS),
+                      child: IconButton(
+                        onPressed: () {
+                          context.pushReplacementNamed(
+                            'details',
+                            pathParameters: {
+                              'id': Random().nextInt(1010).toString()
+                            },
+                          );
+                        },
+                        icon: Image.asset(
+                          'images/pokeball.png'.asset(),
+                          color: Colors.white,
+                          width: 32,
+                          height: 32,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
                 body: SafeArea(
                   child: Stack(
@@ -54,9 +80,16 @@ class _DetailsPageState extends State<DetailsPage> {
                         DetailsSuccess(
                             pokemon: (state as DetailsSuccessState).pokemon)
                       } else if (state.runtimeType == DetailsFailureState) ...{
-                        const DetailsFailure() // pass try again action here
+                        ErrorPage(
+                          onTap: () => context
+                              .read<DetailsCubit>()
+                              .requestPokemon(widget.id),
+                          textColor: Colors.white,
+                        ) // pass try again action here
                       } else ...{
-                        const DetailsLoading()
+                        const LoadingPage(
+                          color: Colors.white,
+                        )
                       }
                     ],
                   ),

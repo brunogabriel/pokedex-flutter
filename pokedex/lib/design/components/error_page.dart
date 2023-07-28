@@ -10,9 +10,11 @@ class ErrorPage extends StatelessWidget {
   const ErrorPage({
     Key? key,
     required this.onTap,
+    this.textColor = Colors.black,
   }) : super(key: key);
 
   final VoidCallback? onTap;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +32,14 @@ class ErrorPage extends StatelessWidget {
             Text(
               information.title,
               textAlign: TextAlign.center,
-              style:
-                  textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+              style: textTheme.titleLarge
+                  ?.copyWith(fontWeight: FontWeight.bold, color: textColor),
             ),
             const SizedBox(height: PokedexSpacing.kS),
             Text(
               information.subtitle,
               textAlign: TextAlign.center,
-              style: textTheme.titleMedium,
+              style: textTheme.titleMedium?.copyWith(color: textColor),
             ),
             const SizedBox(height: PokedexSpacing.kM),
             Container(

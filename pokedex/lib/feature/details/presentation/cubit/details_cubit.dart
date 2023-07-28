@@ -19,7 +19,7 @@ class DetailsCubit extends Cubit<DetailsState> {
       final pokemon = await _repository.getPokemon(id);
       emit(DetailsSuccessState(pokemon));
     } catch (_) {
-      emit(DetailsLoadingState());
+      emit(DetailsFailureState());
     }
   }
 }
