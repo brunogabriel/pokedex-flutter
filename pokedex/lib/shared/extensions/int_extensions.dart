@@ -30,9 +30,9 @@ extension IntExtensions on int {
 
   int get maxHp => _calculateHp(this, 252, 31);
 
-  int get minStatus => _calculateStatus(this, 0, 0);
+  int get minStatus => _calculateStatus(this, 0, 0, 100, 0.9);
 
-  int get maxStatus => _calculateStatus(this, 252, 31);
+  int get maxStatus => _calculateStatus(this, 252, 31, 100, 1.1);
 
   int _calculateHp(int base, int ev, int iv, [int level = 100]) {
     return ((0.01 * (2 * base + iv + (0.25 * ev)) * level) + level + 10)
@@ -40,9 +40,8 @@ extension IntExtensions on int {
   }
 
   int _calculateStatus(int base, int ev, int iv,
-      [int level = 100, double nature = 0.45]) {
-    return (((0.01 * (2 * base + iv + (0.25 * ev)) * level) + level + 5) *
-            nature)
+      [int level = 100, double nature = 1.0]) {
+    return (((0.01 * (2 * base + iv + (0.25 * ev)) * level) + 5) * nature)
         .toInt();
   }
 }
