@@ -5,6 +5,7 @@ import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/feature/about/presentation/page/about_page.dart';
 import 'package:pokedex_flutter/feature/details/presentation/widgets/details_header.dart';
 import 'package:pokedex_flutter/feature/evolution/presentation/page/evolution_page.dart';
+import 'package:pokedex_flutter/feature/stats/presentation/page/stats_page.dart';
 
 class DetailsSuccess extends StatefulWidget {
   const DetailsSuccess({Key? key, required this.pokemon}) : super(key: key);
@@ -69,7 +70,7 @@ class _DetailsSuccessState extends State<DetailsSuccess>
                     controller: _tabController,
                     children: [
                       AboutPage(pokemon: widget.pokemon),
-                      EvolutionPage(pokemon: widget.pokemon),
+                      StatsPage(),
                       EvolutionPage(pokemon: widget.pokemon),
                     ],
                   ),

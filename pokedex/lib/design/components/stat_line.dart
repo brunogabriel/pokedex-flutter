@@ -13,20 +13,26 @@ class StatLine extends StatelessWidget {
 
   final Color color;
   final String title;
-  final double value;
-  final double minValue;
-  final double maxValue;
+  final int value;
+  final int minValue;
+  final int maxValue;
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Row(
       children: [
         Expanded(
-          child: Text(title),
+          flex: 2,
+          child: Text(
+            title,
+            style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+          ),
         ),
         Expanded(
             child: Text(
           value.toString(),
+          style: textTheme.bodyLarge,
           textAlign: TextAlign.center,
         )),
         Expanded(
@@ -41,11 +47,13 @@ class StatLine extends StatelessWidget {
         Expanded(
             child: Text(
           minValue.toString(),
+          style: textTheme.bodyLarge,
           textAlign: TextAlign.right,
         )),
         Expanded(
             child: Text(
           maxValue.toString(),
+          style: textTheme.bodyLarge,
           textAlign: TextAlign.right,
         )),
       ],
