@@ -70,7 +70,7 @@ class _DetailsSuccessState extends State<DetailsSuccess>
                     controller: _tabController,
                     children: [
                       AboutPage(pokemon: widget.pokemon),
-                      StatsPage(),
+                      StatsPage(pokemon: widget.pokemon),
                       EvolutionPage(pokemon: widget.pokemon),
                     ],
                   ),
