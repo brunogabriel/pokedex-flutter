@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/widgets/evolution_method_chart.dart';
 import 'package:pokedex_flutter/feature/evolution/presentation/widgets/pokemon_chart.dart';
 
 class EvolutionChainChart extends StatelessWidget {
@@ -19,21 +20,13 @@ class EvolutionChainChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         PokemonChart(name: firstName, number: firstNumber),
-        Column(
-          children: [
-            Icon(Icons.arrow_forward, color: Colors.grey.withOpacity(0.3)),
-            Text(
-              evolutionDescription,
-              style: textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+        EvolutionMethodChart(
+          title: evolutionDescription,
+          sprites: [],
         ),
         PokemonChart(name: secondName, number: secondNumber),
       ],

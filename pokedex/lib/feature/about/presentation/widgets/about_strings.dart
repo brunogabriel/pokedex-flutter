@@ -2,7 +2,7 @@ abstract class AboutStrings {
   // PokedexData
   static const pokedexData = 'Pokédex Data';
   static const species = 'Species';
-  static const height = 'Heigh';
+  static const height = 'Height';
   static const weight = 'Weight';
   static const abilities = 'Abilities';
   static const weaknesses = 'Weaknesses';

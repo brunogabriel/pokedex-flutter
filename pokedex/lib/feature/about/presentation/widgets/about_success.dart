@@ -51,11 +51,15 @@ class AboutSuccess extends StatelessWidget {
       ),
 
       AboutTile(
-          title: AboutStrings.height,
-          content: pokemon.height.toString()), // TODO: converte
+        title: AboutStrings.height,
+        content: '${pokemon.height.meter.toStringAsFixed(1)}m',
+        subcontent: '(${pokemon.height.cm.cmToFeedAndInches()})',
+      ),
       AboutTile(
-          title: AboutStrings.weight,
-          content: pokemon.weight.toString()), // TODO: converte
+        title: AboutStrings.weight,
+        content: '${pokemon.weight.kg.toStringAsFixed(1)}kg',
+        subcontent: '(${pokemon.weight.lb.toStringAsFixed(1)} lbs)',
+      ), // TODO: converte
       AboutTile.list(
         title: AboutStrings.abilities,
         items: pokemon.abilities
@@ -69,7 +73,8 @@ class AboutSuccess extends StatelessWidget {
             )
             .toList(),
       ),
-      AboutTile.weaknesses(title: 'Weaknesses', weaknesses: ['fire']), // TODO:
+      AboutTile.weaknesses(
+          title: 'Weaknesses', weaknesses: about.weaknesses), // TODO:
       // Trainning
       Text(AboutStrings.trainning, style: sectionTheme),
       AboutTile(
@@ -85,7 +90,7 @@ class AboutSuccess extends StatelessWidget {
 
       // Trainning
       Text(AboutStrings.breeding, style: sectionTheme),
-      // TODO: Verify if gender is -1
+      // TODO: Verify if gender is -1 if then make it empty
       AboutTile.custom(
         title: AboutStrings.gender,
         custom: RichText(

@@ -12,6 +12,7 @@ class AboutTile extends StatelessWidget {
     this.items,
     this.weaknesses,
     this.custom,
+    this.subcontent,
   });
 
   const AboutTile.list({
@@ -21,6 +22,7 @@ class AboutTile extends StatelessWidget {
     this.content,
     this.weaknesses,
     this.custom,
+    this.subcontent,
   });
 
   const AboutTile.weaknesses({
@@ -30,6 +32,7 @@ class AboutTile extends StatelessWidget {
     this.content,
     this.items,
     this.custom,
+    this.subcontent,
   });
 
   const AboutTile.custom({
@@ -39,10 +42,12 @@ class AboutTile extends StatelessWidget {
     this.content,
     this.weaknesses,
     this.items,
+    this.subcontent,
   });
 
   final String title;
   final String? content;
+  final String? subcontent;
   final List<AboutTileItem>? items;
   final List<String>? weaknesses;
   final Widget? custom;
@@ -61,7 +66,16 @@ class AboutTile extends StatelessWidget {
         if (content != null) ...{
           Expanded(
             flex: 2,
-            child: Text(content ?? '', style: textTheme.bodyLarge),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(content ?? '', style: textTheme.bodyLarge),
+                if (subcontent != null) ...{
+                  const SizedBox(width: PokedexSpacing.kXS),
+                  Text(subcontent ?? '', style: textTheme.bodySmall),
+                }
+              ],
+            ),
           )
         } else if (items != null) ...{
           Expanded(
