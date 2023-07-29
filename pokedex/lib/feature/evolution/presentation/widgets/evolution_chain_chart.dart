@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_flutter/feature/evolution/presentation/widgets/pokemon_chart.dart';
 
-class EvolutionLineChart extends StatelessWidget {
-  const EvolutionLineChart({
+class EvolutionChainChart extends StatelessWidget {
+  const EvolutionChainChart({
     Key? key,
     required this.firstName,
     required this.firstNumber,

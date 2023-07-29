@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/feature/evolution/presentation/cubit/evolution_cubit.dart';
-import 'package:pokedex_flutter/feature/evolution/presentation/widgets/evolution_line_chart.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/widgets/evolution_chain_chart.dart';
 import 'package:pokedex_flutter/shared/data/pair.dart';
 import 'package:pokedex_flutter/shared/extensions/list_extensions.dart';
 import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
@@ -31,9 +31,9 @@ class EvolutionSuccess extends StatelessWidget {
     );
   }
 
-  EvolutionLineChart _buildEvolutionLineChart(
+  EvolutionChainChart _buildEvolutionLineChart(
       Pair<ChainLink, ChainLink> nextEvolution) {
-    return EvolutionLineChart(
+    return EvolutionChainChart(
       firstName: nextEvolution.first.species.name.capitalize(),
       firstNumber: nextEvolution.first.species.url.getNumberFromPokemonUrl(),
       secondName: nextEvolution.second.species.name.capitalize(),
