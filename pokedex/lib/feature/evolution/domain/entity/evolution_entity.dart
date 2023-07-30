@@ -6,6 +6,24 @@ class EvolutionEntity {
     required this.evolutions,
   });
 
-  final List<ChainLink> evolutions;
+  final List<EvolutionDescriptionEntity> evolutions;
   final Pokemon pokemon;
+}
+
+class EvolutionDescriptionEntity {
+  EvolutionDescriptionEntity({
+    required this.from,
+    required this.fromNumber,
+    required this.to,
+    required this.toNumber,
+    required this.description,
+    required this.sprites,
+  });
+
+  final String from;
+  final int fromNumber;
+  final String to;
+  final int toNumber;
+  final String description;
+  final List<String> sprites;
 }
