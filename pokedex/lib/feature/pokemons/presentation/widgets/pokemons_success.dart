@@ -16,6 +16,7 @@ class PokemonsSuccess extends StatefulWidget {
 
 class _PokemonsSuccessState extends State<PokemonsSuccess> {
   final _scrollController = ScrollController();
+  Color _textFieldColor = const Color(0xFFF2F2F2);
 
   @override
   void initState() {
@@ -38,9 +39,10 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
     final textTheme = Theme.of(context).textTheme;
     return CustomScrollView(controller: _scrollController, slivers: [
       SliverAppBar(
+        snap: true,
+        floating: true,
         pinned: true,
         scrolledUnderElevation: 0,
-        floating: true,
         expandedHeight: 120.0,
         flexibleSpace: FlexibleSpaceBar(
           centerTitle: false,
@@ -60,14 +62,71 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
             horizontal: PokedexSpacing.kL,
             vertical: PokedexSpacing.kS,
           ),
-          child: Text(
-            PokemonStrings.subtitle,
-            style: textTheme.bodyMedium,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                PokemonStrings.subtitle,
+                style: textTheme.bodyMedium,
+              ),
+              const SizedBox(height: PokedexSpacing.kL),
+              TextField(
+                cursorColor: const Color(0xFFEA5D60),
+                textInputAction: TextInputAction.search,
+                decoration: InputDecoration(
+                  filled: true,
+                  focusedBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10.0),
+                    ),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  enabledBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10.0),
+                    ),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10.0),
+                    ),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  fillColor: _textFieldColor,
+                  hintText: 'What Pokémon are you looking for? ',
+                  prefixIcon: const Padding(
+                    padding: EdgeInsets.only(
+                      left: PokedexSpacing.kM,
+                      right: PokedexSpacing.kS,
+                    ),
+                    child: Icon(Icons.search),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: PokedexSpacing.kL,
+                    vertical: 20.0,
+                  ),
+                ),
+                onChanged: (value) {},
+                onSubmitted: (value) {},
+                onTap: () {
+                  setState(() {
+                    _textFieldColor = const Color(0xFFE2E2E2);
+                  });
+                },
+                onEditingComplete: () {
+                  setState(() {
+                    _textFieldColor = const Color(0xFFF2F2F2);
+                  });
+                },
+              ),
+              const SizedBox(height: PokedexSpacing.kS),
+            ],
           ),
         ),
       ),
       SliverPadding(
-        padding: const EdgeInsets.symmetric(horizontal: PokedexSpacing.kM),
+        padding: const EdgeInsets.symmetric(horizontal: PokedexSpacing.kL),
         sliver: SliverList.separated(
           separatorBuilder: (context, index) => const SizedBox(
             height: PokedexSpacing.kM,
