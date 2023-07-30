@@ -3,6 +3,7 @@ import 'package:pokedex/pokedex.dart';
 
 abstract class StatsRepository {
   Future<PokemonSpecies> getPokemonSpecies(int id);
+  Future<Type> getType(String url);
 }
 
 @Injectable(as: StatsRepository)
@@ -15,5 +16,11 @@ class StatsRepositoryImpl implements StatsRepository {
   Future<PokemonSpecies> getPokemonSpecies(int id) async {
     final species = await _client.pokemonSpecies.get(id: id);
     return species;
+  }
+
+  @override
+  Future<Type> getType(String url) async {
+    final type = await _client.types.getByUrl(url);
+    return type;
   }
 }
