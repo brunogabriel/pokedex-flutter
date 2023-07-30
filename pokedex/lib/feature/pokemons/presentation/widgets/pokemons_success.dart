@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex_flutter/design/components/loading_page.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/constants/pokemons_strings.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/strings/pokemons_strings.dart';
@@ -16,7 +17,7 @@ class PokemonsSuccess extends StatefulWidget {
 
 class _PokemonsSuccessState extends State<PokemonsSuccess> {
   final _scrollController = ScrollController();
-  Color _textFieldColor = const Color(0xFFF2F2F2);
+  Color _textFieldColor = PokedexThemeData.greyLevelLight;
 
   @override
   void initState() {
@@ -50,9 +51,7 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
               const EdgeInsets.symmetric(horizontal: PokedexSpacing.kL),
           title: Text(
             PokemonStrings.title,
-            style: textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
           ),
         ),
       ),
@@ -67,11 +66,11 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
             children: [
               Text(
                 PokemonStrings.subtitle,
-                style: textTheme.bodyMedium,
+                style: textTheme.bodyMedium
+                    ?.copyWith(color: PokedexThemeData.textGrey),
               ),
               const SizedBox(height: PokedexSpacing.kL),
               TextField(
-                cursorColor: const Color(0xFFEA5D60),
                 textInputAction: TextInputAction.search,
                 decoration: InputDecoration(
                   filled: true,
@@ -111,12 +110,12 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
                 onSubmitted: (value) {},
                 onTap: () {
                   setState(() {
-                    _textFieldColor = const Color(0xFFE2E2E2);
+                    _textFieldColor = PokedexThemeData.greyLevelMedium;
                   });
                 },
                 onEditingComplete: () {
                   setState(() {
-                    _textFieldColor = const Color(0xFFF2F2F2);
+                    _textFieldColor = PokedexThemeData.greyLevelLight;
                   });
                 },
               ),

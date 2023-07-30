@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_flutter/design/components/stat_chart.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 
 class StatLine extends StatelessWidget {
   const StatLine({
@@ -27,15 +28,18 @@ class StatLine extends StatelessWidget {
         Expanded(
           flex: 2,
           child: Text(title,
-              style:
-                  textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold)),
+              style: textTheme.labelMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              )),
         ),
         Expanded(
-            child: Text(
-          value.toString(),
-          style: textTheme.labelLarge,
-          textAlign: TextAlign.center,
-        )),
+          child: Text(
+            value.toString(),
+            style: textTheme.labelLarge
+                ?.copyWith(color: PokedexThemeData.textGrey),
+            textAlign: TextAlign.center,
+          ),
+        ),
         Expanded(
             flex: 5,
             child: Center(
@@ -43,10 +47,14 @@ class StatLine extends StatelessWidget {
             )),
         Expanded(
             child: Text(minValue.toString(),
-                style: textTheme.labelLarge, textAlign: TextAlign.right)),
+                style: textTheme.labelLarge
+                    ?.copyWith(color: PokedexThemeData.textGrey),
+                textAlign: TextAlign.right)),
         Expanded(
           child: Text(maxValue.toString(),
-              style: textTheme.labelLarge, textAlign: TextAlign.right),
+              style: textTheme.labelLarge
+                  ?.copyWith(color: PokedexThemeData.textGrey),
+              textAlign: TextAlign.right),
         ),
       ],
     );

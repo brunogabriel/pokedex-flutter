@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_flutter/design/components/badge_type.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 
 // TODO: This component need to be refactored
 class AboutTile extends StatelessWidget {
@@ -69,10 +70,14 @@ class AboutTile extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(content ?? '', style: textTheme.bodyLarge),
+                Text(content ?? '',
+                    style: textTheme.bodyLarge
+                        ?.copyWith(color: PokedexThemeData.textGrey)),
                 if (subcontent != null) ...{
                   const SizedBox(width: PokedexSpacing.kXS),
-                  Text(subcontent ?? '', style: textTheme.bodySmall),
+                  Text(subcontent ?? '',
+                      style: textTheme.bodySmall
+                          ?.copyWith(color: PokedexThemeData.textGrey)),
                 }
               ],
             ),
@@ -87,7 +92,9 @@ class AboutTile extends StatelessWidget {
                       item.content,
                       style: item.small
                           ? textTheme.bodyLarge
-                          : textTheme.bodySmall,
+                              ?.copyWith(color: PokedexThemeData.textGrey)
+                          : textTheme.bodySmall
+                              ?.copyWith(color: PokedexThemeData.textGrey),
                     )),
               ],
             ),

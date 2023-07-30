@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/design/components/stat_line.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 import 'package:pokedex_flutter/feature/stats/domain/entities/stats_value_entity.dart';
 import 'package:pokedex_flutter/feature/stats/presentation/cubit/stats_cubit.dart';
 import 'package:pokedex_flutter/feature/stats/presentation/strings/stats_strings.dart';
@@ -81,7 +82,9 @@ class _StatsSuccessState extends State<StatsSuccess> {
           },
           _buildStatTotalRow(textTheme, stats.summation),
           const SizedBox(height: PokedexSpacing.kL),
-          Text(StatsStrings.description, style: textTheme.labelSmall),
+          Text(StatsStrings.description,
+              style: textTheme.labelSmall
+                  ?.copyWith(color: PokedexThemeData.textGrey)),
         ],
       ),
     );

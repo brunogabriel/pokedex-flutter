@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
 import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
@@ -56,7 +57,9 @@ class PokemonChart extends StatelessWidget {
             )
           ],
         ),
-        Text(number.pokenumber, style: textTheme.bodyMedium),
+        Text(number.pokenumber,
+            style: textTheme.bodyMedium
+                ?.copyWith(color: PokedexThemeData.textGrey)),
         Text(
           name,
           style: textTheme.titleMedium?.copyWith(

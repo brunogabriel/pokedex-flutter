@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 
 class EvolutionMethodChart extends StatelessWidget {
   const EvolutionMethodChart({
@@ -51,7 +52,8 @@ class EvolutionMethodChart extends StatelessWidget {
         ),
 
         // ).toList(),
-        Icon(Icons.arrow_forward, color: Colors.grey.withOpacity(0.5)),
+        Icon(Icons.arrow_forward,
+            color: PokedexThemeData.textGrey.withOpacity(0.1)),
         Text(
           title,
           style: textTheme.titleMedium?.copyWith(

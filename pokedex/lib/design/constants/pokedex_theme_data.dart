@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 
 abstract class PokedexThemeData {
-  static ThemeData get lightThemeData => ThemeData(
+  static ThemeData get pokedexTheme => ThemeData(
         useMaterial3: true,
         fontFamily: 'Poppins',
         colorScheme: _lightColorScheme,
       );
 
-  static ThemeData get darkThemeData => ThemeData(
-        useMaterial3: true,
-        fontFamily: 'Poppins',
-        colorScheme: _darkColorScheme,
-      );
-
   // Another colors
   static Color backgroundDetails = const Color(0xFF333333);
+  static Color textWhite = const Color(0xFFFFFFFF);
+  static Color textBlack = const Color(0xFF17171B);
+  static Color textGrey = const Color(0xFF747476);
+  static Color textNumber = const Color(0xFF17171B).withOpacity(0.6);
+
+  // Grey level
+  static Color greyLevelLight = const Color(0xFFF2F2F2);
+  static Color greyLevelMedium = const Color(0xFFE2E2E2);
 }
 
 const _lightColorScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFF6750A4),
+  primary: Color(0xFFEA5D60),
   onPrimary: Color(0xFFFFFFFF),
   primaryContainer: Color(0xFFEADDFF),
   onPrimaryContainer: Color(0xFF21005D),
@@ -48,39 +50,5 @@ const _lightColorScheme = ColorScheme(
   shadow: Color(0xFF000000),
   surfaceTint: Color(0xFF6750A4),
   outlineVariant: Color(0xFFCAC4D0),
-  scrim: Color(0xFF000000),
-);
-
-const _darkColorScheme = ColorScheme(
-  brightness: Brightness.dark,
-  primary: Color(0xFFD0BCFF),
-  onPrimary: Color(0xFF381E72),
-  primaryContainer: Color(0xFF4F378B),
-  onPrimaryContainer: Color(0xFFEADDFF),
-  secondary: Color(0xFFCCC2DC),
-  onSecondary: Color(0xFF332D41),
-  secondaryContainer: Color(0xFF4A4458),
-  onSecondaryContainer: Color(0xFFE8DEF8),
-  tertiary: Color(0xFFEFB8C8),
-  onTertiary: Color(0xFF492532),
-  tertiaryContainer: Color(0xFF633B48),
-  onTertiaryContainer: Color(0xFFFFD8E4),
-  error: Color(0xFFF2B8B5),
-  onError: Color(0xFF601410),
-  errorContainer: Color(0xFF8C1D18),
-  onErrorContainer: Color(0xFFF9DEDC),
-  outline: Color(0xFF938F99),
-  background: Color(0xFF1C1B1F),
-  onBackground: Color(0xFFE6E1E5),
-  surface: Color(0xFF1C1B1F),
-  onSurface: Color(0xFFE6E1E5),
-  surfaceVariant: Color(0xFF49454F),
-  onSurfaceVariant: Color(0xFFCAC4D0),
-  inverseSurface: Color(0xFFE6E1E5),
-  onInverseSurface: Color(0xFF313033),
-  inversePrimary: Color(0xFF6750A4),
-  shadow: Color(0xFF000000),
-  surfaceTint: Color(0xFFD0BCFF),
-  outlineVariant: Color(0xFF49454F),
   scrim: Color(0xFF000000),
 );
