@@ -7,9 +7,9 @@ class EvolutionInitialState extends EvolutionState {}
 class EvolutionLoadingState extends EvolutionState {}
 
 class EvolutionSuccessState extends EvolutionState {
-  EvolutionSuccessState(this.evolutions);
+  EvolutionSuccessState(this.evolution);
 
-  final List<ChainLink> evolutions;
+  final EvolutionEntity evolution;
 }
 
 class EvolutionFailureState extends EvolutionState {}

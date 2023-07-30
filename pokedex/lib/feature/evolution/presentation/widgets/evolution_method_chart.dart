@@ -53,7 +53,7 @@ class EvolutionMethodChart extends StatelessWidget {
 
         // ).toList(),
         Icon(Icons.arrow_forward,
-            color: PokedexThemeData.textGrey.withOpacity(0.1)),
+            color: PokedexThemeData.textGrey.withOpacity(0.5)),
         Text(
           title,
           style: textTheme.titleMedium?.copyWith(

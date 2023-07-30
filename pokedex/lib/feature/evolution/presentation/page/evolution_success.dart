@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/constants/evolution_strings.dart';
 import 'package:pokedex_flutter/feature/evolution/presentation/cubit/evolution_cubit.dart';
 import 'package:pokedex_flutter/feature/evolution/presentation/widgets/evolution_chain_chart.dart';
 import 'package:pokedex_flutter/shared/data/pair.dart';
 import 'package:pokedex_flutter/shared/extensions/list_extensions.dart';
+import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
 import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
 class EvolutionSuccess extends StatelessWidget {
@@ -13,21 +15,43 @@ class EvolutionSuccess extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final evolutions =
+    final evolution =
         (context.watch<EvolutionCubit>().state as EvolutionSuccessState)
-            .evolutions
-            .zipWithNext();
+            .evolution;
 
-    return ListView.separated(
+    final evolutions = evolution.evolutions.zipWithNext();
+
+    return SingleChildScrollView(
       padding: const EdgeInsets.only(
         left: PokedexSpacing.kXL,
         right: PokedexSpacing.kXL,
       ),
-      itemBuilder: (_, index) {
-        return _buildEvolutionLineChart(evolutions[index]);
-      },
-      separatorBuilder: (_, index) => const SizedBox(height: PokedexSpacing.kM),
-      itemCount: evolutions.length,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            EvolutionStrings.evolutionChart,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: evolution.pokemon.types.first.color.primary,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(height: PokedexSpacing.kL),
+          ListView.separated(
+            shrinkWrap: true,
+            padding: const EdgeInsets.only(
+              left: PokedexSpacing.kXL,
+              right: PokedexSpacing.kXL,
+            ),
+            itemBuilder: (_, index) {
+              return _buildEvolutionLineChart(evolutions[index]);
+            },
+            separatorBuilder: (_, index) =>
+                const SizedBox(height: PokedexSpacing.kM),
+            itemCount: evolutions.length,
+          ),
+        ],
+      ),
     );
   }
 

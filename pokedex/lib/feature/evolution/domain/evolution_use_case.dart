@@ -1,9 +1,10 @@
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/feature/evolution/data/evolution_repository.dart';
+import 'package:pokedex_flutter/feature/evolution/domain/entity/evolution_entity.dart';
 
 abstract class EvolutionUseCase {
-  Future<List<ChainLink>> getChainLink(int id);
+  Future<EvolutionEntity> getEvoluions(Pokemon pokemon);
 }
 
 @Injectable(as: EvolutionUseCase)
@@ -13,8 +14,8 @@ class EvolutionUseCaseImpl implements EvolutionUseCase {
   final EvolutionRepository _repository;
 
   @override
-  Future<List<ChainLink>> getChainLink(int id) async {
-    final evolutionChain = await _repository.getEvolutionChain(id);
+  Future<EvolutionEntity> getEvoluions(Pokemon pokemon) async {
+    final evolutionChain = await _repository.getEvolutionChain(pokemon.id);
     final chainLink = evolutionChain.chain;
 
     List<ChainLink> links = [chainLink];
@@ -25,6 +26,9 @@ class EvolutionUseCaseImpl implements EvolutionUseCase {
         links.add(element2);
       }
     }
-    return links;
+    return EvolutionEntity(
+      pokemon: pokemon,
+      evolutions: links,
+    );
   }
 }

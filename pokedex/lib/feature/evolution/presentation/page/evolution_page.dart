@@ -22,8 +22,8 @@ class _EvolutionPageState extends State<EvolutionPage>
   Widget build(BuildContext context) {
     super.build(context);
     return BlocProvider(
-      create: (context) => GetIt.I.get<EvolutionCubit>()
-        ..requestEvolutionChain(widget.pokemon.id),
+      create: (context) =>
+          GetIt.I.get<EvolutionCubit>()..requestEvolutionChain(widget.pokemon),
       child: BlocBuilder<EvolutionCubit, EvolutionState>(
         builder: (context, state) {
           if (state.runtimeType == EvolutionSuccessState) {
@@ -31,7 +31,7 @@ class _EvolutionPageState extends State<EvolutionPage>
           } else if (state.runtimeType == EvolutionFailureState) {
             return ErrorPage(
               onTap: () => context.read<EvolutionCubit>()
-                ..requestEvolutionChain(widget.pokemon.id),
+                ..requestEvolutionChain(widget.pokemon),
               textColor: widget.pokemon.types.first.color.primary,
             );
           }
