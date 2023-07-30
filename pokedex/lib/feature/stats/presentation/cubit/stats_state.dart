@@ -11,5 +11,5 @@ class StatsFailureState extends StatsState {}
 class StatsSuccessState extends StatsState {
   StatsSuccessState(this.data);
 
-  final StatsData data;
+  final StatsEntity data;
 }

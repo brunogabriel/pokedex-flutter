@@ -1,9 +1,8 @@
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/stats/data/models/stats_data.dart';
 
 abstract class StatsRepository {
-  Future<StatsData> getStats(Pokemon pokemon);
+  Future<PokemonSpecies> getPokemonSpecies(int id);
 }
 
 @Injectable(as: StatsRepository)
@@ -13,8 +12,8 @@ class StatsRepositoryImpl implements StatsRepository {
   final Pokedex _client;
 
   @override
-  Future<StatsData> getStats(Pokemon pokemon) async {
-    final species = await _client.pokemonSpecies.get(id: pokemon.id);
-    return StatsData(pokemon: pokemon, pokemonSpecies: species);
+  Future<PokemonSpecies> getPokemonSpecies(int id) async {
+    final species = await _client.pokemonSpecies.get(id: id);
+    return species;
   }
 }

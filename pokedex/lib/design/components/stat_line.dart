@@ -9,6 +9,7 @@ class StatLine extends StatelessWidget {
     required this.value,
     required this.minValue,
     required this.maxValue,
+    required this.totalValue,
   }) : super(key: key);
 
   final Color color;
@@ -16,6 +17,7 @@ class StatLine extends StatelessWidget {
   final int value;
   final int minValue;
   final int maxValue;
+  final int totalValue;
 
   @override
   Widget build(BuildContext context) {
@@ -24,38 +26,28 @@ class StatLine extends StatelessWidget {
       children: [
         Expanded(
           flex: 2,
-          child: Text(
-            title,
-            style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
-          ),
+          child: Text(title,
+              style:
+                  textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold)),
         ),
         Expanded(
             child: Text(
           value.toString(),
-          style: textTheme.bodyLarge,
+          style: textTheme.labelLarge,
           textAlign: TextAlign.center,
         )),
         Expanded(
-          flex: 5,
-          child: Center(
-            child: StatChart(
-              factor: value / minValue,
-              color: color,
-            ),
-          ),
+            flex: 5,
+            child: Center(
+              child: StatChart(factor: value / totalValue, color: color),
+            )),
+        Expanded(
+            child: Text(minValue.toString(),
+                style: textTheme.labelLarge, textAlign: TextAlign.right)),
+        Expanded(
+          child: Text(maxValue.toString(),
+              style: textTheme.labelLarge, textAlign: TextAlign.right),
         ),
-        Expanded(
-            child: Text(
-          minValue.toString(),
-          style: textTheme.bodyLarge,
-          textAlign: TextAlign.right,
-        )),
-        Expanded(
-            child: Text(
-          maxValue.toString(),
-          style: textTheme.bodyLarge,
-          textAlign: TextAlign.right,
-        )),
       ],
     );
   }
