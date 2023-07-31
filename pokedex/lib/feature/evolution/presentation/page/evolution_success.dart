@@ -40,9 +40,10 @@ class EvolutionSuccess extends StatelessWidget {
               return _buildEvolutionLineChart(evolutions[index]);
             },
             separatorBuilder: (_, index) =>
-                const SizedBox(height: PokedexSpacing.kM),
+                const SizedBox(height: PokedexSpacing.kXL),
             itemCount: evolutions.length,
           ),
+          const SizedBox(height: PokedexSpacing.kXXL)
         ],
       ),
     );
@@ -55,8 +56,9 @@ class EvolutionSuccess extends StatelessWidget {
       firstNumber: evolution.fromNumber,
       secondName: evolution.to,
       secondNumber: evolution.toNumber,
-      evolutionDescription: evolution.description,
+      evolutionDescription: evolution.cause,
       sprites: evolution.sprites,
+      details: evolution.details,
     );
   }
 }

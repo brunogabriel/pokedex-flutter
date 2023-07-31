@@ -10,6 +10,7 @@ class EvolutionChainChart extends StatelessWidget {
     required this.secondName,
     required this.secondNumber,
     required this.evolutionDescription,
+    required this.details,
     required this.sprites,
   }) : super(key: key);
 
@@ -18,6 +19,7 @@ class EvolutionChainChart extends StatelessWidget {
   final String secondName;
   final int secondNumber;
   final String evolutionDescription;
+  final String details;
   final List<String> sprites;
 
   @override
@@ -28,7 +30,7 @@ class EvolutionChainChart extends StatelessWidget {
         PokemonChart(name: firstName, number: firstNumber),
         EvolutionMethodChart(
           title: evolutionDescription,
-          // TODO: use subtitle,
+          subtitle: details,
           sprites: sprites,
         ),
         PokemonChart(name: secondName, number: secondNumber),

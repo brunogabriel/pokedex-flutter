@@ -16,7 +16,8 @@ class EvolutionDescriptionEntity {
     required this.fromNumber,
     required this.to,
     required this.toNumber,
-    required this.description,
+    required this.cause,
+    required this.details,
     required this.sprites,
   });
 
@@ -24,6 +25,7 @@ class EvolutionDescriptionEntity {
   final int fromNumber;
   final String to;
   final int toNumber;
-  final String description;
+  final String cause;
+  final String details;
   final List<String> sprites;
 }

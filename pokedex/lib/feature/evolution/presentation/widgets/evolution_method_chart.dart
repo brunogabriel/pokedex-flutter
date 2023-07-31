@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 
 class EvolutionMethodChart extends StatelessWidget {
@@ -50,8 +51,6 @@ class EvolutionMethodChart extends StatelessWidget {
             ],
           ),
         ),
-
-        // ).toList(),
         Icon(Icons.arrow_forward,
             color: PokedexThemeData.textGrey.withOpacity(0.5)),
         Text(
@@ -60,6 +59,14 @@ class EvolutionMethodChart extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        if (subtitle != null) ...{
+          Text(
+            subtitle ?? '',
+            textAlign: TextAlign.center,
+            style:
+                textTheme.bodySmall?.copyWith(color: PokedexThemeData.textGrey),
+          )
+        },
       ],
     );
   }

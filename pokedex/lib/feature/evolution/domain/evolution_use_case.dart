@@ -52,8 +52,9 @@ class EvolutionUseCaseImpl implements EvolutionUseCase {
       List<Pair<ChainLink, ChainLink>> evolutions) {
     return evolutions.map(
       (evol) {
-        List<String> causes = [];
+        List<String> subCauses = [];
         List<String> sprites = [];
+        String mainCause = '';
         try {
           final evolvesTo = evol.second;
           final String trigger;
@@ -64,19 +65,27 @@ class EvolutionUseCaseImpl implements EvolutionUseCase {
           }
 
           if (trigger == 'level-up') {
+            if (evolvesTo.evolutionDetails.first.minLevel != null) {
+              mainCause = 'Level ${evolvesTo.evolutionDetails.first.minLevel}';
+            } else {
+              mainCause = 'Level up';
+            }
             sprites.add(_toSprite('rare-candy'));
           } else if (trigger == 'use-item') {
-            sprites.add(_toSprite(evolvesTo.evolutionDetails.first.item?.name));
-            causes.add(evolvesTo.evolutionDetails.first.item?.name
+            mainCause = evolvesTo.evolutionDetails.first.item?.name
                     .capitalizeKebabCase() ??
-                '');
+                '';
+
+            sprites.add(_toSprite(evolvesTo.evolutionDetails.first.item?.name));
           } else if (trigger == 'other') {
-            causes.add('Other');
+            mainCause = 'Another';
           } else if (trigger == 'trade') {
-            causes.add('Trade');
+            mainCause = 'Trade';
+          } else {
+            mainCause = 'Unknown';
           }
 
-          _subCause(sprites, causes, evolvesTo);
+          _subCause(sprites, subCauses, evolvesTo);
         } catch (_) {}
 
         return EvolutionDescriptionEntity(
@@ -84,58 +93,68 @@ class EvolutionUseCaseImpl implements EvolutionUseCase {
           to: evol.second.species.name.capitalize(),
           fromNumber: evol.first.species.url.getNumberFromPokemonUrl(),
           toNumber: evol.second.species.url.getNumberFromPokemonUrl(),
-          description: causes.join('\n'),
+          cause: mainCause,
           sprites: sprites,
+          details: subCauses.join('\n'),
         );
       },
     ).toList();
   }
 
   void _subCause(
-      List<String> sprites, List<String> causes, ChainLink evolvesTo) {
-    if (evolvesTo.evolutionDetails.first.minLevel != null) {
-      causes.add('Level ${evolvesTo.evolutionDetails.first.minLevel}');
-    }
+      List<String> sprites, List<String> subcauses, ChainLink evolvesTo) {
+    // if (evolvesTo.evolutionDetails.first.minLevel != null) {
+    //   subcauses.add('Level ${evolvesTo.evolutionDetails.first.minLevel}');
+    // }
+
+    // if (evolvesTo.evolutionDetails.first.item != null) {
+    //   subcauses.add(
+    //       evolvesTo.evolutionDetails.first.item?.name.capitalizeKebabCase() ??
+    //           '');
+    // }
 
     if (evolvesTo.evolutionDetails.first.minHappiness != null) {
       sprites.add(_toSprite('soothe-bell'));
-
-      causes.add('Happiness ${evolvesTo.evolutionDetails.first.minHappiness}');
+      // TODO: while friendship is high
+      subcauses
+          .add('happiness ${evolvesTo.evolutionDetails.first.minHappiness}');
     }
 
     if (evolvesTo.evolutionDetails.first.minAffection != null) {
-      causes.add('Affection ${evolvesTo.evolutionDetails.first.minAffection}');
+      subcauses
+          .add('affection ${evolvesTo.evolutionDetails.first.minAffection}');
     }
 
     if (evolvesTo.evolutionDetails.first.minBeauty != null) {
-      causes.add('Beauty ${evolvesTo.evolutionDetails.first.minBeauty}');
+      subcauses.add('beauty ${evolvesTo.evolutionDetails.first.minBeauty}');
     }
 
     if (evolvesTo.evolutionDetails.first.knownMove != null) {
       sprites.add(_toSprite('tm-electric'));
-      causes.add(
-          'Knowing ${evolvesTo.evolutionDetails.first.knownMove?.name.capitalizeKebabCase()}');
+      subcauses.add(
+          'knowing ${evolvesTo.evolutionDetails.first.knownMove?.name.capitalizeKebabCase()}');
     }
 
     if (evolvesTo.evolutionDetails.first.location != null) {
       sprites.add(_toSprite('town-map'));
-      causes.add(
-          'In a ${evolvesTo.evolutionDetails.first.location?.name.capitalizeKebabCase()}');
+      subcauses.add(
+          'in a ${evolvesTo.evolutionDetails.first.location?.name.capitalizeKebabCase()}');
     }
 
     if (evolvesTo.evolutionDetails.first.timeOfDay.isNotEmpty) {
-      causes.add(evolvesTo.evolutionDetails.first.timeOfDay.capitalize());
+      subcauses.add(evolvesTo.evolutionDetails.first.timeOfDay.capitalize());
     }
 
     if (evolvesTo.evolutionDetails.first.gender != null) {
-      causes.add(evolvesTo.evolutionDetails.first.gender == 1
-          ? 'If female'
-          : 'If male');
+      subcauses.add(evolvesTo.evolutionDetails.first.gender == 1
+          ? 'if female'
+          : 'if male');
     }
 
     if (evolvesTo.evolutionDetails.first.heldItem != null) {
       sprites.add(_toSprite(evolvesTo.evolutionDetails.first.heldItem?.name));
-      causes.add('Holding ${evolvesTo.evolutionDetails.first.heldItem?.name}');
+      subcauses.add(
+          'holding ${evolvesTo.evolutionDetails.first.heldItem?.name.capitalizeKebabCase()}');
     }
   }
 
