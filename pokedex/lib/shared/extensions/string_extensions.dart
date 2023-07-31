@@ -19,7 +19,6 @@ extension StringExtensions on String {
 
   int getNumberFromPokemonUrl() {
     try {
-      // final regex = RegExp(r'^https://pokeapi.co/api/v2/pokemon/([0-9]+)/$');
       final regex = RegExp(r'^https://pokeapi.co/api/v2/.*?/([0-9]+)/$');
 
       final match = regex.firstMatch(this);
@@ -29,4 +28,9 @@ extension StringExtensions on String {
       return 0;
     }
   }
+}
+
+extension StringNullExtensions on String? {
+  String get itemThumbnail =>
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/$this.png';
 }

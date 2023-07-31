@@ -123,7 +123,9 @@ class AboutSuccess extends StatelessWidget {
 
       AboutTile(
         title: AboutStrings.eggGroups,
-        content: species.eggGroups.map((e) => e.name.capitalize()).join(', '),
+        content: species.eggGroups
+            .map((e) => e.name.capitalize().capitalizeKebabCase())
+            .join(', '),
       ),
 
       AboutTile.custom(
