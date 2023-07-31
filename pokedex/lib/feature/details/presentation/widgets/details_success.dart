@@ -13,7 +13,7 @@ class DetailsSuccess extends StatefulWidget {
   final Pokemon pokemon;
 
   @override
-  _DetailsSuccessState createState() => _DetailsSuccessState();
+  State<DetailsSuccess> createState() => _DetailsSuccessState();
 }
 
 class _DetailsSuccessState extends State<DetailsSuccess>

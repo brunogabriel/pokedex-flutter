@@ -5,7 +5,6 @@ import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/feature/evolution/data/evolution_repository.dart';
 import 'package:pokedex_flutter/feature/evolution/domain/entity/evolution_entity.dart';
 import 'package:pokedex_flutter/shared/data/pair.dart';
-import 'package:pokedex_flutter/shared/extensions/list_extensions.dart';
 import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
 abstract class EvolutionUseCase {
