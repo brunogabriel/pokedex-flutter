@@ -31,9 +31,9 @@ class _EvolutionPageState extends State<EvolutionPage>
             return const EvolutionSuccess();
           } else if (state.runtimeType == EvolutionFailureState) {
             return ErrorPage(
+              assetSize: 120,
               onTap: () => context.read<EvolutionCubit>()
                 ..requestEvolutionChain(widget.pokemon),
-              textColor: widget.pokemon.types.first.color.primary,
             );
           } else if (state.runtimeType == NoEvolutionState) {
             return const EvolutionEmptyState();

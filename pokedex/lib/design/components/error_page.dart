@@ -11,24 +11,35 @@ class ErrorPage extends StatelessWidget {
     Key? key,
     required this.onTap,
     this.textColor = Colors.black,
+    this.hideAsset = false,
+    this.assetSize = 200.0,
   }) : super(key: key);
 
   final VoidCallback? onTap;
   final Color textColor;
+  final bool hideAsset;
+  final double assetSize;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final information =
         Random().nextBool() ? _ErrorPage.snorlax() : _ErrorPage.magikarp();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: PokedexSpacing.kXL),
       child: Center(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            information.asset,
-            const SizedBox(height: PokedexSpacing.kM),
+            if (!hideAsset) ...{
+              SizedBox(
+                height: assetSize,
+                child: information.asset,
+              ),
+              const SizedBox(height: PokedexSpacing.kM),
+            },
             Text(
               information.title,
               textAlign: TextAlign.center,
@@ -70,8 +81,6 @@ class _ErrorPage {
         tryAgain: 'Use Rod',
         asset: Image.asset(
           'images/magikarp.png'.asset(),
-          height: 220,
-          fit: BoxFit.scaleDown,
         ),
       );
 
@@ -81,8 +90,6 @@ class _ErrorPage {
         tryAgain: 'Use Poké Flutter',
         asset: SvgPicture.asset(
           'images/snorlax_143.svg'.asset(),
-          height: 220,
-          fit: BoxFit.scaleDown,
         ),
       );
 

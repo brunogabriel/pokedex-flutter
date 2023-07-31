@@ -34,9 +34,9 @@ class _AboutPageState extends State<AboutPage>
             return const AboutSuccess();
           } else if (state.runtimeType == AboutFailureState) {
             return ErrorPage(
+              assetSize: 120,
               onTap: () =>
                   context.read<AboutCubit>()..requestData(widget.pokemon),
-              textColor: widget.pokemon.types.first.color.primary,
             );
           }
           return LoadingPage(color: widget.pokemon.types.first.color.primary);
