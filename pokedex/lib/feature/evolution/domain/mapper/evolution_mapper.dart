@@ -10,12 +10,6 @@ abstract class EvolutionMapper {
 
 @Injectable(as: EvolutionMapper)
 class EvolutionMapperImpl implements EvolutionMapper {
-  static const _levelUp = 'level-up';
-  static const _rareCandy = 'rare-candy';
-  static const _useItem = 'use-item';
-  static const _other = 'other';
-  static const _trade = 'trade';
-
   @override
   EvolutionDescriptionEntity toEntity(Pair<ChainLink, ChainLink> pair) {
     List<String> sprites = [];
@@ -33,33 +27,31 @@ class EvolutionMapperImpl implements EvolutionMapper {
       }
 
       switch (trigger) {
-        case _levelUp:
+        case 'level-up':
           if (evolvesTo.evolutionDetails.first.minLevel != null) {
             mainCause = 'Level ${evolvesTo.evolutionDetails.first.minLevel}';
           } else {
             mainCause = 'Level up with';
           }
-          sprites.add(_rareCandy.itemThumbnail);
+          sprites.add('rare-candy'.itemThumbnail);
           break;
-        case _useItem:
+        case 'use-item':
           mainCause = evolvesTo.evolutionDetails.first.item?.name
                   .capitalizeKebabCase() ??
               '';
           sprites.add((evolvesTo.evolutionDetails.first.item?.name ?? '')
               .itemThumbnail);
           break;
-        case _other:
+        case 'other':
           mainCause = 'Another';
           break;
-        case _trade:
+        case 'trade':
           mainCause = 'Trade';
           break;
-
         default:
           mainCause = 'Unknown';
           break;
       }
-
       _addSubcauses(evolvesTo, subcauses, sprites);
     } catch (_) {}
 
