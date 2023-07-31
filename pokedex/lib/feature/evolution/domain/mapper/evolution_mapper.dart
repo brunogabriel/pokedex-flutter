@@ -1,21 +1,29 @@
+import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/feature/evolution/domain/entity/evolution_entity.dart';
 import 'package:pokedex_flutter/shared/data/pair.dart';
 import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
-extension EvolutionMapper on Pair<ChainLink, ChainLink> {
+abstract class EvolutionMapper {
+  EvolutionDescriptionEntity toEntity(Pair<ChainLink, ChainLink> pair);
+}
+
+@Injectable(as: EvolutionMapper)
+class EvolutionMapperImpl implements EvolutionMapper {
   static const _levelUp = 'level-up';
   static const _rareCandy = 'rare-candy';
   static const _useItem = 'use-item';
   static const _other = 'other';
   static const _trade = 'trade';
 
-  EvolutionDescriptionEntity toEntity() {
+  @override
+  EvolutionDescriptionEntity toEntity(Pair<ChainLink, ChainLink> pair) {
     List<String> sprites = [];
     List<String> subcauses = [];
     String mainCause = '';
+
     try {
-      final evolvesTo = second;
+      final evolvesTo = pair.second;
       final String trigger;
 
       if (evolvesTo.evolutionDetails.isNotEmpty) {
@@ -56,10 +64,10 @@ extension EvolutionMapper on Pair<ChainLink, ChainLink> {
     } catch (_) {}
 
     return EvolutionDescriptionEntity(
-      from: first.species.name.capitalize(),
-      to: second.species.name.capitalize(),
-      fromNumber: first.species.url.getNumberFromPokemonUrl(),
-      toNumber: second.species.url.getNumberFromPokemonUrl(),
+      from: pair.first.species.name.capitalize(),
+      to: pair.second.species.name.capitalize(),
+      fromNumber: pair.first.species.url.getNumberFromPokemonUrl(),
+      toNumber: pair.second.species.url.getNumberFromPokemonUrl(),
       cause: mainCause,
       sprites: sprites,
       details: subcauses.join('\n'),

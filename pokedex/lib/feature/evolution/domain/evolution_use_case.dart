@@ -13,9 +13,13 @@ abstract class EvolutionUseCase {
 
 @Injectable(as: EvolutionUseCase)
 class EvolutionUseCaseImpl implements EvolutionUseCase {
-  EvolutionUseCaseImpl(this._repository);
+  EvolutionUseCaseImpl(
+    this._repository,
+    this._evolutionMapper,
+  );
 
   final EvolutionRepository _repository;
+  final EvolutionMapper _evolutionMapper;
 
   @override
   Future<EvolutionEntity> getEvoluions(Pokemon pokemon) async {
@@ -23,7 +27,7 @@ class EvolutionUseCaseImpl implements EvolutionUseCase {
     return EvolutionEntity(
       pokemon: pokemon,
       evolutions: _calculateBreadthFirstSearch(evolutionChain.chain)
-          .map((e) => e.toEntity())
+          .map((e) => _evolutionMapper.toEntity(e))
           .toList(),
     );
   }
