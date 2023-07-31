@@ -12,7 +12,7 @@ class PokemonsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocProvider(
         create: (providerContext) =>
-            GetIt.I.get<PokemonsBloc>()..add(PokemonsRequestEvent()),
+            GetIt.I.get<PokemonsBloc>()..add(const PokemonsRequestEvent()),
         child: Scaffold(
           body: SafeArea(
             child: BlocBuilder<PokemonsBloc, PokemonsState>(

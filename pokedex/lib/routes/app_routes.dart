@@ -20,7 +20,7 @@ abstract class AppRoutes {
               } catch (_) {
                 id = 1;
               }
-              return DetailsPage(id: 125);
+              return DetailsPage(id: id);
             },
           ),
         ],

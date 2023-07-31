@@ -2,7 +2,8 @@ import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
 
 abstract class PokemonRepository {
-  Future<List<Pokemon>> getPokemons(int limit, int offset);
+  Future<NamedAPIResourceList> getPokemonsResource(int limit, int offset);
+  Future<List<Pokemon>> getPokemons(List<String> urls);
 }
 
 @Injectable(as: PokemonRepository)
@@ -12,13 +13,19 @@ class PokemonRepositoryImpl implements PokemonRepository {
   final Pokedex _client;
 
   @override
-  Future<List<Pokemon>> getPokemons(int limit, int offset) async {
-    final resource = await _client.pokemon.getPage(limit: 100, offset: offset);
-
-    final pokemons = await Future.wait(resource.results
-        .map((resource) => resource.url)
-        .map((url) => _client.pokemon.getByUrl(url)));
+  Future<List<Pokemon>> getPokemons(List<String> urls) async {
+    final pokemons =
+        await Future.wait(urls.map((url) => _client.pokemon.getByUrl(url)));
 
     return pokemons;
+  }
+
+  @override
+  Future<NamedAPIResourceList> getPokemonsResource(
+      int limit, int offset) async {
+    final resources =
+        await _client.pokemon.getPage(limit: limit, offset: offset);
+
+    return resources;
   }
 }
