@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pokedex/pokedex.dart';
+import 'package:pokedex_flutter/design/components/error_page.dart';
+import 'package:pokedex_flutter/design/components/loading_page.dart';
 import 'package:pokedex_flutter/feature/stats/presentation/cubit/stats_cubit.dart';
 import 'package:pokedex_flutter/feature/stats/presentation/widgets/stats_success.dart';
+import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
 
 class StatsPage extends StatelessWidget {
   const StatsPage({
@@ -23,9 +26,11 @@ class StatsPage extends StatelessWidget {
             return StatsSuccess(
               pokemon: pokemon,
             );
+          } else if (state.runtimeType == StatsFailureState) {
+            return ErrorPage(
+                onTap: () => context.read<StatsCubit>().getStats(pokemon));
           }
-          // TODO: add another ones
-          return SizedBox.shrink();
+          return LoadingPage(color: pokemon.types.first.color.primary);
         },
       ),
     );

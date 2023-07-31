@@ -70,7 +70,7 @@ class _ErrorPage {
         tryAgain: 'Use Rod',
         asset: Image.asset(
           'images/magikarp.png'.asset(),
-          height: 250,
+          height: 220,
           fit: BoxFit.scaleDown,
         ),
       );
@@ -81,7 +81,7 @@ class _ErrorPage {
         tryAgain: 'Use Poké Flutter',
         asset: SvgPicture.asset(
           'images/snorlax_143.svg'.asset(),
-          height: 250,
+          height: 220,
           fit: BoxFit.scaleDown,
         ),
       );
