@@ -23,7 +23,6 @@ class PokemonsBloc extends Bloc<PokemonsEvent, PokemonsState> {
     Emitter<PokemonsState> emit,
   ) async {
     if (state.status == Status.finished &&
-        event.searchQuery == null &&
         state.status != Status.failure &&
         state.status != Status.loading) {
       return;
@@ -32,25 +31,14 @@ class PokemonsBloc extends Bloc<PokemonsEvent, PokemonsState> {
     emit(state.copyWith(status: Status.loading));
 
     try {
-      if (event.searchQuery != null) {
-        final pokemons =
-            await _useCase.fetchPokemons(event.limit, 0, event.searchQuery);
-        emit(
-          state.forceWith(
-            status: Status.finished,
-            result: pokemons,
-          ),
-        );
-      } else {
-        final pokemons = await _useCase.fetchPokemons(
-            event.limit, state.result.length, event.searchQuery);
-        emit(
-          state.copyWith(
-            status: pokemons.isNotEmpty ? Status.success : Status.finished,
-            result: pokemons,
-          ),
-        );
-      }
+      final pokemons =
+          await _useCase.fetchPokemons(event.limit, state.result.length);
+      emit(
+        state.copyWith(
+          status: pokemons.isNotEmpty ? Status.success : Status.finished,
+          result: pokemons,
+        ),
+      );
     } catch (error) {
       emit(state.copyWith(status: Status.failure));
     }

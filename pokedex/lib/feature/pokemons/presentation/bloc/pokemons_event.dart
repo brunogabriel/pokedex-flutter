@@ -10,12 +10,10 @@ abstract class PokemonsEvent extends Equatable {
 class PokemonsRequestEvent extends PokemonsEvent {
   const PokemonsRequestEvent({
     this.limit = 100,
-    this.searchQuery,
   });
 
   final int limit;
-  final String? searchQuery;
 
   @override
-  List<Object?> get props => [limit, searchQuery];
+  List<Object?> get props => [limit];
 }
