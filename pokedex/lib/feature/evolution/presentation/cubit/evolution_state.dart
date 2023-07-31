@@ -13,3 +13,9 @@ class EvolutionSuccessState extends EvolutionState {
 }
 
 class EvolutionFailureState extends EvolutionState {}
+
+class NoEvolutionState extends EvolutionState {
+  NoEvolutionState(this.pokemon);
+
+  Pokemon pokemon;
+}

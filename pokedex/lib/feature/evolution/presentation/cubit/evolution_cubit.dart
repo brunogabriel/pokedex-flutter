@@ -16,7 +16,11 @@ class EvolutionCubit extends Cubit<EvolutionState> {
     emit(EvolutionLoadingState());
     try {
       final evolutionChain = await _useCase.getEvoluions(pokemon);
-      emit(EvolutionSuccessState(evolutionChain));
+      if (evolutionChain.evolutions.isEmpty) {
+        emit(NoEvolutionState(pokemon));
+      } else {
+        emit(EvolutionSuccessState(evolutionChain));
+      }
     } catch (_) {
       emit(EvolutionFailureState());
     }

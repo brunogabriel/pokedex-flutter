@@ -5,6 +5,7 @@ import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/design/components/error_page.dart';
 import 'package:pokedex_flutter/design/components/loading_page.dart';
 import 'package:pokedex_flutter/feature/evolution/presentation/cubit/evolution_cubit.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/page/evolution_empty_state.dart';
 import 'package:pokedex_flutter/feature/evolution/presentation/page/evolution_success.dart';
 import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
 
@@ -34,6 +35,8 @@ class _EvolutionPageState extends State<EvolutionPage>
                 ..requestEvolutionChain(widget.pokemon),
               textColor: widget.pokemon.types.first.color.primary,
             );
+          } else if (state.runtimeType == NoEvolutionState) {
+            return const EvolutionEmptyState();
           }
           return LoadingPage(color: widget.pokemon.types.first.color.primary);
         },
