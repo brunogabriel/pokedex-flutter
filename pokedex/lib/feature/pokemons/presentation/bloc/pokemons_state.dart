@@ -11,11 +11,22 @@ class PokemonsState extends Equatable {
   PokemonsState copyWith({
     Status? status,
     List<Pokemon>? result,
-  }) =>
-      PokemonsState(
-        status: status ?? this.status,
-        result: this.result + (result ?? []),
-      );
+  }) {
+    return PokemonsState(
+      status: status ?? this.status,
+      result: this.result + (result ?? []),
+    );
+  }
+
+  PokemonsState forceWith({
+    Status? status,
+    List<Pokemon>? result,
+  }) {
+    return PokemonsState(
+      status: status ?? this.status,
+      result: result ?? [],
+    );
+  }
 
   final Status status;
   final List<Pokemon> result;

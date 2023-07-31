@@ -11,7 +11,7 @@ part 'pokemons_state.dart';
 @injectable
 class PokemonsBloc extends Bloc<PokemonsEvent, PokemonsState> {
   PokemonsBloc(this._useCase) : super(const PokemonsState()) {
-    on<PokemonsEvent>(_onRequestPokemons,
+    on<PokemonsRequestEvent>(_onRequestPokemons,
         transformer: throttleDroppable(
           const Duration(milliseconds: 100),
         ));
@@ -19,22 +19,38 @@ class PokemonsBloc extends Bloc<PokemonsEvent, PokemonsState> {
   final PokemonsUseCase _useCase;
 
   Future<void> _onRequestPokemons(
-    PokemonsEvent event,
+    PokemonsRequestEvent event,
     Emitter<PokemonsState> emit,
   ) async {
     if (state.status == Status.finished &&
+        event.searchQuery == null &&
         state.status != Status.failure &&
         state.status != Status.loading) {
       return;
     }
 
     emit(state.copyWith(status: Status.loading));
+
     try {
-      final pokemons = await _useCase.fetchPokemons(10, state.result.length);
-      emit(state.copyWith(
-        status: pokemons.isNotEmpty ? Status.success : Status.finished,
-        result: pokemons,
-      ));
+      if (event.searchQuery != null) {
+        final pokemons =
+            await _useCase.fetchPokemons(event.limit, 0, event.searchQuery);
+        emit(
+          state.forceWith(
+            status: Status.finished,
+            result: pokemons,
+          ),
+        );
+      } else {
+        final pokemons = await _useCase.fetchPokemons(
+            event.limit, state.result.length, event.searchQuery);
+        emit(
+          state.copyWith(
+            status: pokemons.isNotEmpty ? Status.success : Status.finished,
+            result: pokemons,
+          ),
+        );
+      }
     } catch (error) {
       emit(state.copyWith(status: Status.failure));
     }

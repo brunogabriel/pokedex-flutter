@@ -19,16 +19,15 @@ class PokemonsUseCaseImpl implements PokemonsUseCase {
         await _pokemonRepository.getPokemonsResource(limit, offset);
 
     final List<String> urls;
-    if (query != null && query.length > 2) {
+    if (query != null) {
       final filteredResources = resource.results
-          .where((element) => element.name.toLowerCase().contains(query))
+          .where((element) =>
+              element.name.toLowerCase().contains(query.toLowerCase()))
           .toList();
-
       urls = filteredResources.map((e) => e.url).toList();
     } else {
       urls = resource.results.map((e) => e.url).toList();
     }
-
     return _pokemonRepository.getPokemons(urls);
   }
 }
