@@ -7,6 +7,7 @@ import 'package:pokedex_flutter/design/constants/pokedex_type_color.dart';
 import 'package:pokedex_flutter/feature/about/presentation/cubit/about_cubit.dart';
 import 'package:pokedex_flutter/feature/about/presentation/widgets/about_strings.dart';
 import 'package:pokedex_flutter/feature/about/presentation/widgets/about_tile.dart';
+import 'package:pokedex_flutter/feature/about/presentation/widgets/about_weaknesses_list.dart';
 import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
 import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
 import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
@@ -34,14 +35,13 @@ class AboutSuccess extends StatelessWidget {
     final items = <Widget>[
       //  Title
       Text(
-        // species.flavorTextEntries.first.flavorText.replaceScapeChars(),
         species.flavorTextEntries
                 .firstWhereOrNull((element) => element.language.name == 'en')
                 ?.flavorText
                 .replaceScapeChars() ??
             '',
         style: textTheme.bodyLarge?.copyWith(color: PokedexThemeData.textGrey),
-      ), // species
+      ),
 
       // Pokedex Data
       Text(AboutStrings.pokedexData, style: sectionTheme),
@@ -51,7 +51,6 @@ class AboutSuccess extends StatelessWidget {
             .firstWhereOrNull((element) => element.language.name == 'en')
             ?.genus,
       ),
-
       AboutTile(
         title: AboutStrings.height,
         content: '${pokemon.height.meter.toStringAsFixed(1)}m',
@@ -61,7 +60,7 @@ class AboutSuccess extends StatelessWidget {
         title: AboutStrings.weight,
         content: '${pokemon.weight.kg.toStringAsFixed(1)}kg',
         subcontent: '(${pokemon.weight.lb.toStringAsFixed(1)} lbs)',
-      ), // TODO: converte
+      ),
       AboutTile.list(
         title: AboutStrings.abilities,
         items: pokemon.abilities
@@ -75,8 +74,10 @@ class AboutSuccess extends StatelessWidget {
             )
             .toList(),
       ),
-      AboutTile.weaknesses(
-          title: 'Weaknesses', weaknesses: about.weaknesses), // TODO:
+      AboutTile.custom(
+        title: 'Weaknesses',
+        custom: AboutWeaknessesList(weaknesses: about.weaknesses),
+      ),
       // Trainning
       Text(AboutStrings.trainning, style: sectionTheme),
       AboutTile(
@@ -92,7 +93,6 @@ class AboutSuccess extends StatelessWidget {
 
       // Trainning
       Text(AboutStrings.breeding, style: sectionTheme),
-      // TODO: Verify if gender is -1 if then make it empty
       AboutTile.custom(
         title: AboutStrings.gender,
         custom: RichText(

@@ -1,17 +1,13 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex_flutter/design/components/badge_type.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 
-// TODO: This component need to be refactored
 class AboutTile extends StatelessWidget {
   const AboutTile({
     super.key,
     required this.title,
     required this.content,
     this.items,
-    this.weaknesses,
     this.custom,
     this.subcontent,
   });
@@ -21,7 +17,6 @@ class AboutTile extends StatelessWidget {
     required this.title,
     required this.items,
     this.content,
-    this.weaknesses,
     this.custom,
     this.subcontent,
   });
@@ -29,7 +24,6 @@ class AboutTile extends StatelessWidget {
   const AboutTile.weaknesses({
     super.key,
     required this.title,
-    required this.weaknesses,
     this.content,
     this.items,
     this.custom,
@@ -41,7 +35,6 @@ class AboutTile extends StatelessWidget {
     required this.title,
     required this.custom,
     this.content,
-    this.weaknesses,
     this.items,
     this.subcontent,
   });
@@ -50,7 +43,6 @@ class AboutTile extends StatelessWidget {
   final String? content;
   final String? subcontent;
   final List<AboutTileItem>? items;
-  final List<String>? weaknesses;
   final Widget? custom;
 
   @override
@@ -97,45 +89,6 @@ class AboutTile extends StatelessWidget {
                               ?.copyWith(color: PokedexThemeData.textGrey),
                     )),
               ],
-            ),
-          )
-        } else if (weaknesses != null) ...{
-          Expanded(
-            flex: 2,
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final slices =
-                    (weaknesses ?? []).slices(constraints.maxWidth ~/ 28);
-
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ...slices
-                        .map(
-                          (types) => Padding(
-                            padding: const EdgeInsets.only(
-                                bottom: PokedexSpacing.kXS),
-                            child: Row(
-                              children: [
-                                ...types.map(
-                                  (type) => Padding(
-                                    padding: const EdgeInsets.only(
-                                      right: PokedexSpacing.kXS,
-                                    ),
-                                    child: BadgeType.circular(
-                                        type: type,
-                                        diameter: 24,
-                                        diameterPadding: 4),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        )
-                        .toList()
-                  ],
-                );
-              },
             ),
           )
         } else if (custom != null) ...{
