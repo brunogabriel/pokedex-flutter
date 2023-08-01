@@ -19,6 +19,8 @@ class StatsUseCaseImpl implements StatsUseCase {
   @override
   Future<StatsEntity> getStats(Pokemon pokemon) async {
     final pokemonSpecies = await _repository.getPokemonSpecies(pokemon.id);
+    final types = await _repository
+        .getTypes(pokemon.types.map((e) => e.type.url).toList());
 
     final entries = Map.fromEntries(
       pokemon.stats.map(
@@ -38,6 +40,7 @@ class StatsUseCaseImpl implements StatsUseCase {
     return StatsEntity(
       pokemon: pokemon,
       pokemonSpecies: pokemonSpecies,
+      types: types,
       statsMap: entries,
       minStat: entries.values.map((e) => e.minValue).maxOrNull ?? 0,
       summation: entries.values.map((e) => e.value).sum,

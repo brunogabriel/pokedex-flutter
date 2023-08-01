@@ -1,30 +1,85 @@
-import 'package:collection/collection.dart';
 import 'package:pokedex/pokedex.dart';
+import 'package:pokedex_flutter/shared/data/pair.dart';
 
 extension ListTypeExtensions on List<Type> {
-  List<String> get weaknesses {
-    final doubleDamageFrom = map((type) => type.damageRelations.doubleDamageFrom
-            .map((resource) => resource.name))
-        .expand((element) => element)
-        .toList();
+  List<Pair<String, double>> get damageFrom {
+    final damage = <String, double>{};
 
-    final halfDamageFrom = map((type) => type.damageRelations.halfDamageFrom
-            .map((resource) => resource.name))
-        .expand((element) => element)
-        .toList();
+    forEach((type) {
+      for (var it in type.damageRelations.noDamageFrom) {
+        if (damage.containsKey(it.name)) {
+          damage[it.name] = damage[it.name]! * 0.0;
+        } else {
+          damage[it.name] = 0.0;
+        }
+      }
 
-    final noDamageFrom = map((type) =>
-            type.damageRelations.noDamageFrom.map((resource) => resource.name))
-        .expand((element) => element)
-        .toList();
+      for (var it in type.damageRelations.halfDamageFrom) {
+        if (damage.containsKey(it.name)) {
+          damage[it.name] = damage[it.name]! * 0.5;
+        } else {
+          damage[it.name] = 0.5;
+        }
+      }
 
-    final weaknesses = doubleDamageFrom
-        .whereNot((element) => halfDamageFrom.contains(element))
-        .whereNot((element) => noDamageFrom.contains(element))
-        .toSet()
-        .sortedBy((element) => element)
-        .toList();
+      for (var it in type.damageRelations.doubleDamageFrom) {
+        if (damage.containsKey(it.name)) {
+          damage[it.name] = damage[it.name]! * 2.0;
+        } else {
+          damage[it.name] = 2.0;
+        }
+      }
+    });
 
-    return weaknesses;
+    // fill anothers with 0
+
+    return damage.entries.map((e) => Pair(e.key, e.value)).toList();
+  }
+
+  List<Pair<String, double>> get damageTo {
+    final damage = <String, double>{};
+
+    forEach((type) {
+      for (var it in type.damageRelations.noDamageTo) {
+        if (damage.containsKey(it.name)) {
+          damage[it.name] = damage[it.name]! * 0.0;
+        } else {
+          damage[it.name] = 0.0;
+        }
+      }
+
+      for (var it in type.damageRelations.halfDamageTo) {
+        if (damage.containsKey(it.name)) {
+          damage[it.name] = damage[it.name]! * 0.5;
+        } else {
+          damage[it.name] = 0.5;
+        }
+      }
+
+      for (var it in type.damageRelations.doubleDamageTo) {
+        if (damage.containsKey(it.name)) {
+          damage[it.name] = damage[it.name]! * 2.0;
+        } else {
+          damage[it.name] = 2.0;
+        }
+      }
+    });
+
+    return damage.entries.map((e) => Pair(e.key, e.value)).toList();
+  }
+
+  // TODO: All
+  List<Type> get xx {
+    final types = <Type>[];
+
+    // types.fold(<Type>{}, (previousValue, element) =>
+    //   element.damageRelations.
+    // )
+
+    // forEach((type) {
+
+    // });
+
+    return types;
   }
 }

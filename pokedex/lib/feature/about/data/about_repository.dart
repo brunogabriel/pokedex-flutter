@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/feature/about/data/models/about.dart';
@@ -20,10 +21,16 @@ class AboutRepositoryImpl implements AboutRepository {
         .map((e) => e.type.url)
         .map((e) => _client.types.getByUrl(e)));
 
+    final weaknesses = types.damageFrom
+        .where((element) => element.second > 1)
+        .map((e) => e.first)
+        .sortedBy((element) => element)
+        .toList();
+
     return About(
       pokemon: pokemon,
       pokemonSpecies: species,
-      weaknesses: types.weaknesses,
+      weaknesses: weaknesses,
     );
   }
 }

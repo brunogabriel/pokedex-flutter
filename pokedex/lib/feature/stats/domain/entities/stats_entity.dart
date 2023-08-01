@@ -5,13 +5,16 @@ class StatsEntity {
   StatsEntity({
     required this.pokemon,
     required this.pokemonSpecies,
+    required this.types,
     required this.statsMap,
     required this.minStat,
     required this.summation,
   });
 
-  final Pokemon pokemon;
+  final List<Type> types;
   final PokemonSpecies pokemonSpecies;
+  final Pokemon pokemon;
+
   final Map<String, StatsValueEntity?> statsMap;
   final int minStat;
   final int summation;

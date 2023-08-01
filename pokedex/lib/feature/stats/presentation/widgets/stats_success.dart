@@ -7,7 +7,9 @@ import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 import 'package:pokedex_flutter/feature/stats/domain/entities/stats_value_entity.dart';
 import 'package:pokedex_flutter/feature/stats/presentation/cubit/stats_cubit.dart';
 import 'package:pokedex_flutter/feature/stats/presentation/strings/stats_strings.dart';
+import 'package:pokedex_flutter/feature/stats/presentation/widgets/stats_types_list.dart';
 import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
+import 'package:pokedex_flutter/shared/extensions/type_extensions.dart';
 
 class StatsSuccess extends StatefulWidget {
   const StatsSuccess({
@@ -82,9 +84,21 @@ class _StatsSuccessState extends State<StatsSuccess> {
           },
           _buildStatTotalRow(textTheme, stats.summation),
           const SizedBox(height: PokedexSpacing.kL),
-          Text(StatsStrings.description,
-              style: textTheme.labelSmall
-                  ?.copyWith(color: PokedexThemeData.textGrey)),
+          Text(
+            StatsStrings.description,
+            style: textTheme.labelSmall
+                ?.copyWith(color: PokedexThemeData.textGrey),
+          ),
+          const SizedBox(height: PokedexSpacing.kL),
+          Text('Type defenses', style: sectionTheme),
+          const SizedBox(height: PokedexSpacing.kL),
+          Text(
+            'The effectiveness of each type on Bulbasaur.',
+            style: textTheme.bodyLarge?.copyWith(
+              color: PokedexThemeData.textGrey,
+            ),
+          ),
+          StatsTypesList(defenses: stats.types.damageFrom)
         ],
       ),
     );
