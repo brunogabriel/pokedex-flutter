@@ -84,8 +84,11 @@ class AboutSuccess extends StatelessWidget {
           title: AboutStrings.catchRate,
           content: species.captureRate.toString()),
       AboutTile(
-          title: AboutStrings.baseExp,
-          content: pokemon.baseExperience.toString()),
+        title: AboutStrings.baseExp,
+        content: pokemon.baseExperience != null
+            ? pokemon.baseExperience.toString()
+            : AboutStrings.unknown,
+      ),
       AboutTile(
         title: AboutStrings.growthRate,
         content: species.growthRate.name.capitalizeKebabCase(),
@@ -97,7 +100,7 @@ class AboutSuccess extends StatelessWidget {
       if (species.genderRate == -1) ...{
         const AboutTile(
           title: AboutStrings.gender,
-          content: AboutStrings.genderUnknown,
+          content: AboutStrings.unknown,
         )
       } else ...{
         AboutTile.custom(
