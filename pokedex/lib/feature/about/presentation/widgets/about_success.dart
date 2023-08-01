@@ -93,33 +93,41 @@ class AboutSuccess extends StatelessWidget {
 
       // Trainning
       Text(AboutStrings.breeding, style: sectionTheme),
-      AboutTile.custom(
-        title: AboutStrings.gender,
-        custom: RichText(
-          text: TextSpan(
-            style: textTheme.bodyLarge,
-            children: [
-              TextSpan(
-                  text: '♀ ',
+
+      if (species.genderRate == -1) ...{
+        const AboutTile(
+          title: AboutStrings.gender,
+          content: AboutStrings.genderUnknown,
+        )
+      } else ...{
+        AboutTile.custom(
+          title: AboutStrings.gender,
+          custom: RichText(
+            text: TextSpan(
+              style: textTheme.bodyLarge,
+              children: [
+                TextSpan(
+                    text: '♀ ',
+                    style: textTheme.bodyLarge
+                        ?.copyWith(color: PokedexTypeColor.psychic.primary)),
+                TextSpan(
+                    text: '${species.genderRate.femaleRate.toString()}%, ',
+                    style: textTheme.bodyLarge
+                        ?.copyWith(color: PokedexThemeData.textGrey)),
+                TextSpan(
+                  text: '♂ ',
                   style: textTheme.bodyLarge
-                      ?.copyWith(color: PokedexTypeColor.psychic.primary)),
-              TextSpan(
-                  text: '${species.genderRate.femaleRate.toString()}%, ',
-                  style: textTheme.bodyLarge
-                      ?.copyWith(color: PokedexThemeData.textGrey)),
-              TextSpan(
-                text: '♂ ',
-                style: textTheme.bodyLarge
-                    ?.copyWith(color: PokedexTypeColor.water.primary),
-              ),
-              TextSpan(
-                  text: '${species.genderRate.maleRate.toString()}%',
-                  style: textTheme.bodyLarge
-                      ?.copyWith(color: PokedexThemeData.textGrey)),
-            ],
+                      ?.copyWith(color: PokedexTypeColor.water.primary),
+                ),
+                TextSpan(
+                    text: '${species.genderRate.maleRate.toString()}%',
+                    style: textTheme.bodyLarge
+                        ?.copyWith(color: PokedexThemeData.textGrey)),
+              ],
+            ),
           ),
         ),
-      ),
+      },
 
       AboutTile(
         title: AboutStrings.eggGroups,

@@ -16,6 +16,7 @@ abstract class AboutStrings {
   // Breeding
   static const breeding = 'Breeding';
   static const gender = 'Gender';
+  static const genderUnknown = 'Gender unknown';
   static const eggGroups = 'Egg Groups';
   static const eggCycles = 'Egg Cycles';
 }
