@@ -19,7 +19,6 @@ enum PokedexTypeColor {
   rock(Color(0xFFBAAB82), Color(0xFFD4C294)),
   steel(Color(0xFF417D9A), Color(0xFF4C91B2)),
   water(Color(0xFF4A90DA), Color(0xFF58ABF6)),
-
   shadow(Color(0xFF5116A4), Color(0xFF855BBF)),
   unknown(Color(0xFF333D33), Color(0xFF707770));
 

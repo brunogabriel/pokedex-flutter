@@ -21,9 +21,9 @@ class AboutRepositoryImpl implements AboutRepository {
         .map((e) => e.type.url)
         .map((e) => _client.types.getByUrl(e)));
 
-    final weaknesses = types.damageFrom
-        .where((element) => element.second > 1)
-        .map((e) => e.first)
+    final weaknesses = types.damageFrom.entries
+        .where((element) => element.value > 1)
+        .map((e) => e.key)
         .sortedBy((element) => element)
         .toList();
 

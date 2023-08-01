@@ -9,7 +9,6 @@ import 'package:pokedex_flutter/feature/stats/presentation/cubit/stats_cubit.dar
 import 'package:pokedex_flutter/feature/stats/presentation/strings/stats_strings.dart';
 import 'package:pokedex_flutter/feature/stats/presentation/widgets/stats_types_list.dart';
 import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/type_extensions.dart';
 
 class StatsSuccess extends StatefulWidget {
   const StatsSuccess({
@@ -98,7 +97,7 @@ class _StatsSuccessState extends State<StatsSuccess> {
               color: PokedexThemeData.textGrey,
             ),
           ),
-          StatsTypesList(defenses: stats.types.damageFrom)
+          StatsTypesList(defenses: stats.damages)
         ],
       ),
     );
