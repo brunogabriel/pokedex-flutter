@@ -11,4 +11,7 @@ abstract class StatsStrings {
   static const total = 'Total';
   static const min = 'Min';
   static const max = 'Max';
+  static const typeEffectiveness = 'Type effectiveness';
+  static const typeEffectivenessOnType = 'The effectiveness of each type on';
+  static const immune = '* Immunte to';
 }

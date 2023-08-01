@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/pokedex.dart';
@@ -47,6 +48,8 @@ class _StatsSuccessState extends State<StatsSuccess> {
       color: primaryColor,
       fontWeight: FontWeight.bold,
     );
+    final multiplers = stats.multiplers.toList();
+    final hasImmune = multiplers.any((element) => element.second == 0.0);
 
     return SingleChildScrollView(
       padding: const EdgeInsets.only(
@@ -90,17 +93,25 @@ class _StatsSuccessState extends State<StatsSuccess> {
                 ?.copyWith(color: PokedexThemeData.textGrey),
           ),
           const SizedBox(height: PokedexSpacing.kL),
-          Text('Type effectiveness', style: sectionTheme),
-          const SizedBox(height: PokedexSpacing.kS),
+          Text(StatsStrings.typeEffectiveness, style: sectionTheme),
+          const SizedBox(height: PokedexSpacing.kM),
           Text(
-              'The effectiveness of each type on ${stats.pokemon.name.capitalize()}.',
+              '${StatsStrings.typeEffectivenessOnType} ${stats.pokemon.name.capitalize()}',
               style: textTheme.bodyLarge
                   ?.copyWith(color: PokedexThemeData.textGrey)),
           const SizedBox(height: PokedexSpacing.kM),
           StatsTypesList(
             defenses: stats.multiplers.toList(),
           ),
-          const SizedBox(height: PokedexSpacing.kXXL),
+          if (hasImmune) ...{
+            Text(
+              StatsStrings.immune,
+              style: textTheme.labelSmall
+                  ?.copyWith(color: PokedexThemeData.textGrey),
+            ),
+            const SizedBox(height: PokedexSpacing.kM),
+          },
+          const SizedBox(height: PokedexSpacing.kXL),
         ],
       ),
     );
