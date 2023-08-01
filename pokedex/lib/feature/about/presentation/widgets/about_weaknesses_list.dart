@@ -29,7 +29,10 @@ class AboutWeaknessesList extends StatelessWidget {
                               right: PokedexSpacing.kXS,
                             ),
                             child: BadgeType.circular(
-                                type: type, diameter: 24, diameterPadding: 4),
+                              type: type,
+                              diameter: 24,
+                              diameterPadding: 4,
+                            ),
                           ),
                         )
                       ],

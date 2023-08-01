@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex_flutter/design/components/badge_type.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/shared/data/pair.dart';
+import 'package:pokedex_flutter/shared/extensions/double_extensions.dart';
 
 class StatsTypesList extends StatelessWidget {
   const StatsTypesList({
@@ -38,7 +39,7 @@ class StatsTypesList extends StatelessWidget {
                                 diameter: 24,
                                 diameterPadding: 4,
                               ),
-                              Text(type.second.toString()),
+                              Text(type.second.toDexFractional()),
                             ],
                           ),
                         ),

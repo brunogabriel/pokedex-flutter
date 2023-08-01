@@ -9,6 +9,7 @@ import 'package:pokedex_flutter/feature/stats/presentation/cubit/stats_cubit.dar
 import 'package:pokedex_flutter/feature/stats/presentation/strings/stats_strings.dart';
 import 'package:pokedex_flutter/feature/stats/presentation/widgets/stats_types_list.dart';
 import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
+import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
 class StatsSuccess extends StatefulWidget {
   const StatsSuccess({
@@ -89,15 +90,17 @@ class _StatsSuccessState extends State<StatsSuccess> {
                 ?.copyWith(color: PokedexThemeData.textGrey),
           ),
           const SizedBox(height: PokedexSpacing.kL),
-          Text('Type defenses', style: sectionTheme),
-          const SizedBox(height: PokedexSpacing.kL),
+          Text('Type effectiveness', style: sectionTheme),
+          const SizedBox(height: PokedexSpacing.kS),
           Text(
-            'The effectiveness of each type on Bulbasaur.',
-            style: textTheme.bodyLarge?.copyWith(
-              color: PokedexThemeData.textGrey,
-            ),
+              'The effectiveness of each type on ${stats.pokemon.name.capitalize()}.',
+              style: textTheme.bodyLarge
+                  ?.copyWith(color: PokedexThemeData.textGrey)),
+          const SizedBox(height: PokedexSpacing.kM),
+          StatsTypesList(
+            defenses: stats.multiplers.toList(),
           ),
-          StatsTypesList(defenses: stats.damages)
+          const SizedBox(height: PokedexSpacing.kXXL),
         ],
       ),
     );

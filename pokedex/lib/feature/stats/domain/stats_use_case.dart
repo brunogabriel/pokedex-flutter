@@ -40,15 +40,12 @@ class StatsUseCaseImpl implements StatsUseCase {
       ),
     );
 
-    // final damages = types.damageFrom;
+    final damage = types.damageFrom;
 
-    final damages = types.damageFrom;
-
-    for (var element in allTypes) {
-      if (!damages.containsKey(element)) {
-        damages[element] = 0.0;
-      }
-    }
+    damage.addAll(allTypes
+        .whereNot((element) => damage.containsKey(element))
+        .fold(<String, double>{},
+            (previousValue, element) => previousValue..[element] = 1.0));
 
     return StatsEntity(
       pokemon: pokemon,
@@ -56,7 +53,11 @@ class StatsUseCaseImpl implements StatsUseCase {
       statsMap: entries,
       minStat: entries.values.map((e) => e.minValue).maxOrNull ?? 0,
       summation: entries.values.map((e) => e.value).sum,
-      damages: damages.entries.map((e) => Pair(e.key, e.value)).toList(),
+      multiplers: damage.entries
+          .sorted((a, b) => a.value.compareTo(b.value))
+          .whereNot((element) => ['unknown', 'shadow'].contains(element.key))
+          .map((e) => Pair(e.key, e.value))
+          .toList(),
     );
   }
 }

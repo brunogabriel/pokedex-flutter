@@ -1,5 +1,4 @@
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/shared/data/pair.dart';
 
 extension ListTypeExtensions on List<Type> {
   Map<String, double> get damageFrom {
@@ -34,7 +33,7 @@ extension ListTypeExtensions on List<Type> {
     return damage;
   }
 
-  List<Pair<String, double>> get damageTo {
+  Map<String, double> get damageTo {
     final damage = <String, double>{};
 
     forEach((type) {
@@ -63,6 +62,6 @@ extension ListTypeExtensions on List<Type> {
       }
     });
 
-    return damage.entries.map((e) => Pair(e.key, e.value)).toList();
+    return damage;
   }
 }
