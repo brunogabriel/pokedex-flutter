@@ -1,21 +1,20 @@
 import 'package:collection/collection.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/about/data/models/about.dart';
+import 'package:pokedex_flutter/feature/about/domain/entity/about_entity.dart';
 import 'package:pokedex_flutter/shared/extensions/type_extensions.dart';
 
-abstract class AboutRepository {
-  Future<About> getAbout(Pokemon pokemon);
+abstract class AboutUseCase {
+  Future<AboutEntity> getAbout(Pokemon pokemon);
 }
 
-@Injectable(as: AboutRepository)
-class AboutRepositoryImpl implements AboutRepository {
-  AboutRepositoryImpl(this._client);
+@Injectable(as: AboutUseCase)
+class AboutUseCaseImpl implements AboutUseCase {
+  AboutUseCaseImpl(this._client);
 
   final Pokedex _client;
-
   @override
-  Future<About> getAbout(Pokemon pokemon) async {
+  Future<AboutEntity> getAbout(Pokemon pokemon) async {
     final species = await _client.pokemonSpecies.get(id: pokemon.id);
     final types = await Future.wait(pokemon.types
         .map((e) => e.type.url)
@@ -27,7 +26,7 @@ class AboutRepositoryImpl implements AboutRepository {
         .sortedBy((element) => element)
         .toList();
 
-    return About(
+    return AboutEntity(
       pokemon: pokemon,
       pokemonSpecies: species,
       weaknesses: weaknesses,

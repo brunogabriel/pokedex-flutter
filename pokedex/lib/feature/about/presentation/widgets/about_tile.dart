@@ -21,15 +21,6 @@ class AboutTile extends StatelessWidget {
     this.subcontent,
   });
 
-  const AboutTile.weaknesses({
-    super.key,
-    required this.title,
-    this.content,
-    this.items,
-    this.custom,
-    this.subcontent,
-  });
-
   const AboutTile.custom({
     super.key,
     required this.title,

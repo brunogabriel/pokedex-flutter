@@ -9,7 +9,7 @@ class AboutLoadingState extends AboutState {}
 class AboutSuccessState extends AboutState {
   AboutSuccessState(this.about);
 
-  final About about;
+  final AboutEntity about;
 }
 
 class AboutFailureState extends AboutState {}

@@ -12,7 +12,7 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:pokedex/pokedex.dart' as _i4;
-import 'package:pokedex_flutter/feature/about/data/about_repository.dart'
+import 'package:pokedex_flutter/feature/about/domain/about_use_case.dart'
     as _i8;
 import 'package:pokedex_flutter/feature/about/presentation/cubit/about_cubit.dart'
     as _i14;
@@ -62,8 +62,7 @@ _i1.GetIt init(
       () => _i6.StatsRepositoryImpl(gh<_i4.Pokedex>()));
   gh.factory<_i7.StatsUseCase>(
       () => _i7.StatsUseCaseImpl(gh<_i6.StatsRepository>()));
-  gh.factory<_i8.AboutRepository>(
-      () => _i8.AboutRepositoryImpl(gh<_i4.Pokedex>()));
+  gh.factory<_i8.AboutUseCase>(() => _i8.AboutUseCaseImpl(gh<_i4.Pokedex>()));
   gh.factory<_i9.DetailsRepository>(
       () => _i9.DetailsRepositoryImpl(gh<_i4.Pokedex>()));
   gh.factory<_i10.EvolutionRepository>(
@@ -75,7 +74,7 @@ _i1.GetIt init(
   gh.factory<_i12.PokemonsBloc>(
       () => _i12.PokemonsBloc(gh<_i5.PokemonsUseCase>()));
   gh.factory<_i13.StatsCubit>(() => _i13.StatsCubit(gh<_i7.StatsUseCase>()));
-  gh.factory<_i14.AboutCubit>(() => _i14.AboutCubit(gh<_i8.AboutRepository>()));
+  gh.factory<_i14.AboutCubit>(() => _i14.AboutCubit(gh<_i8.AboutUseCase>()));
   gh.factory<_i15.DetailsCubit>(
       () => _i15.DetailsCubit(gh<_i9.DetailsRepository>()));
   gh.factory<_i16.EvolutionCubit>(

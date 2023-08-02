@@ -1,7 +1,7 @@
 import 'package:pokedex/pokedex.dart';
 
-class About {
-  About({
+class AboutEntity {
+  AboutEntity({
     required this.pokemon,
     required this.pokemonSpecies,
     required this.weaknesses,
