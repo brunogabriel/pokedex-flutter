@@ -14,8 +14,6 @@ class DetailsCubit extends Cubit<DetailsState> {
   void requestPokemon(int id) async {
     emit(DetailsLoadingState());
     try {
-      // Animation duration
-      await Future.delayed(const Duration(milliseconds: 750));
       final pokemon = await _useCase.getPokemon(id);
       emit(DetailsSuccessState(pokemon));
     } catch (_) {
