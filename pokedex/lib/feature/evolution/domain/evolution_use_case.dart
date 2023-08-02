@@ -2,7 +2,6 @@ import 'dart:collection';
 
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/evolution/data/evolution_repository.dart';
 import 'package:pokedex_flutter/feature/evolution/domain/entity/evolution_entity.dart';
 import 'package:pokedex_flutter/feature/evolution/domain/mapper/evolution_mapper.dart';
 import 'package:pokedex_flutter/shared/data/pair.dart';
@@ -14,16 +13,16 @@ abstract class EvolutionUseCase {
 @Injectable(as: EvolutionUseCase)
 class EvolutionUseCaseImpl implements EvolutionUseCase {
   EvolutionUseCaseImpl(
-    this._repository,
+    this._pokedex,
     this._evolutionMapper,
   );
 
-  final EvolutionRepository _repository;
+  final Pokedex _pokedex;
   final EvolutionMapper _evolutionMapper;
 
   @override
   Future<EvolutionEntity> getEvoluions(Pokemon pokemon) async {
-    final evolutionChain = await _repository.getEvolutionChain(pokemon.id);
+    final evolutionChain = await _pokedex.evolutionChains.get(pokemon.id);
     return EvolutionEntity(
       pokemon: pokemon,
       evolutions: _calculateBreadthFirstSearch(evolutionChain.chain)
