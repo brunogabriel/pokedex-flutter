@@ -20,14 +20,12 @@ class _StatChartState extends State<StatChart> {
   @override
   void initState() {
     super.initState();
-    _animate();
-  }
-
-  void _animate() async {
-    await Future.delayed(const Duration(milliseconds: 200));
-    setState(() {
-      _animated = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _animated = true;
+      });
     });
+    // _animate();
   }
 
   @override

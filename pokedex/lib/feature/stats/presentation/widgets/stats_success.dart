@@ -27,11 +27,6 @@ class _StatsSuccessState extends State<StatsSuccess> {
   final _scrollController = ScrollController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void dispose() {
     _scrollController.dispose();
     super.dispose();

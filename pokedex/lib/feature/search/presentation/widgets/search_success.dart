@@ -14,18 +14,15 @@ class _SearchSuccessState extends State<SearchSuccess> {
   @override
   void initState() {
     super.initState();
-    _showSearch();
-  }
-
-  void _showSearch() async {
-    final resources =
-        (context.read<SearchCubit>().state as SearchSuccessState).result;
-    await Future.delayed(const Duration(milliseconds: 100));
-
-    showSearch(
-      context: context,
-      delegate: SearchPokemonDelegate(resources),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final resources =
+          (context.read<SearchCubit>().state as SearchSuccessState).result;
+      showSearch(
+        context: context,
+        delegate: SearchPokemonDelegate(resources),
+      );
+    });
+    // _showSearch();
   }
 
   @override
