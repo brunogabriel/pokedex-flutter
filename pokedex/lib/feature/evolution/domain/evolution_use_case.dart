@@ -22,7 +22,9 @@ class EvolutionUseCaseImpl implements EvolutionUseCase {
 
   @override
   Future<EvolutionEntity> getEvoluions(Pokemon pokemon) async {
-    final evolutionChain = await _pokedex.evolutionChains.get(pokemon.id);
+    final species = await _pokedex.pokemonSpecies.get(id: pokemon.id);
+    final evolutionChain = await _pokedex.evolutionChains
+        .getByUrl(species.evolutionChain?.url ?? '');
     return EvolutionEntity(
       pokemon: pokemon,
       evolutions: _calculateBreadthFirstSearch(evolutionChain.chain)

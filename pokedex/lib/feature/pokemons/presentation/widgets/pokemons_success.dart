@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokedex_flutter/design/components/loading_page.dart';
+import 'package:pokedex_flutter/design/components/search_text_field.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 import 'package:pokedex_flutter/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
@@ -70,6 +72,16 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
                   PokemonStrings.subtitle,
                   style: textTheme.bodyMedium
                       ?.copyWith(color: PokedexThemeData.textGrey),
+                ),
+                InkWell(
+                  onTap: () {
+                    context.pushNamed('search');
+                  },
+                  // TODO: Recreate this one
+                  child: SearchTextField(
+                    enabledComponent: false,
+                    hint: 'What Pokémon are you looking for?',
+                  ),
                 ),
               ],
             ),
