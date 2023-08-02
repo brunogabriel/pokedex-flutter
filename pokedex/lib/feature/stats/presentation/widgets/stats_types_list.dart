@@ -20,45 +20,47 @@ class StatsTypesList extends StatelessWidget {
         .textTheme
         .bodyLarge
         ?.copyWith(color: PokedexThemeData.textGrey);
-    return LayoutBuilder(builder: (context, constraints) {
-      final slices = (defenses).slices(constraints.maxWidth ~/ 40);
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ...slices
-              .map(
-                (types) => Padding(
-                  padding: const EdgeInsets.only(bottom: PokedexSpacing.kM),
-                  child: Row(
-                    children: [
-                      ...types.map(
-                        (type) => Padding(
-                          padding: const EdgeInsets.only(
-                            right: PokedexSpacing.kS,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final slices = (defenses).slices(constraints.maxWidth ~/ 40);
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ...slices
+                .map(
+                  (types) => Padding(
+                    padding: const EdgeInsets.only(bottom: PokedexSpacing.kM),
+                    child: Row(
+                      children: [
+                        ...types.map(
+                          (type) => Padding(
+                            padding: const EdgeInsets.only(
+                              right: PokedexSpacing.kS,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                BadgeType.circular(
+                                  type: type.first,
+                                  diameter: 34,
+                                  diameterPadding: 6,
+                                ),
+                                Text(
+                                  type.second.toEffectivenessFactor(),
+                                  style: textTheme,
+                                ),
+                              ],
+                            ),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              BadgeType.circular(
-                                type: type.first,
-                                diameter: 34,
-                                diameterPadding: 6,
-                              ),
-                              Text(
-                                type.second.toEffectivenessFactor(),
-                                style: textTheme,
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              )
-              .toList()
-        ],
-      );
-    });
+                )
+                .toList()
+          ],
+        );
+      },
+    );
   }
 }
