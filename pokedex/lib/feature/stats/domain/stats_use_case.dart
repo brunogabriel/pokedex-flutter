@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/stats/data/stats_repository.dart';
 import 'package:pokedex_flutter/feature/stats/domain/entities/stats_entity.dart';
 import 'package:pokedex_flutter/feature/stats/domain/entities/stats_value_entity.dart';
 import 'package:pokedex_flutter/shared/data/pair.dart';
@@ -14,17 +13,19 @@ abstract class StatsUseCase {
 
 @Injectable(as: StatsUseCase)
 class StatsUseCaseImpl implements StatsUseCase {
-  StatsUseCaseImpl(this._repository);
+  StatsUseCaseImpl(this._pokedex);
 
-  final StatsRepository _repository;
+  final Pokedex _pokedex;
 
   @override
   Future<StatsEntity> getStats(Pokemon pokemon) async {
-    final pokemonSpecies = await _repository.getPokemonSpecies(pokemon.id);
-    final allTypes = await _repository.getTypesNames();
-    final types = await _repository
-        .getTypes(pokemon.types.map((e) => e.type.url).toList());
-
+    final pokemonSpecies = await _pokedex.pokemonSpecies.get(id: pokemon.id);
+    final typesResources = await _pokedex.types.getAll();
+    final allTypes = typesResources.results.map((e) => e.name);
+    final types = await Future.wait(pokemon.types
+        .map((e) => e.type.url)
+        .map((url) => _pokedex.types.getByUrl(url)));
+    final damage = types.damageFrom;
     final entries = Map.fromEntries(
       pokemon.stats.map(
         (e) => MapEntry(
@@ -39,8 +40,6 @@ class StatsUseCaseImpl implements StatsUseCase {
         ),
       ),
     );
-
-    final damage = types.damageFrom;
 
     damage.addAll(allTypes
         .whereNot((element) => damage.containsKey(element))

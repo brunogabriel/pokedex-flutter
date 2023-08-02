@@ -58,8 +58,7 @@ _i1.GetIt init(
       () => _i5.PokemonsUseCaseImpl(gh<_i4.Pokedex>()));
   gh.factory<_i6.StatsRepository>(
       () => _i6.StatsRepositoryImpl(gh<_i4.Pokedex>()));
-  gh.factory<_i7.StatsUseCase>(
-      () => _i7.StatsUseCaseImpl(gh<_i6.StatsRepository>()));
+  gh.factory<_i7.StatsUseCase>(() => _i7.StatsUseCaseImpl(gh<_i4.Pokedex>()));
   gh.factory<_i8.AboutUseCase>(() => _i8.AboutUseCaseImpl(gh<_i4.Pokedex>()));
   gh.factory<_i9.DetailsUseCase>(
       () => _i9.DetailsUseCaseImpl(gh<_i4.Pokedex>()));
