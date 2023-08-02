@@ -27,10 +27,10 @@ class StatLine extends StatelessWidget {
       children: [
         Expanded(
           flex: 2,
-          child: Text(title,
-              style: textTheme.labelMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              )),
+          child: Text(
+            title,
+            style: textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold),
+          ),
         ),
         Expanded(
           child: Text(
@@ -41,15 +41,17 @@ class StatLine extends StatelessWidget {
           ),
         ),
         Expanded(
-            flex: 5,
-            child: Center(
-              child: StatChart(factor: value / totalValue, color: color),
-            )),
+          flex: 5,
+          child: Center(
+            child: StatChart(factor: value / totalValue, color: color),
+          ),
+        ),
         Expanded(
-            child: Text(minValue.toString(),
-                style: textTheme.labelLarge
-                    ?.copyWith(color: PokedexThemeData.textGrey),
-                textAlign: TextAlign.right)),
+          child: Text(minValue.toString(),
+              style: textTheme.labelLarge
+                  ?.copyWith(color: PokedexThemeData.textGrey),
+              textAlign: TextAlign.right),
+        ),
         Expanded(
           child: Text(maxValue.toString(),
               style: textTheme.labelLarge

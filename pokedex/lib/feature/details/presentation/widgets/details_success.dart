@@ -53,47 +53,52 @@ class _DetailsSuccessState extends State<DetailsSuccess>
           height: PokedexSpacing.kM,
         ),
         Expanded(
-          child: LayoutBuilder(builder: (context, constraints) {
-            return Opacity(
-              opacity: _opacity,
-              child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(PokedexSpacing.kL),
-                    topRight: Radius.circular(PokedexSpacing.kL),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Opacity(
+                opacity: _opacity,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(PokedexSpacing.kL),
+                      topRight: Radius.circular(PokedexSpacing.kL),
+                    ),
+                    color: Colors.white,
                   ),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: PokedexSpacing.kXL),
-                  child: TabBarView(
-                    controller: _tabController,
-                    children: [
-                      AboutPage(pokemon: widget.pokemon),
-                      StatsPage(pokemon: widget.pokemon),
-                      EvolutionPage(pokemon: widget.pokemon),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: PokedexSpacing.kXL),
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [
+                        AboutPage(pokemon: widget.pokemon),
+                        StatsPage(pokemon: widget.pokemon),
+                        EvolutionPage(pokemon: widget.pokemon),
+                      ],
+                    ),
                   ),
-                ),
-              )
-                  .animate(
-                      onComplete: (controller) => setState(() {
-                            _opacity = 1.0;
-                          }))
-                  .moveY(
-                    begin: 0,
-                    end: constraints.maxHeight,
-                    duration: Duration.zero,
-                  )
-                  .animate()
-                  .moveY(
-                    delay: const Duration(milliseconds: 200),
-                    begin: 0,
-                    end: -constraints.maxHeight,
-                    duration: const Duration(milliseconds: 500),
-                  ),
-            );
-          }),
+                )
+                    .animate(
+                      onComplete: (controller) => setState(
+                        () {
+                          _opacity = 1.0;
+                        },
+                      ),
+                    )
+                    .moveY(
+                      begin: 0,
+                      end: constraints.maxHeight,
+                      duration: Duration.zero,
+                    )
+                    .animate()
+                    .moveY(
+                      delay: const Duration(milliseconds: 200),
+                      begin: 0,
+                      end: -constraints.maxHeight,
+                      duration: const Duration(milliseconds: 500),
+                    ),
+              );
+            },
+          ),
         )
       ],
     );

@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_type_color.dart';
+import 'package:pokedex_flutter/feature/about/presentation/constants/about_strings.dart';
 import 'package:pokedex_flutter/feature/about/presentation/cubit/about_cubit.dart';
-import 'package:pokedex_flutter/feature/about/presentation/widgets/about_strings.dart';
 import 'package:pokedex_flutter/feature/about/presentation/widgets/about_tile.dart';
 import 'package:pokedex_flutter/feature/about/presentation/widgets/about_weaknesses_list.dart';
 import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
@@ -33,7 +33,7 @@ class AboutSuccess extends StatelessWidget {
     );
 
     final items = <Widget>[
-      //  Title
+      // Title
       Text(
         species.flavorTextEntries
                 .firstWhereOrNull((element) => element.language.name == 'en')
@@ -42,7 +42,6 @@ class AboutSuccess extends StatelessWidget {
             '',
         style: textTheme.bodyLarge?.copyWith(color: PokedexThemeData.textGrey),
       ),
-
       // Pokedex Data
       Text(AboutStrings.pokedexData, style: sectionTheme),
       AboutTile(
@@ -142,26 +141,28 @@ class AboutSuccess extends StatelessWidget {
       AboutTile.custom(
         title: AboutStrings.eggCycles,
         custom: RichText(
-          text: TextSpan(children: [
-            if (species.hatchCounter != null) ...{
-              TextSpan(
-                text: '${species.hatchCounter ?? 0} ',
-                style: textTheme.bodyLarge
-                    ?.copyWith(color: PokedexThemeData.textGrey),
-              ),
-              TextSpan(
-                text:
-                    '(${(species.hatchCounter ?? 0) * 244} - ${(species.hatchCounter ?? 0) * 257} steps)',
-                style: textTheme.bodySmall
-                    ?.copyWith(color: PokedexThemeData.textGrey),
-              )
-            } else ...{
-              TextSpan(
-                  text: '-',
+          text: TextSpan(
+            children: [
+              if (species.hatchCounter != null) ...{
+                TextSpan(
+                  text: '${species.hatchCounter ?? 0} ',
                   style: textTheme.bodyLarge
-                      ?.copyWith(color: PokedexThemeData.textGrey))
-            }
-          ]),
+                      ?.copyWith(color: PokedexThemeData.textGrey),
+                ),
+                TextSpan(
+                  text:
+                      '(${(species.hatchCounter ?? 0) * 244} - ${(species.hatchCounter ?? 0) * 257} steps)',
+                  style: textTheme.bodySmall
+                      ?.copyWith(color: PokedexThemeData.textGrey),
+                )
+              } else ...{
+                TextSpan(
+                    text: '-',
+                    style: textTheme.bodyLarge
+                        ?.copyWith(color: PokedexThemeData.textGrey))
+              }
+            ],
+          ),
         ),
       )
     ];

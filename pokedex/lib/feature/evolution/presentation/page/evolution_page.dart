@@ -5,8 +5,8 @@ import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/design/components/error_page.dart';
 import 'package:pokedex_flutter/design/components/loading_page.dart';
 import 'package:pokedex_flutter/feature/evolution/presentation/cubit/evolution_cubit.dart';
-import 'package:pokedex_flutter/feature/evolution/presentation/page/evolution_empty_state.dart';
-import 'package:pokedex_flutter/feature/evolution/presentation/page/evolution_success.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/widgets/evolution_empty_state.dart';
+import 'package:pokedex_flutter/feature/evolution/presentation/widgets/evolution_success.dart';
 import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
 
 class EvolutionPage extends StatefulWidget {

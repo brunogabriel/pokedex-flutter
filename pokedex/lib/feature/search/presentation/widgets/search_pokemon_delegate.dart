@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pokedex/pokedex.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
 import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
+import 'package:pokedex_flutter/feature/search/presentation/constants/search_strings.dart';
 import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
 import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
@@ -11,7 +12,7 @@ class SearchPokemonDelegate extends SearchDelegate<String> {
   SearchPokemonDelegate(
     this.resources,
   ) : super(
-          searchFieldLabel: 'What a Pokémon are you looking for?',
+          searchFieldLabel: SearchStrings.title,
           searchFieldStyle: TextStyle(
             color: PokedexThemeData.textBlack,
             fontWeight: FontWeight.normal,
@@ -55,14 +56,14 @@ class SearchPokemonDelegate extends SearchDelegate<String> {
     if (result.isNotEmpty) {
       context.pushReplacementNamed(
         'details',
-        pathParameters: {'id': getNumber(result).toString()},
+        pathParameters: {'id': _getNumber(result).toString()},
       );
     } else {
       super.close(context, result);
     }
   }
 
-  int getNumber(String result) {
+  int _getNumber(String result) {
     return resources
         .firstWhere((element) => element.name == result)
         .url

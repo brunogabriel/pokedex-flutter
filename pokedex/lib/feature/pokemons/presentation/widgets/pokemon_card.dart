@@ -24,12 +24,10 @@ class PokemonCard extends StatelessWidget {
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
       splashColor: Colors.transparent,
-      onTap: () {
-        context.pushNamed(
-          'details',
-          pathParameters: {'id': pokemon.id.toString()},
-        );
-      },
+      onTap: () => context.pushNamed(
+        'details',
+        pathParameters: {'id': pokemon.id.toString()},
+      ),
       child: SizedBox(
         height: 160,
         child: Stack(
@@ -60,7 +58,6 @@ class PokemonCard extends StatelessWidget {
                       child: Image.asset(
                         'images/pokeball.png'.asset(),
                         color: Colors.white,
-                        // color: Colors.white.withOpacity(0.1),
                       ),
                     )
                   ],

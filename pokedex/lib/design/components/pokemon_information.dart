@@ -30,9 +30,7 @@ class PokemonInformation extends StatelessWidget {
                 pokemon.id.pokenumber,
                 style: textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black.withOpacity(
-                    0.75,
-                  ),
+                  color: Colors.black.withOpacity(0.75),
                 ),
               ),
               const SizedBox(height: PokedexSpacing.kXS),
