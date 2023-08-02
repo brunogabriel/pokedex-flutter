@@ -8,9 +8,18 @@ import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
 import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
 class SearchPokemonDelegate extends SearchDelegate<String> {
-  SearchPokemonDelegate(this.resources);
+  SearchPokemonDelegate(
+    this.resources,
+  ) : super(
+          searchFieldLabel: 'What a Pokémon are you looking for?',
+          searchFieldStyle: TextStyle(
+            color: PokedexThemeData.textBlack,
+            fontWeight: FontWeight.normal,
+          ),
+        );
 
   final List<NamedAPIResource> resources;
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -28,7 +37,11 @@ class SearchPokemonDelegate extends SearchDelegate<String> {
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-      onPressed: () {},
+      onPressed: () {
+        query = '';
+        close(context, '');
+        context.pop();
+      },
       icon: AnimatedIcon(
           icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
     );

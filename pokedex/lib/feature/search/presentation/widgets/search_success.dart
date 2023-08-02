@@ -19,7 +19,9 @@ class _SearchSuccessState extends State<SearchSuccess> {
           (context.read<SearchCubit>().state as SearchSuccessState).result;
       showSearch(
         context: context,
-        delegate: SearchPokemonDelegate(resources),
+        delegate: SearchPokemonDelegate(
+          resources,
+        ),
       );
     });
     // _showSearch();
