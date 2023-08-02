@@ -1,13 +1,13 @@
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
 
-abstract class DetailsRepository {
+abstract class DetailsUseCase {
   Future<Pokemon> getPokemon(int id);
 }
 
-@Injectable(as: DetailsRepository)
-class DetailsRepositoryImpl implements DetailsRepository {
-  DetailsRepositoryImpl(this._client);
+@Injectable(as: DetailsUseCase)
+class DetailsUseCaseImpl implements DetailsUseCase {
+  DetailsUseCaseImpl(this._client);
 
   final Pokedex _client;
 
