@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/pokemons/data/pokemons_repository.dart';
 
 abstract class PokemonsUseCase {
   Future<List<Pokemon>> fetchPokemons(int limit, int offset);
@@ -8,17 +7,20 @@ abstract class PokemonsUseCase {
 
 @Injectable(as: PokemonsUseCase)
 class PokemonsUseCaseImpl implements PokemonsUseCase {
-  PokemonsUseCaseImpl(this._pokemonRepository);
+  PokemonsUseCaseImpl(this._pokedex);
 
-  final PokemonRepository _pokemonRepository;
+  final Pokedex _pokedex;
 
   @override
   Future<List<Pokemon>> fetchPokemons(int limit, int offset) async {
-    final resource =
-        await _pokemonRepository.getPokemonsResource(limit, offset);
+    final resourcePage = await _pokedex.pokemon.getPage(
+      limit: limit,
+      offset: offset,
+    );
 
-    final pokemons = await _pokemonRepository
-        .getPokemons(resource.results.map((e) => e.url).toList());
+    final pokemons = await Future.wait(
+      resourcePage.results.map((e) => _pokedex.pokemon.getByUrl(e.url)),
+    );
 
     return pokemons;
   }
