@@ -1,4 +1,5 @@
 extension IntExtensions on int {
+  // Thumbnails URLs
   String get thumbnailUrl {
     final stringNumber = toString();
     if (this < 905) {
@@ -7,17 +8,20 @@ extension IntExtensions on int {
     return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$stringNumber.png';
   }
 
+  // Number
   String get pokenumber => '#${toString().padLeft(4, '0')}';
 
+  // Gender
   double get femaleRate => (this / 8.0) * 100.0;
   double get maleRate => 100.0 - femaleRate;
 
+  // Weight
   double get kg => this / 10.0;
   double get lb => (this / 10.0) * 2.20462;
+
+  // Measurement
   double get meter => this / 10.0;
-
   int get cm => this * 10;
-
   String cmToFeedAndInches() {
     double inches = this * 0.393701;
     int feet = (inches / 12).floor();
@@ -26,12 +30,10 @@ extension IntExtensions on int {
     return feetAndInches;
   }
 
+  // Status
   int get minHp => _calculateHp(this, 0, 0);
-
   int get maxHp => _calculateHp(this, 252, 31);
-
   int get minStatus => _calculateStatus(this, 0, 0, 100, 0.9);
-
   int get maxStatus => _calculateStatus(this, 252, 31, 100, 1.1);
 
   int _calculateHp(int base, int ev, int iv, [int level = 100]) {

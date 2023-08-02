@@ -31,29 +31,31 @@ class CircularMatrix extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ...List.generate(rows, (columns) => columns)
-              .map((e) => Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ...List.generate(columns, (index) => index)
-                          .map(
-                            (e) => Padding(
-                              padding: EdgeInsets.only(
-                                right: spaceBetween,
-                                bottom: spaceBetween,
-                              ),
-                              child: Container(
-                                width: size,
-                                height: size,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(size),
-                                ),
+              .map(
+                (e) => Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ...List.generate(columns, (index) => index)
+                        .map(
+                          (e) => Padding(
+                            padding: EdgeInsets.only(
+                              right: spaceBetween,
+                              bottom: spaceBetween,
+                            ),
+                            child: Container(
+                              width: size,
+                              height: size,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(size),
                               ),
                             ),
-                          )
-                          .toList()
-                    ],
-                  ))
+                          ),
+                        )
+                        .toList()
+                  ],
+                ),
+              )
               .toList()
         ],
       ),

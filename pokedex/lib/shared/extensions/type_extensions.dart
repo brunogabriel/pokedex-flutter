@@ -32,36 +32,4 @@ extension ListTypeExtensions on List<Type> {
 
     return damage;
   }
-
-  Map<String, double> get damageTo {
-    final damage = <String, double>{};
-
-    forEach((type) {
-      for (var it in type.damageRelations.noDamageTo) {
-        if (damage.containsKey(it.name)) {
-          damage[it.name] = damage[it.name]! * 0.0;
-        } else {
-          damage[it.name] = 0.0;
-        }
-      }
-
-      for (var it in type.damageRelations.halfDamageTo) {
-        if (damage.containsKey(it.name)) {
-          damage[it.name] = damage[it.name]! * 0.5;
-        } else {
-          damage[it.name] = 0.5;
-        }
-      }
-
-      for (var it in type.damageRelations.doubleDamageTo) {
-        if (damage.containsKey(it.name)) {
-          damage[it.name] = damage[it.name]! * 2.0;
-        } else {
-          damage[it.name] = 2.0;
-        }
-      }
-    });
-
-    return damage;
-  }
 }

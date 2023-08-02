@@ -48,7 +48,7 @@ class _StatChartState extends State<StatChart> {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
