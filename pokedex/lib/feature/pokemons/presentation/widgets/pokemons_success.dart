@@ -73,16 +73,36 @@ class _PokemonsSuccessState extends State<PokemonsSuccess> {
                   style: textTheme.bodyMedium
                       ?.copyWith(color: PokedexThemeData.textGrey),
                 ),
+                const SizedBox(height: PokedexSpacing.kM),
                 InkWell(
-                  onTap: () {
-                    context.pushNamed('search');
-                  },
-                  // TODO: Recreate this one
-                  child: SearchTextField(
-                    enabledComponent: false,
-                    hint: 'What Pokémon are you looking for?',
+                  customBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(PokedexSpacing.kS),
+                  ),
+                  onTap: () => context.pushNamed('search'),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(PokedexSpacing.kS),
+                      color: PokedexThemeData.greyLevelLight,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: PokedexSpacing.kL,
+                          vertical: PokedexSpacing.kM),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.search),
+                          const SizedBox(width: PokedexSpacing.kXS),
+                          Text(
+                            PokemonStrings.whatAreYouLookingFor,
+                            style: textTheme.bodyMedium
+                                ?.copyWith(color: PokedexThemeData.textGrey),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
+                const SizedBox(height: PokedexSpacing.kS),
               ],
             ),
           ),

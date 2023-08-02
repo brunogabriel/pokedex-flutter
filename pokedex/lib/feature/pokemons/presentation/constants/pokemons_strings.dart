@@ -8,4 +8,6 @@ abstract class PokemonStrings {
       "Don't worry, our Pokémon are just taking a little break. Please try again later!";
 
   static const String tryAgain = 'Retry Catching Pokémon';
+  static const String whatAreYouLookingFor =
+      'What Pokémon are you looking for?';
 }
