@@ -2,6 +2,25 @@
 
 Welcome to the GitHub Pokédex project! This comprehensive Pokédex allows you to explore and discover information about your favorite Pokémon from all generations.
 
+## Showcase
+
+<p>
+  <img src="showcase/screen1.png" width=200>
+  <img src="showcase/screen2.png" width=200>
+  <img src="showcase/screen3.png" width=200>
+</p>
+
+<p>
+  <img src="showcase/screen4.png" width=200>
+  <img src="showcase/screen5.png" width=200>
+  <img src="showcase/screen6.png" width=200>
+</p>
+
+<p>
+  <img src="showcase/screen7.png" width=200>
+</p>
+
+
 ## Features
 
 - **Pagination**: Browse through a vast collection of Pokémon with smooth and seamless pagination.
