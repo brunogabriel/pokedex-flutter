@@ -29,13 +29,13 @@ class PokemonCard extends StatelessWidget {
         pathParameters: {'id': pokemon.id.toString()},
       ),
       child: SizedBox(
-        height: 160,
+        height: 140,
         child: Stack(
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Container(
-                height: 140,
+                height: 120,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(PokedexSpacing.kM),
                   color: pokemon.types.first.color.secundary,
@@ -69,8 +69,8 @@ class PokemonCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(right: PokedexSpacing.kM),
                 child: SizedBox(
-                  width: 140,
-                  height: 140,
+                  width: 120,
+                  height: 120,
                   child: CachedNetworkImage(
                     imageUrl: pokemon.id.thumbnailUrl,
                   ),

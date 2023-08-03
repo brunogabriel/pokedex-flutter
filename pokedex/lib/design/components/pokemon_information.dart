@@ -36,6 +36,7 @@ class PokemonInformation extends StatelessWidget {
               const SizedBox(height: PokedexSpacing.kXS),
               Text(
                 pokemon.name.capitalize(),
+                overflow: TextOverflow.ellipsis,
                 style: textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,

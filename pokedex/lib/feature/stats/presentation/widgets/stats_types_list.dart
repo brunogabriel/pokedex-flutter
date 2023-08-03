@@ -22,7 +22,7 @@ class StatsTypesList extends StatelessWidget {
         ?.copyWith(color: PokedexThemeData.textGrey);
     return LayoutBuilder(
       builder: (context, constraints) {
-        final slices = (defenses).slices(constraints.maxWidth ~/ 40);
+        final slices = (defenses).slices(constraints.maxWidth ~/ 46);
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

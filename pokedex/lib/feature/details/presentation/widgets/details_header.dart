@@ -19,13 +19,13 @@ class DetailsHeader extends StatelessWidget {
       padding: const EdgeInsets.only(
           left: PokedexSpacing.kL, right: PokedexSpacing.kL),
       child: SizedBox(
-        height: 160,
+        height: 120,
         child: Stack(
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 20.0, left: 20.0),
               child: SizedBox(
-                height: 140,
+                height: 100,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,8 +55,8 @@ class DetailsHeader extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(right: PokedexSpacing.kM),
                 child: SizedBox(
-                  width: 140,
-                  height: 140,
+                  width: 100,
+                  height: 100,
                   child: CachedNetworkImage(
                     imageUrl: pokemon.id.thumbnailUrl,
                   ),
@@ -65,8 +65,7 @@ class DetailsHeader extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                top: 20.0,
-                left: 160.0 + PokedexSpacing.kM,
+                left: 120.0,
               ),
               child: PokemonInformation(pokemon: pokemon),
             ),
