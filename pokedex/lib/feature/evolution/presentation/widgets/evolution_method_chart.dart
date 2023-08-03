@@ -62,8 +62,8 @@ class EvolutionMethodChart extends StatelessWidget {
           Text(
             subtitle ?? '',
             textAlign: TextAlign.center,
-            style:
-                textTheme.bodySmall?.copyWith(color: PokedexThemeData.textGrey),
+            style: textTheme.labelSmall
+                ?.copyWith(color: PokedexThemeData.textGrey),
           )
         },
       ],

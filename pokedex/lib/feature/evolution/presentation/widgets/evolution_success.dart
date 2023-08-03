@@ -35,6 +35,7 @@ class EvolutionSuccess extends StatelessWidget {
           ),
           const SizedBox(height: PokedexSpacing.kL),
           ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemBuilder: (_, index) {
               return _buildEvolutionLineChart(evolutions[index]);
