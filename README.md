@@ -63,10 +63,6 @@ Some used libraries:
 
 - [Pokedex](https://pub.dev/packages/pokedex): Pokeapi wrapper.
 
-## Contribution
-
-We welcome contributions from the Pokémon community to make this Pokédex even better! If you'd like to contribute, please check out our [GitHub repository](https://github.com/your-username/pokedex-project) for more details.
-
 ## Credits
 
 If I accidentally missed someone, sincerely apologize.
