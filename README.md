@@ -1,5 +1,7 @@
 # GitHub Pokédex Project
 
+> Note: I recommend to run this project in mobile platforms: Android and iOS.
+
 Welcome to the GitHub Pokédex project! This comprehensive Pokédex allows you to explore and discover information about your favorite Pokémon from all generations.
 
 ## Showcase
