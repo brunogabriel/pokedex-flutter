@@ -17,11 +17,14 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: "stable"
+      
+      - name: Install lcov
+        run: sudo apt-get install -y lcov
 
       - name: Install dependencies
         run: flutter pub get
         working-directory: pokedex
-        
+    
       - name: Run tests
         run: |
           flutter test --coverage --reporter github
