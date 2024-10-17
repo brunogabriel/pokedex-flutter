@@ -23,7 +23,15 @@ jobs:
         working-directory: pokedex
         
       - name: Run tests
-        run: flutter test --coverage --reporter github
+        run: |
+          flutter test --coverage --reporter github
+          # Ensure coverage for all files
+          lcov --list coverage/lcov.info # To verify before editing lcov
+          if [ -f coverage/lcov.info ]; then
+            lcov --add-tracefile coverage/lcov.info --output-file coverage/lcov.info
+            lcov --remove coverage/lcov.info 'test/*' --output-file coverage/lcov.info
+            lcov --list coverage/lcov.info # To see the changes
+          fi
         working-directory: pokedex
 
       - name: Upload coverage reports to Codecov
