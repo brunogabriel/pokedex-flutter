@@ -20,3 +20,5 @@ analyzer:
   exclude:
     - lib/**/*.g.dart
     - lib/**/*.config.dart
+  enable-experiment:
+    - macros
