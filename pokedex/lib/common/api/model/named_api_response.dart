@@ -1,8 +1,8 @@
 import 'package:json/json.dart';
 
 @JsonCodable()
-class PokemonListResponse {
-  PokemonListResponse({
+class NamedApiResponse {
+  NamedApiResponse({
     required this.name,
     required this.url,
   });
