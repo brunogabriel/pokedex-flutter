@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/common/api/model/named_api_response.dart';
-import 'package:pokedex/pokemon_list/domain/boundary/pokemon_list_repository.dart';
-import 'package:pokedex/pokemon_list/domain/model/pokemon.dart';
-import 'package:pokedex/pokemon_list/domain/model/pokemon_page_data.dart';
+
+import '../../../common/api/model/named_api_response.dart';
+import '../domain/boundary/pokemon_list_repository.dart';
+import '../domain/model/pokemon.dart';
+import '../domain/model/pokemon_page_data.dart';
 
 class PokemonListRepositoryImpl implements PokemonListRepository {
   PokemonListRepositoryImpl({

@@ -1,4 +1,4 @@
-import 'package:pokedex/pokemon_list/domain/model/pokemon.dart';
+import 'pokemon.dart';
 
 class PokemonPageData {
   PokemonPageData({
