@@ -30,9 +30,8 @@ jobs:
           flutter test --coverage
           lcov --list coverage/lcov.info
           if [ -f coverage/lcov.info ]; then
-            lcov --add-tracefile coverage/lcov.info --output-file coverage/lcov.info
-            lcov --remove coverage/lcov.info 'test/*' --output-file coverage/lcov.info
-            lcov --list coverage/lcov.info # To see the changes
+            find lib -name '*.dart' | xargs -I {} lcov --add-tracefile coverage/lcov.info --output-file coverage/lcov.info
+            lcov --remove coverage/lcov.info 'lib/generated/*' --output-file coverage/lcov.info
           fi
         working-directory: pokedex
 
