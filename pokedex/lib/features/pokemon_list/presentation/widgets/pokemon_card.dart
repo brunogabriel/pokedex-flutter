@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/widgets/pokemon_information.dart';
+import 'package:pokedex/design/components/pokemon_information.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard({super.key});

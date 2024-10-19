@@ -35,3 +35,14 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/fonts/
+  fonts:
+  - family: Poppins
+    fonts:
+    - asset: assets/fonts/Poppins-Regular.ttf
+    - asset: assets/fonts/Poppins-Bold.ttf
+      weight: 600
+    - asset: assets/fonts/Poppins-Thin.ttf
+      weight: 100
