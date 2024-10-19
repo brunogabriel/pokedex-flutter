@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/common/events/events_transformations.dart';
-import './../domain/boundary/pokemon_list_repository.dart';
-import './../domain/model/pokemon.dart';
+import '../../domain/boundary/pokemon_list_repository.dart';
+import '../../domain/model/pokemon.dart';
 part 'pokemon_list_event.dart';
 part 'pokemon_list_state.dart';
 
