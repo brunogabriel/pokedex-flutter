@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import '../../../../design/components/pokemon_information.dart';
+import '../../domain/model/pokemon.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard({
     super.key,
-    required this.name,
+    required this.pokemon,
   });
 
-  final String name;
+  final Pokemon pokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,9 @@ class PokemonCard extends StatelessWidget {
         child: Stack(
           children: [
             PokemonInformation(
-              name: name,
+              name: pokemon.name,
+              number: pokemon.number.toString(),
+              types: pokemon.types,
             ),
           ],
         ),

@@ -57,7 +57,7 @@ class _PokemonSuccessState extends State<PokemonSuccess> {
             itemBuilder: (context, index) {
               final pokemon = state.result[index];
               return PokemonCard(
-                name: pokemon.name,
+                pokemon: pokemon,
               );
             },
             itemCount: state.result.length,

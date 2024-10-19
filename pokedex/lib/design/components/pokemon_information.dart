@@ -5,9 +5,13 @@ class PokemonInformation extends StatelessWidget {
   const PokemonInformation({
     super.key,
     required this.name,
+    required this.number,
+    required this.types,
   });
 
   final String name;
+  final String number;
+  final List<String> types;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +25,14 @@ class PokemonInformation extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('# 6'),
+              Text('# $number'),
               const SizedBox(height: 10.0),
               Text(name),
             ],
           ),
-          const Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Text('Anytype')],
-          )
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [Text(types.join(' '))])
         ],
       ),
     );
