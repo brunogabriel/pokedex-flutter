@@ -16,7 +16,7 @@ class PokemonListRepositoryImpl implements PokemonListRepository {
 
   @override
   Future<PokemonPageData> getPokemons({int limit = 100, int offset = 0}) async {
-    final response = await dio.get('pokemon', data: {
+    final response = await dio.get('pokemon', queryParameters: {
       'limit': limit,
       'offset': offset,
     });

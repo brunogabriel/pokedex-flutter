@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pokedex/features/pokemon_list/presentation/bloc/pokemon_list_bloc.dart';
-import 'package:pokedex/features/pokemon_list/presentation/widgets/pokemon_success.dart';
+import 'bloc/pokemon_list_bloc.dart';
+import 'widgets/pokemon_success.dart';
 
 class PokemonListPage extends StatelessWidget {
   const PokemonListPage({super.key});

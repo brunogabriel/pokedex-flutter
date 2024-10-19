@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/design/base/spacing.dart';
-import 'package:pokedex/features/pokemon_list/presentation/bloc/pokemon_list_bloc.dart';
-import 'package:pokedex/features/pokemon_list/presentation/widgets/pokemon_card.dart';
+import '../../../../design/base/spacing.dart';
+import '../bloc/pokemon_list_bloc.dart';
+import 'pokemon_card.dart';
 
 class PokemonSuccess extends StatefulWidget {
   const PokemonSuccess({super.key});
@@ -30,7 +30,6 @@ class _PokemonSuccessState extends State<PokemonSuccess> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final state = context.watch<PokemonListBloc>().state;
     final pageStatus = state.pageStatus;
 
@@ -46,7 +45,7 @@ class _PokemonSuccessState extends State<PokemonSuccess> {
           flexibleSpace: FlexibleSpaceBar(
             centerTitle: false,
             titlePadding: EdgeInsets.symmetric(horizontal: Spacing.kL),
-            title: Text('Hello World'),
+            title: Text('Pokedex title'),
           ),
         ),
         SliverPadding(
@@ -57,7 +56,9 @@ class _PokemonSuccessState extends State<PokemonSuccess> {
             ),
             itemBuilder: (context, index) {
               final pokemon = state.result[index];
-              return PokemonCard();
+              return PokemonCard(
+                name: pokemon.name,
+              );
             },
             itemCount: state.result.length,
           ),
@@ -73,8 +74,8 @@ class _PokemonSuccessState extends State<PokemonSuccess> {
                       child: CircularProgressIndicator(),
                     ));
               } else if (!state.firstPage && pageStatus == PageStatus.failure) {
-                tailWidget = Padding(
-                  padding: const EdgeInsets.symmetric(
+                tailWidget = const Padding(
+                  padding: EdgeInsets.symmetric(
                       vertical: Spacing.kM, horizontal: Spacing.kL),
                   child: Column(
                     children: [
@@ -99,7 +100,7 @@ class _PokemonSuccessState extends State<PokemonSuccess> {
 
   void _onScrollListener() {
     if (_isBottomReached) {
-      // request other
+      context.read<PokemonListBloc>().add(const PokemonListEventRequest());
     }
   }
 

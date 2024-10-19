@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/design/components/pokemon_information.dart';
+import '../../../../design/components/pokemon_information.dart';
 
 class PokemonCard extends StatelessWidget {
-  const PokemonCard({super.key});
+  const PokemonCard({
+    super.key,
+    required this.name,
+  });
+
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -10,10 +15,14 @@ class PokemonCard extends StatelessWidget {
       onTap: () {
         // TODO: add tap action
       },
-      child: const SizedBox(
+      child: SizedBox(
         height: 140.0,
         child: Stack(
-          children: [PokemonInformation()],
+          children: [
+            PokemonInformation(
+              name: name,
+            ),
+          ],
         ),
       ),
     );
