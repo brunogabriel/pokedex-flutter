@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../common/api/model/named_api_response.dart';
 import '../domain/boundary/pokemon_list_repository.dart';
 import '../domain/model/pokemon.dart';
 import '../domain/model/pokemon_page_data.dart';
 
+@Injectable(as: PokemonListRepository)
 class PokemonListRepositoryImpl implements PokemonListRepository {
   PokemonListRepositoryImpl({
     required this.dio,
