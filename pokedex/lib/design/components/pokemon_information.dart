@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import '../base/spacing.dart';
+import 'package:pokedex/pokedex.dart';
+import 'package:pokedex_flutter/design/components/badge_type.dart';
+import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
+import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
 
 class PokemonInformation extends StatelessWidget {
   const PokemonInformation({
     super.key,
-    required this.name,
-    required this.number,
-    required this.types,
+    required this.pokemon,
   });
 
-  final String name;
-  final String number;
-  final List<String> types;
+  final Pokemon pokemon;
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Create spacing
+    final textTheme = Theme.of(context).textTheme;
+
     return Padding(
-      padding: const EdgeInsets.all(Spacing.kS),
+      padding: const EdgeInsets.all(PokedexSpacing.kM),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -25,14 +26,37 @@ class PokemonInformation extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('# $number'),
-              const SizedBox(height: 10.0),
-              Text(name),
+              Text(
+                pokemon.id.pokenumber,
+                style: textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black.withOpacity(0.75),
+                ),
+              ),
+              const SizedBox(height: PokedexSpacing.kXS),
+              Text(
+                pokemon.name.capitalize(),
+                overflow: TextOverflow.ellipsis,
+                style: textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
             ],
           ),
           Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text(types.join(' '))])
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ...pokemon.types.map(
+                (e) => Padding(
+                  padding: const EdgeInsets.only(
+                    right: PokedexSpacing.kXS,
+                  ),
+                  child: BadgeType(type: e.type.name),
+                ),
+              )
+            ],
+          ),
         ],
       ),
     );
