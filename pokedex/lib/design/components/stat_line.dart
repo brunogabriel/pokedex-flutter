@@ -28,9 +28,14 @@ class StatLine extends StatelessWidget {
       children: [
         Expanded(
           flex: 2,
-          child: Text(
-            title,
-            style: textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.topLeft,
+            child: Text(
+              title,
+              style:
+                  textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold),
+            ),
           ),
         ),
         Expanded(

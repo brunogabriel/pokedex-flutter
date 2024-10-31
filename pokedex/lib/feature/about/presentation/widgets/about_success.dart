@@ -32,17 +32,20 @@ class AboutSuccess extends StatelessWidget {
       color: primaryColor,
       fontWeight: FontWeight.bold,
     );
+    final pokemonDescription = species?.flavorTextEntries
+        .firstWhereOrNull((element) => element.language.name == 'en')
+        ?.flavorText
+        .replaceScapeChars();
 
     final items = <Widget>[
       // Title
-      Text(
-        species?.flavorTextEntries
-                .firstWhereOrNull((element) => element.language.name == 'en')
-                ?.flavorText
-                .replaceScapeChars() ??
-            '',
-        style: textTheme.bodyLarge?.copyWith(color: PokedexThemeData.textGrey),
-      ),
+      if (pokemonDescription != null) ...{
+        Text(
+          pokemonDescription,
+          style:
+              textTheme.bodyLarge?.copyWith(color: PokedexThemeData.textGrey),
+        ),
+      },
       // Pokedex Data
       Text(AboutStrings.pokedexData, style: sectionTheme),
       if (species != null) ...{

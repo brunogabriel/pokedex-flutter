@@ -23,14 +23,27 @@ class EvolutionUseCaseImpl implements EvolutionUseCase {
 
   @override
   Future<EvolutionEntity> getEvoluions(Pokemon pokemon) async {
-    final species = await _pokedex.pokemonSpecies.get(id: pokemon.id);
-    final evolutionChain = await _pokedex.evolutionChains
-        .getByUrl(species.evolutionChain?.url ?? '');
+    PokemonSpecies? species;
+    try {
+      species = await _pokedex.pokemonSpecies.get(id: pokemon.id);
+    } catch (_) {
+      species = null;
+    }
+    EvolutionChain? evolutionChain;
+    if (species != null) {
+      evolutionChain = await _pokedex.evolutionChains
+          .getByUrl(species.evolutionChain?.url ?? '');
+    } else {
+      evolutionChain = null;
+    }
+
     return EvolutionEntity(
       pokemon: pokemon,
-      evolutions: _calculateBreadthFirstSearch(evolutionChain.chain)
-          .map((e) => _evolutionMapper.toEntity(e))
-          .toList(),
+      evolutions: evolutionChain != null
+          ? _calculateBreadthFirstSearch(evolutionChain.chain)
+              .map((e) => _evolutionMapper.toEntity(e))
+              .toList()
+          : [],
     );
   }
 
