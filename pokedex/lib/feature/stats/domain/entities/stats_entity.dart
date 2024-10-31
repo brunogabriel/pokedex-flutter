@@ -6,7 +6,6 @@ import 'stats_value_entity.dart';
 class StatsEntity {
   StatsEntity({
     required this.pokemon,
-    required this.pokemonSpecies,
     required this.multiplers,
     required this.statsMap,
     required this.minStat,
@@ -14,7 +13,6 @@ class StatsEntity {
   });
 
   final List<Pair<String, double>> multiplers;
-  final PokemonSpecies pokemonSpecies;
   final Pokemon pokemon;
 
   final Map<String, StatsValueEntity?> statsMap;
