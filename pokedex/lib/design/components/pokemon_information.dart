@@ -38,7 +38,7 @@ class PokemonInformation extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Text(
-                  pokemon.name.capitalize(),
+                  pokemon.name.capitalizeName(),
                   overflow: TextOverflow.ellipsis,
                   style: textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,

@@ -16,6 +16,9 @@ extension StringExtensions on String {
   String capitalizeKebabCase() =>
       split('-').map((e) => e.capitalize()).join(' ');
 
+  String capitalizeName() =>
+      replaceAll('-', ' ').split(' ').map((e) => e.capitalize()).join(' ');
+
   // Replace
   String replaceScapeChars([String newChar = ' ']) =>
       replaceAll(RegExp(r'[\n\t\f]'), newChar).trim();
