@@ -8,6 +8,6 @@ class AboutEntity {
   });
 
   final Pokemon pokemon;
-  final PokemonSpecies pokemonSpecies;
+  final PokemonSpecies? pokemonSpecies;
   final List<String> weaknesses;
 }

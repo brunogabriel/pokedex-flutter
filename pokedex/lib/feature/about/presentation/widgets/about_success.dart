@@ -36,7 +36,7 @@ class AboutSuccess extends StatelessWidget {
     final items = <Widget>[
       // Title
       Text(
-        species.flavorTextEntries
+        species?.flavorTextEntries
                 .firstWhereOrNull((element) => element.language.name == 'en')
                 ?.flavorText
                 .replaceScapeChars() ??
@@ -45,12 +45,14 @@ class AboutSuccess extends StatelessWidget {
       ),
       // Pokedex Data
       Text(AboutStrings.pokedexData, style: sectionTheme),
-      AboutTile(
-        title: AboutStrings.species,
-        content: species.genera
-            .firstWhereOrNull((element) => element.language.name == 'en')
-            ?.genus,
-      ),
+      if (species != null) ...{
+        AboutTile(
+          title: AboutStrings.species,
+          content: species.genera
+              .firstWhereOrNull((element) => element.language.name == 'en')
+              ?.genus,
+        ),
+      },
       AboutTile(
         title: AboutStrings.height,
         content: '${pokemon.height.meter.toStringAsFixed(1)}m',
@@ -80,24 +82,28 @@ class AboutSuccess extends StatelessWidget {
       ),
       // Trainning
       Text(AboutStrings.trainning, style: sectionTheme),
-      AboutTile(
-          title: AboutStrings.catchRate,
-          content: species.captureRate.toString()),
+      if (species != null) ...{
+        AboutTile(
+            title: AboutStrings.catchRate,
+            content: species.captureRate.toString()),
+      },
       AboutTile(
         title: AboutStrings.baseExp,
         content: pokemon.baseExperience != null
             ? pokemon.baseExperience.toString()
             : AboutStrings.unknown,
       ),
-      AboutTile(
-        title: AboutStrings.growthRate,
-        content: species.growthRate.name.capitalizeKebabCase(),
-      ),
+      if (species != null) ...{
+        AboutTile(
+          title: AboutStrings.growthRate,
+          content: species.growthRate.name.capitalizeKebabCase(),
+        ),
+      },
 
       // Trainning
       Text(AboutStrings.breeding, style: sectionTheme),
 
-      if (species.genderRate == -1) ...{
+      if (species == null || species.genderRate == -1) ...{
         const AboutTile(
           title: AboutStrings.gender,
           content: AboutStrings.unknown,
@@ -132,40 +138,41 @@ class AboutSuccess extends StatelessWidget {
         ),
       },
 
-      AboutTile(
-        title: AboutStrings.eggGroups,
-        content: species.eggGroups
-            .map((e) => e.name.capitalize().capitalizeKebabCase())
-            .join(', '),
-      ),
-
-      AboutTile.custom(
-        title: AboutStrings.eggCycles,
-        custom: RichText(
-          text: TextSpan(
-            children: [
-              if (species.hatchCounter != null) ...{
-                TextSpan(
-                  text: '${species.hatchCounter ?? 0} ',
-                  style: textTheme.bodyLarge
-                      ?.copyWith(color: PokedexThemeData.textGrey),
-                ),
-                TextSpan(
-                  text:
-                      '(${(species.hatchCounter ?? 0) * 244} - ${(species.hatchCounter ?? 0) * 257} steps)',
-                  style: textTheme.bodySmall
-                      ?.copyWith(color: PokedexThemeData.textGrey),
-                )
-              } else ...{
-                TextSpan(
-                    text: '-',
-                    style: textTheme.bodyLarge
-                        ?.copyWith(color: PokedexThemeData.textGrey))
-              }
-            ],
-          ),
+      if (species != null) ...{
+        AboutTile(
+          title: AboutStrings.eggGroups,
+          content: species.eggGroups
+              .map((e) => e.name.capitalize().capitalizeKebabCase())
+              .join(', '),
         ),
-      )
+        AboutTile.custom(
+          title: AboutStrings.eggCycles,
+          custom: RichText(
+            text: TextSpan(
+              children: [
+                if (species.hatchCounter != null) ...{
+                  TextSpan(
+                    text: '${species.hatchCounter ?? 0} ',
+                    style: textTheme.bodyLarge
+                        ?.copyWith(color: PokedexThemeData.textGrey),
+                  ),
+                  TextSpan(
+                    text:
+                        '(${(species.hatchCounter ?? 0) * 244} - ${(species.hatchCounter ?? 0) * 257} steps)',
+                    style: textTheme.bodySmall
+                        ?.copyWith(color: PokedexThemeData.textGrey),
+                  )
+                } else ...{
+                  TextSpan(
+                      text: '-',
+                      style: textTheme.bodyLarge
+                          ?.copyWith(color: PokedexThemeData.textGrey))
+                }
+              ],
+            ),
+          ),
+        )
+      }
     ];
 
     return ListView.separated(

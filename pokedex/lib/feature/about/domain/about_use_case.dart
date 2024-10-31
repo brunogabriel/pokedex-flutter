@@ -16,10 +16,16 @@ class AboutUseCaseImpl implements AboutUseCase {
   final Pokedex _client;
   @override
   Future<AboutEntity> getAbout(Pokemon pokemon) async {
-    final species = await _client.pokemonSpecies.get(id: pokemon.id);
     final types = await Future.wait(pokemon.types
         .map((e) => e.type.url)
         .map((e) => _client.types.getByUrl(e)));
+
+    PokemonSpecies? species;
+    try {
+      species = await _client.pokemonSpecies.get(id: pokemon.id);
+    } catch (_) {
+      species = null;
+    }
 
     final weaknesses = types.damageFrom.entries
         .where((element) => element.value > 1)
