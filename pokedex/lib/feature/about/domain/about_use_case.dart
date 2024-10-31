@@ -1,8 +1,9 @@
 import 'package:collection/collection.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/about/domain/entity/about_entity.dart';
-import 'package:pokedex_flutter/shared/extensions/type_extensions.dart';
+
+import '../../../shared/extensions/type_extensions.dart';
+import 'entity/about_entity.dart';
 
 abstract class AboutUseCase {
   Future<AboutEntity> getAbout(Pokemon pokemon);

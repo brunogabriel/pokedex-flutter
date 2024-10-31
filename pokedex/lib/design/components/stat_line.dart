@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_flutter/design/components/stat_chart.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
+
+import '../constants/pokedex_theme_data.dart';
+import 'stat_chart.dart';
 
 class StatLine extends StatelessWidget {
   const StatLine({

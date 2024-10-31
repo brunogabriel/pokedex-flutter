@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/feature/evolution/domain/entity/evolution_entity.dart';
-import 'package:pokedex_flutter/feature/evolution/presentation/constants/evolution_strings.dart';
-import 'package:pokedex_flutter/feature/evolution/presentation/cubit/evolution_cubit.dart';
-import 'package:pokedex_flutter/feature/evolution/presentation/widgets/evolution_chain_chart.dart';
-import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
+
+import '../../../../design/constants/pokedex_spacing.dart';
+import '../../../../shared/extensions/pokemon_type_extensions.dart';
+import '../../domain/entity/evolution_entity.dart';
+import '../constants/evolution_strings.dart';
+import '../cubit/evolution_cubit.dart';
+import 'evolution_chain_chart.dart';
 
 class EvolutionSuccess extends StatelessWidget {
   const EvolutionSuccess({super.key});

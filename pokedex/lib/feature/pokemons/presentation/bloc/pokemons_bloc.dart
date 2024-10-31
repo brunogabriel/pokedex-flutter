@@ -2,8 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/pokemons/domain/pokemons_use_case.dart';
-import 'package:pokedex_flutter/shared/events/event_transformations.dart';
+
+import '../../../../shared/events/event_transformations.dart';
+import '../../domain/pokemons_use_case.dart';
 
 part 'pokemons_event.dart';
 part 'pokemons_state.dart';

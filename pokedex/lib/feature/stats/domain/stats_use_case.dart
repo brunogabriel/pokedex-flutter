@@ -1,11 +1,12 @@
 import 'package:collection/collection.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/stats/domain/entities/stats_entity.dart';
-import 'package:pokedex_flutter/feature/stats/domain/entities/stats_value_entity.dart';
-import 'package:pokedex_flutter/shared/data/pair.dart';
-import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/type_extensions.dart';
+
+import '../../../shared/data/pair.dart';
+import '../../../shared/extensions/int_extensions.dart';
+import '../../../shared/extensions/type_extensions.dart';
+import 'entities/stats_entity.dart';
+import 'entities/stats_value_entity.dart';
 
 abstract class StatsUseCase {
   Future<StatsEntity> getStats(Pokemon pokemon);

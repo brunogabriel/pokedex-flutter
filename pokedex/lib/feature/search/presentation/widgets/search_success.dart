@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex_flutter/feature/search/presentation/cubit/search_cubit.dart';
-import 'package:pokedex_flutter/feature/search/presentation/widgets/search_pokemon_delegate.dart';
+import '../cubit/search_cubit.dart';
+import 'search_pokemon_delegate.dart';
 
 class SearchSuccess extends StatefulWidget {
   const SearchSuccess({super.key});

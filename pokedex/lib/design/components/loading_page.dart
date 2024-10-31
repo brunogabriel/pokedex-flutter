@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
+import '../../shared/extensions/string_extensions.dart';
 
 class LoadingPage extends StatelessWidget {
   const LoadingPage({

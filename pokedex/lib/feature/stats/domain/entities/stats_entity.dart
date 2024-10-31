@@ -1,6 +1,7 @@
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/stats/domain/entities/stats_value_entity.dart';
-import 'package:pokedex_flutter/shared/data/pair.dart';
+
+import '../../../../shared/data/pair.dart';
+import 'stats_value_entity.dart';
 
 class StatsEntity {
   StatsEntity({

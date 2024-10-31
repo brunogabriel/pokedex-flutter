@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/design/components/stat_line.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
-import 'package:pokedex_flutter/feature/stats/domain/entities/stats_value_entity.dart';
-import 'package:pokedex_flutter/feature/stats/presentation/cubit/stats_cubit.dart';
-import 'package:pokedex_flutter/feature/stats/presentation/strings/stats_strings.dart';
-import 'package:pokedex_flutter/feature/stats/presentation/widgets/stats_types_list.dart';
-import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
+
+import '../../../../design/components/stat_line.dart';
+import '../../../../design/constants/pokedex_spacing.dart';
+import '../../../../design/constants/pokedex_theme_data.dart';
+import '../../../../shared/extensions/pokemon_type_extensions.dart';
+import '../../../../shared/extensions/string_extensions.dart';
+import '../../domain/entities/stats_value_entity.dart';
+import '../cubit/stats_cubit.dart';
+import '../strings/stats_strings.dart';
+import 'stats_types_list.dart';
 
 class StatsSuccess extends StatefulWidget {
   const StatsSuccess({

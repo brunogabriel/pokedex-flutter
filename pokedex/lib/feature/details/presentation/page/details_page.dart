@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokedex_flutter/design/components/error_page.dart';
-import 'package:pokedex_flutter/design/components/loading_page.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
-import 'package:pokedex_flutter/feature/details/presentation/cubit/details_cubit.dart';
-import 'package:pokedex_flutter/feature/details/presentation/widgets/details_success.dart';
-import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
+
+import '../../../../design/components/error_page.dart';
+import '../../../../design/components/loading_page.dart';
+import '../../../../design/constants/pokedex_spacing.dart';
+import '../../../../design/constants/pokedex_theme_data.dart';
+import '../../../../shared/extensions/pokemon_type_extensions.dart';
+import '../../../../shared/extensions/string_extensions.dart';
+import '../cubit/details_cubit.dart';
+import '../widgets/details_success.dart';
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage({

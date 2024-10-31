@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/evolution/domain/entity/evolution_entity.dart';
-import 'package:pokedex_flutter/feature/evolution/domain/evolution_use_case.dart';
+import '../../domain/entity/evolution_entity.dart';
+import '../../domain/evolution_use_case.dart';
 
 part 'evolution_state.dart';
 

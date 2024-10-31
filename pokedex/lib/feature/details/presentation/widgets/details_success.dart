@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/feature/about/presentation/page/about_page.dart';
-import 'package:pokedex_flutter/feature/details/presentation/widgets/details_header.dart';
-import 'package:pokedex_flutter/feature/evolution/presentation/page/evolution_page.dart';
-import 'package:pokedex_flutter/feature/stats/presentation/page/stats_page.dart';
+
+import '../../../../design/constants/pokedex_spacing.dart';
+import '../../../about/presentation/page/about_page.dart';
+import '../../../evolution/presentation/page/evolution_page.dart';
+import '../../../stats/presentation/page/stats_page.dart';
+import 'details_header.dart';
 
 class DetailsSuccess extends StatefulWidget {
   const DetailsSuccess({super.key, required this.pokemon});

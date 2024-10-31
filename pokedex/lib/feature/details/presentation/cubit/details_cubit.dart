@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/details/domain/details_use_case.dart';
+import '../../domain/details_use_case.dart';
 
 part 'details_state.dart';
 

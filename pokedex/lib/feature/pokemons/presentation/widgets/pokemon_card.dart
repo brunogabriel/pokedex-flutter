@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/design/components/circular_matrix.dart';
-import 'package:pokedex_flutter/design/components/pokemon_information.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
+import '../../../../design/components/circular_matrix.dart';
+import '../../../../design/components/pokemon_information.dart';
+import '../../../../design/constants/pokedex_spacing.dart';
+import '../../../../shared/extensions/int_extensions.dart';
+import '../../../../shared/extensions/pokemon_type_extensions.dart';
+import '../../../../shared/extensions/string_extensions.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard({

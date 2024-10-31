@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
+import '../constants/pokedex_spacing.dart';
 
 class CircularMatrix extends StatelessWidget {
   const CircularMatrix({

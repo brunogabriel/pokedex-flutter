@@ -1,16 +1,17 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_type_color.dart';
-import 'package:pokedex_flutter/feature/about/presentation/constants/about_strings.dart';
-import 'package:pokedex_flutter/feature/about/presentation/cubit/about_cubit.dart';
-import 'package:pokedex_flutter/feature/about/presentation/widgets/about_tile.dart';
-import 'package:pokedex_flutter/feature/about/presentation/widgets/about_weaknesses_list.dart';
-import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/pokemon_type_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
+
+import '../../../../design/constants/pokedex_spacing.dart';
+import '../../../../design/constants/pokedex_theme_data.dart';
+import '../../../../design/constants/pokedex_type_color.dart';
+import '../../../../shared/extensions/int_extensions.dart';
+import '../../../../shared/extensions/pokemon_type_extensions.dart';
+import '../../../../shared/extensions/string_extensions.dart';
+import '../constants/about_strings.dart';
+import '../cubit/about_cubit.dart';
+import 'about_tile.dart';
+import 'about_weaknesses_list.dart';
 
 class AboutSuccess extends StatelessWidget {
   const AboutSuccess({

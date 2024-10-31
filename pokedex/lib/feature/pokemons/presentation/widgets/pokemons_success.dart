@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokedex_flutter/design/components/loading_page.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
-import 'package:pokedex_flutter/feature/pokemons/presentation/bloc/pokemons_bloc.dart';
-import 'package:pokedex_flutter/feature/pokemons/presentation/constants/pokemons_strings.dart';
-import 'package:pokedex_flutter/feature/pokemons/presentation/widgets/pokemon_card.dart';
+import '../../../../design/components/loading_page.dart';
+import '../../../../design/constants/pokedex_spacing.dart';
+import '../../../../design/constants/pokedex_theme_data.dart';
+import '../bloc/pokemons_bloc.dart';
+import '../constants/pokemons_strings.dart';
+import 'pokemon_card.dart';
 
 class PokemonsSuccess extends StatefulWidget {
   const PokemonsSuccess({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
+import '../../../../design/constants/pokedex_spacing.dart';
+import '../../../../design/constants/pokedex_theme_data.dart';
 
 class AboutTile extends StatelessWidget {
   const AboutTile({

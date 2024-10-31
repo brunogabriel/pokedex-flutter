@@ -1,8 +1,9 @@
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/evolution/domain/entity/evolution_entity.dart';
-import 'package:pokedex_flutter/shared/data/pair.dart';
-import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
+
+import '../../../../shared/data/pair.dart';
+import '../../../../shared/extensions/string_extensions.dart';
+import '../entity/evolution_entity.dart';
 
 abstract class EvolutionMapper {
   EvolutionDescriptionEntity toEntity(Pair<ChainLink, ChainLink> pair);

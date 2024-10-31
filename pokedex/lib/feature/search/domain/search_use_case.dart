@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/cache/application_cache.dart';
+import '../../../cache/application_cache.dart';
 
 abstract class SearchUseCase {
   Future<List<NamedAPIResource>> getAllPokemons();

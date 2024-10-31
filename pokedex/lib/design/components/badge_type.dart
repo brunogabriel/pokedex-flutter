@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/design/extensions/design_string_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
+
+import '../../shared/extensions/string_extensions.dart';
+import '../constants/pokedex_spacing.dart';
+import '../extensions/design_string_extensions.dart';
 
 class BadgeType extends StatelessWidget {
   const BadgeType({

@@ -2,9 +2,10 @@ import 'dart:collection';
 
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/feature/evolution/domain/entity/evolution_entity.dart';
-import 'package:pokedex_flutter/feature/evolution/domain/mapper/evolution_mapper.dart';
-import 'package:pokedex_flutter/shared/data/pair.dart';
+
+import '../../../shared/data/pair.dart';
+import 'entity/evolution_entity.dart';
+import 'mapper/evolution_mapper.dart';
 
 abstract class EvolutionUseCase {
   Future<EvolutionEntity> getEvoluions(Pokemon pokemon);

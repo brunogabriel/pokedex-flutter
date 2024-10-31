@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:pokedex_flutter/feature/evolution/presentation/widgets/evolution_method_chart.dart';
-import 'package:pokedex_flutter/feature/evolution/presentation/widgets/pokemon_chart.dart';
+import 'evolution_method_chart.dart';
+import 'pokemon_chart.dart';
 
 class EvolutionChainChart extends StatelessWidget {
   const EvolutionChainChart({

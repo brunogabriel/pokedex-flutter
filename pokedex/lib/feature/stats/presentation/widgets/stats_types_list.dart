@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex_flutter/design/components/badge_type.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
-import 'package:pokedex_flutter/shared/data/pair.dart';
-import 'package:pokedex_flutter/shared/extensions/double_extensions.dart';
+import '../../../../design/components/badge_type.dart';
+import '../../../../design/constants/pokedex_spacing.dart';
+import '../../../../design/constants/pokedex_theme_data.dart';
+import '../../../../shared/data/pair.dart';
+import '../../../../shared/extensions/double_extensions.dart';
 
 class StatsTypesList extends StatelessWidget {
   const StatsTypesList({
@@ -26,38 +26,36 @@ class StatsTypesList extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ...slices
-                .map(
-                  (types) => Padding(
-                    padding: const EdgeInsets.only(bottom: PokedexSpacing.kM),
-                    child: Row(
-                      children: [
-                        ...types.map(
-                          (type) => Padding(
-                            padding: const EdgeInsets.only(
-                              right: PokedexSpacing.kS,
+            ...slices.map(
+              (types) => Padding(
+                padding: const EdgeInsets.only(bottom: PokedexSpacing.kM),
+                child: Row(
+                  children: [
+                    ...types.map(
+                      (type) => Padding(
+                        padding: const EdgeInsets.only(
+                          right: PokedexSpacing.kS,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            BadgeType.circular(
+                              type: type.first,
+                              diameter: 34,
+                              diameterPadding: 6,
                             ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                BadgeType.circular(
-                                  type: type.first,
-                                  diameter: 34,
-                                  diameterPadding: 6,
-                                ),
-                                Text(
-                                  type.second.toEffectivenessFactor(),
-                                  style: textTheme,
-                                ),
-                              ],
+                            Text(
+                              type.second.toEffectivenessFactor(),
+                              style: textTheme,
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                )
-                
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
           ],
         );
       },

@@ -2,11 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
-import 'package:pokedex_flutter/feature/search/presentation/constants/search_strings.dart';
-import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
+
+import '../../../../design/constants/pokedex_spacing.dart';
+import '../../../../design/constants/pokedex_theme_data.dart';
+import '../../../../shared/extensions/int_extensions.dart';
+import '../../../../shared/extensions/string_extensions.dart';
+import '../constants/search_strings.dart';
 
 class SearchPokemonDelegate extends SearchDelegate<String> {
   SearchPokemonDelegate(

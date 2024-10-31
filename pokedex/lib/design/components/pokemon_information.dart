@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/pokedex.dart';
-import 'package:pokedex_flutter/design/components/badge_type.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_spacing.dart';
-import 'package:pokedex_flutter/shared/extensions/int_extensions.dart';
-import 'package:pokedex_flutter/shared/extensions/string_extensions.dart';
+
+import '../../shared/extensions/int_extensions.dart';
+import '../../shared/extensions/string_extensions.dart';
+import '../constants/pokedex_spacing.dart';
+import 'badge_type.dart';
 
 class PokemonInformation extends StatelessWidget {
   const PokemonInformation({

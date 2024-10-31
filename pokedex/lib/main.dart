@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_flutter/design/constants/pokedex_theme_data.dart';
-import 'package:pokedex_flutter/di/injection.dart';
-import 'package:pokedex_flutter/routes/app_routes.dart';
+import 'design/constants/pokedex_theme_data.dart';
+import 'di/injection.dart';
+import 'routes/app_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
