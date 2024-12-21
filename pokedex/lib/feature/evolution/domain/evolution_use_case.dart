@@ -8,7 +8,7 @@ import 'entity/evolution_entity.dart';
 import 'mapper/evolution_mapper.dart';
 
 abstract class EvolutionUseCase {
-  Future<EvolutionEntity> getEvoluions(Pokemon pokemon);
+  Future<EvolutionEntity> getEvolutions(Pokemon pokemon);
 }
 
 @Injectable(as: EvolutionUseCase)
@@ -22,7 +22,7 @@ class EvolutionUseCaseImpl implements EvolutionUseCase {
   final EvolutionMapper _evolutionMapper;
 
   @override
-  Future<EvolutionEntity> getEvoluions(Pokemon pokemon) async {
+  Future<EvolutionEntity> getEvolutions(Pokemon pokemon) async {
     PokemonSpecies? species;
     try {
       species = await _pokedex.pokemonSpecies.get(id: pokemon.id);

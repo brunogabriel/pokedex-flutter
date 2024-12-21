@@ -15,7 +15,7 @@ class EvolutionCubit extends Cubit<EvolutionState> {
   void requestEvolutionChain(Pokemon pokemon) async {
     emit(EvolutionLoadingState());
     try {
-      final evolutionChain = await _useCase.getEvoluions(pokemon);
+      final evolutionChain = await _useCase.getEvolutions(pokemon);
       if (evolutionChain.evolutions.isEmpty) {
         emit(NoEvolutionState(pokemon));
       } else {
