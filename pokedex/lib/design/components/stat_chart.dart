@@ -20,11 +20,13 @@ class _StatChartState extends State<StatChart> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        _animated = true;
-      });
-    });
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        setState(() {
+          _animated = true;
+        });
+      },
+    );
     // _animate();
   }
 
