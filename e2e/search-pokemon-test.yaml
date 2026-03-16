@@ -1,0 +1,12 @@
+appId: com.example.pokedex
+---
+- launchApp:
+    clearState: true
+- tapOn: "What Pokémon are you looking for?"
+- inputText: "Mewtwo"
+- tapOn:
+    text: "Mewtwo"
+    index: 1
+- assertVisible:
+    text: "Psychic"
+    enabled: true
