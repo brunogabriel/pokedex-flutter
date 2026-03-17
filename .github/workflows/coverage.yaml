@@ -27,12 +27,15 @@ jobs:
     
       - name: Run tests
         run: |
+          # Generate a file that imports all lib sources so every file appears in coverage
+          echo '// ignore_for_file: unused_import' > test/full_coverage_test.dart
+          find lib -name '*.dart' | sort | while read f; do
+            echo "import 'package:pokedex_flutter/${f#lib/}';" >> test/full_coverage_test.dart
+          done
+          echo 'void main() {}' >> test/full_coverage_test.dart
+
           flutter test --coverage
-          lcov --list coverage/lcov.info
-          if [ -f coverage/lcov.info ]; then
-            find lib -name '*.dart' | xargs -I {} lcov --add-tracefile coverage/lcov.info --output-file coverage/lcov.info
-            lcov --remove coverage/lcov.info 'lib/generated/*' --output-file coverage/lcov.info
-          fi
+          lcov --remove coverage/lcov.info 'lib/generated/*' --output-file coverage/lcov.info --ignore-errors unused
         working-directory: pokedex
 
       - name: Upload coverage reports to Codecov
