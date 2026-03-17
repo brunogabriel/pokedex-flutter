@@ -28,9 +28,10 @@ jobs:
       - name: Run tests
         run: |
           # Generate a file that imports all lib sources so every file appears in coverage
+          # Skips 'part of' files since they can't be imported directly
           echo '// ignore_for_file: unused_import' > test/full_coverage_test.dart
           find lib -name '*.dart' | sort | while read f; do
-            echo "import 'package:pokedex_flutter/${f#lib/}';" >> test/full_coverage_test.dart
+            grep -q 'part of' "$f" || echo "import 'package:pokedex_flutter/${f#lib/}';" >> test/full_coverage_test.dart
           done
           echo 'void main() {}' >> test/full_coverage_test.dart
 
